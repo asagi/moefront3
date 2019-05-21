@@ -16,6 +16,17 @@ export default {
   computed: {
     ...mapState('user', ['authToken'])
   },
+  mounted() {
+    setTimeout(() => {
+      const token = this.$store.state.user.authToken
+      if (token) {
+        this.$axios.setToken(token, 'Bearer')
+        this.$axios.get('/users/1').then(res => {
+          console.log(res.data)
+        })
+      }
+    })
+  },
   methods: {
     ...mapActions('user', ['login', 'logout'])
   }

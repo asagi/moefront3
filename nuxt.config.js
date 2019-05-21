@@ -1,4 +1,5 @@
 import pkg from './package'
+require('dotenv').config()
 
 export default {
   mode: 'universal',
@@ -37,13 +38,15 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/dotenv'
   ],
   /*
    ** Axios module configuration
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL: process.env.BASE_URL
   },
 
   /*
@@ -64,5 +67,8 @@ export default {
         })
       }
     }
+  },
+  env: {
+    baseURL: process.env.BASE_URL
   }
 }
