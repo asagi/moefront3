@@ -4,9 +4,18 @@
 
 <script>
 export default {
-  fetch() {
+  data: () => {
+    return { isActive: true }
+  },
+  fetch({ env, redirect }) {
     window.location.href =
-      process.env.baseURL + '/login/twitter?callback=http://localhost:3000/auth'
+      env.baseURL + '/login/twitter?callback=http://localhost:3000/auth'
   }
 }
 </script>
+
+<style scoped>
+body {
+  display: none;
+}
+</style>

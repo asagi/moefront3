@@ -1,6 +1,6 @@
 # moefront
 
-> Diplomacy MOE
+> Diplomacy MOE Front-end
 
 ## Build Setup
 

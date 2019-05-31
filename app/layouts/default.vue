@@ -1,19 +1,54 @@
 <template>
-  <div>
+  <div :class="[scrollLock]">
     <TheHeader />
-    <nuxt />
+    <div class="outer-frame">
+      <nuxt />
+    </div>
+    <TheFooter />
   </div>
 </template>
 
 <script>
-import TheHeader from '@/components/TheHeader'
+import TheHeader from '@/components/-the-header'
+import TheFooter from '@/components/-the-footer'
+import { mapState } from 'vuex'
 
 export default {
   components: {
-    TheHeader
+    TheHeader,
+    TheFooter
+  },
+  computed: {
+    ...mapState('header', ['isActive']),
+    scrollLock: function() {
+      return {
+        'overflow-hidden': this.isActive,
+        'h-screen': this.isActive
+      }
+    }
   }
 }
 </script>
+
+<style lang="postcss">
+body {
+  @apply bg-gray-200;
+  min-width: 320px;
+}
+.outer-frame {
+  @apply flex flex-col items-center;
+}
+.container {
+  @apply pb-10;
+  max-width: 1280px;
+}
+a {
+  @apply text-blue-500;
+}
+.dropdown-bg {
+  @apply w-full h-screen absolute inset-0 z-10;
+}
+</style>
 
 <style>
 html {
@@ -33,34 +68,5 @@ html {
 *:after {
   box-sizing: border-box;
   margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
 }
 </style>
