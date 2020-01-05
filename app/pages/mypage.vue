@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <section v-if="isVisible" class="container">
     <div class="btn-area">
       <nuxt-link class="btn btn-blue" to="/tables/new">
         卓を立てる
@@ -29,10 +29,17 @@ export default {
       title: 'マイページ'
     }
   },
-  fetch({ store, redirect }) {
-    if (!store.state.user.authToken) {
-      return redirect('/')
-    }
+  data: () => {
+    return { isVisible: false }
+  },
+  mounted() {
+    setTimeout(() => {
+      if (this.$store.state.user.authToken) {
+        this.isVisible = true
+      } else {
+        this.$router.push({ path: '/' })
+      }
+    }, 0)
   }
 }
 </script>
