@@ -4,15 +4,15 @@
       <img src="@/assets/img/logo.svg" class="svg logo" />
       <nuxt-link class="h-6 no-underline" to="/">Diplomacy MOE</nuxt-link>
     </div>
-    <div v-if="!authToken && !isHidden" class="pt-2">
+    <div v-if="!authToken && allowLogin" class="pt-1">
       <nuxt-link
         id="header-login-link"
-        class="cursor-pointer link no-underline"
+        class="link btn-header-twitter-login"
         to="/login"
-        >ログイン</nuxt-link
+        ><span id="header-twitter-logo"></span>ログイン</nuxt-link
       >
     </div>
-    <div v-if="authToken && !isHidden" class="pt-1">
+    <div v-if="authToken" class="pt-1">
       <div @click="toggleMenu" class="cursor-pointer">
         <img
           id="header-user-image"
@@ -41,10 +41,7 @@ import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapState('user', ['authToken', 'image_url']),
-    ...mapState('header', ['isActive', 'isHidden'])
-  },
-  mounted() {
-    this.$store.dispatch('header/showLoginLink')
+    ...mapState('header', ['isActive', 'allowLogin'])
   },
   methods: {
     ...mapActions('user', ['logout']),
@@ -69,6 +66,21 @@ export default {
 </style>
 
 <style lang="postcss" scoped>
+.btn-header-twitter-login {
+  @apply inline-block py-1 pl-1 pr-2 rounded-sm;
+  @apply text-white text-xs;
+  background-color: #55acee;
+  line-height: 1.5rem;
+}
+.btn-header-twitter-login:hover {
+  @apply bg-blue-700;
+}
+#header-twitter-logo {
+  @apply w-6 h-6 inline-block align-bottom;
+  width: 16px;
+  background: url('~assets/img/twitter_logo.png') center no-repeat;
+  background-size: contain;
+}
 .header a {
   @apply text-gray-800;
 }

@@ -1,6 +1,6 @@
 export const state = () => ({
   isActive: false,
-  isHidden: true
+  allowLogin: true
 })
 
 export const mutations = {
@@ -13,11 +13,11 @@ export const mutations = {
   toggleActive(state) {
     state.isActive = !state.isActive
   },
-  setHidden(state) {
-    state.isHidden = true
+  setAllowLogin(state) {
+    state.allowLogin = true
   },
-  unsetHidden(state) {
-    state.isHidden = false
+  unsetAllowLogin(state) {
+    state.allowLogin = false
   }
 }
 
@@ -31,10 +31,10 @@ export const actions = {
   toggleMenu({ commit }) {
     commit('toggleActive')
   },
-  hideLoginLink({ commit }) {
-    commit('setHidden')
+  setAllowLogin({ commit }) {
+    commit('setAllowLogin')
   },
-  showLoginLink({ commit }) {
-    commit('unsetHidden')
+  unsetAllowLogin({ commit }) {
+    commit('unsetAllowLogin')
   }
 }

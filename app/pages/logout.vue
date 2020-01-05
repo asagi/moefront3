@@ -15,10 +15,10 @@ export default {
     }
   },
   fetch({ store }) {
-    store.dispatch('header/hideLoginLink')
+    store.dispatch('header/unsetAllowLogin')
   },
   beforeDestroy() {
-    this.$store.dispatch('header/showLoginLink')
+    this.$store.dispatch('header/setAllowLogin')
   }
 }
 </script>

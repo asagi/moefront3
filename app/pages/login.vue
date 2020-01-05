@@ -9,11 +9,8 @@ export default {
       title: 'ログイン'
     }
   },
-  data: () => {
-    return { isActive: false }
-  },
   fetch({ store, env, redirect }) {
-    store.dispatch('header/hideLoginLink')
+    store.dispatch('header/unsetAllowLogin')
     window.location.href =
       env.baseURL + '/login/twitter?callback=' + env.serverURL + '/auth'
   }

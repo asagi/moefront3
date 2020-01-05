@@ -9,6 +9,9 @@ export default {
       title: '認証'
     }
   },
+  fetch({ store }) {
+    store.dispatch('header/unsetAllowLogin')
+  },
   mounted() {
     setTimeout(() => {
       const token = this.$route.query.token
