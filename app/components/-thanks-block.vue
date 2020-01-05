@@ -3,16 +3,14 @@
     <div class="thanks">
       <h2>Thanks</h2>
       <ul>
-        <li>旗卓国旗は <em>DLK</em> さんからご提供頂きました。</li>
         <li>
-          娘卓画像は <em>緑一色</em> 先生（<a
-            target="_blank"
-            href="https://twitter.com/aru_mido"
-            ><span class="icon-twitter"></span>@aru_mido</a
-          >）からご提供頂きました。
+          旗卓国旗は <em>DLK</em> さん、 娘卓画像は <em>緑一色</em> 先生（
+          <a target="_blank" href="https://twitter.com/aru_mido">
+            <span class="icon-twitter"></span>@aru_mido
+          </a>
+          ）からご提供頂きました。
         </li>
       </ul>
-      <p>お二方には謹んで御礼申し上げます。</p>
     </div>
   </div>
 </template>
