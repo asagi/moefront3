@@ -347,7 +347,13 @@ export default {
   },
   mounted() {
     const dueDate = document.getElementsByTagName('dueDate')
-    console.log(dueDate)
+    setTimeout(() => {
+      if (this.$store.state.user.authToken) {
+        this.isVisible = true
+      } else {
+        this.$router.push({ path: '/' })
+      }
+    }, 0)
   },
   methods: {
     submit: function() {
