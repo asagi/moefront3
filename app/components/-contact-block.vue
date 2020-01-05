@@ -4,7 +4,7 @@
     <ul>
       <li>
         <span class="icon-mail"></span>
-        <a href="mailto:k.asagi@nifty.com">k.asagi@nifty.com</a>
+        <a href="mailto:asagi@tepidworks.jp">asagi@tepidworks.jp</a>
       </li>
       <li>
         <span class="icon-twitter"></span>

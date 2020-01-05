@@ -17,7 +17,6 @@ export const actions = {
     commit('setToken', token)
   },
   logout({ commit, state }) {
-    console.log(state.authToken)
     this.$axios.setToken(state.authToken, 'Bearer')
     this.$axios.get('/logout')
     commit('setToken', null)
@@ -27,8 +26,9 @@ export const actions = {
     commit('setInfo', info)
   }
 }
+
 export const getters = {
-  getAuthToken(state) {
+  getAuthToken: state => {
     return state.authToken
   }
 }

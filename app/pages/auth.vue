@@ -4,20 +4,29 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: '認証'
+    }
+  },
   mounted() {
     setTimeout(() => {
-      this.$store.dispatch('user/login', this.$route.query.token)
-      this.$axios.setToken(this.$route.query.token, 'Bearer')
-      this.$axios
-        .get('/users/1')
-        .then(res => {
-          this.$store.dispatch('user/load', res.data)
-        })
-        .catch(error => {
-          console.log(error.message)
-        })
+      const token = this.$route.query.token
+      if (token) {
+        this.$store.dispatch('user/login', token)
+        this.$axios.setToken(token, 'Bearer')
+        this.$axios
+          .get('/users/me')
+          .then(res => {
+            this.$store.dispatch('user/load', res.data)
+          })
+          .catch(error => {
+            console.log(error.message)
+            this.$store.dispatch('user/logout', token)
+          })
+      }
+      this.$router.push({ path: '/' })
     }, 0)
-    this.$router.push({ path: '/' })
   }
 }
 </script>

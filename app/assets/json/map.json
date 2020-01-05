@@ -1,12 +1,12 @@
 {
 	"adr": {
 		"type": "Water",
-		"name": "Adriatic Water",
+		"name": "Adriatic Sea",
 		"jname": "アドリア海"
 	},
 	"aeg": {
 		"type": "Water",
-		"name": "Aegean Water",
+		"name": "Aegean Sea",
 		"jname": "エーゲ海"
 	},
 	"alb": {
@@ -35,12 +35,12 @@
 	},
 	"bal": {
 		"type": "Water",
-		"name": "Baltic Water",
+		"name": "Baltic Sea",
 		"jname": "バルト海"
 	},
 	"bar": {
 		"type": "Water",
-		"name": "Barents Water",
+		"name": "Barents Sea",
 		"jname": "バレンツ海"
 	},
 	"bel": {
@@ -58,7 +58,7 @@
 	},
 	"bla": {
 		"type": "Water",
-		"name": "Black Water",
+		"name": "Black Sea",
 		"jname": "黒海"
 	},
 	"boh": {
@@ -171,12 +171,12 @@
 	},
 	"ion": {
 		"type": "Water",
-		"name": "Ionian Water",
+		"name": "Ionian Sea",
 		"jname": "イオニア海"
 	},
 	"iri": {
 		"type": "Water",
-		"name": "Irish Water",
+		"name": "Irish Sea",
 		"jname": "アイリッシュ海"
 	},
 	"kie": {
@@ -256,12 +256,12 @@
 	},
 	"nth": {
 		"type": "Water",
-		"name": "North Water",
+		"name": "North Sea",
 		"jname": "北海"
 	},
 	"nwg": {
 		"type": "Water",
-		"name": "Norwegian Water",
+		"name": "Norwegian Sea",
 		"jname": "ノルウェー海"
 	},
 	"nwy": {
@@ -403,7 +403,7 @@
 	},
 	"tys": {
 		"type": "Water",
-		"name": "Tyrrhenian Water",
+		"name": "Tyrrhenian Sea",
 		"jname": "ティレニア海"
 	},
 	"ukr": {

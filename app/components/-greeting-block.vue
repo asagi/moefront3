@@ -5,11 +5,8 @@
         Diplomacy MOE へようこそ！
       </h1>
       <p>
-        Diplomacy MOE は 名作ボードゲーム
-        <a href="http://www.wizards.com/default.asp?x=ah/prod/diplomacy"
-          >ディプロマシー</a
-        >
-        をオンラインで遊べるように実装したものです。
+        Diplomacy MOE は名作ボードゲームディプロマシーを
+        オンラインで遊べるように実装したものです。
       </p>
       <p>
         7 人の参加者はそれぞれ 20 世紀初頭の欧州列強各国の指導者となり、

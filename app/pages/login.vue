@@ -4,12 +4,18 @@
 
 <script>
 export default {
-  data: () => {
-    return { isActive: true }
+  head() {
+    return {
+      title: 'ログイン'
+    }
   },
-  fetch({ env, redirect }) {
+  data: () => {
+    return { isActive: false }
+  },
+  fetch({ store, env, redirect }) {
+    store.dispatch('header/hideLoginLink')
     window.location.href =
-      env.baseURL + '/login/twitter?callback=http://localhost:3000/auth'
+      env.baseURL + '/login/twitter?callback=' + env.serverURL + '/auth'
   }
 }
 </script>

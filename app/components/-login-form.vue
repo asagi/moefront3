@@ -1,13 +1,9 @@
 <template>
-  <div v-if="!authToken" id="login-area">
+  <div id="login-area" v-if="!authToken">
     <p>
       参加登録にはログインが必要です。
     </p>
-    <nuxt-link
-      v-cloak
-      class="link btn btn-twitter-login"
-      to="/login"
-      @click.native="isWait = true"
+    <nuxt-link v-cloak class="link btn btn-twitter-login" to="/login"
       ><span id="twitter-logo"></span> Twitter アカウントでログイン</nuxt-link
     >
   </div>
@@ -40,7 +36,7 @@ export default {
   background-size: contain;
 }
 .btn-twitter-login {
-  @apply inline-block align-bottom py-2 px-3 rounded-sm;
+  @apply inline-block align-bottom py-2 pl-3 pr-5 rounded-sm;
   @apply text-white;
   background-color: #55acee;
 }

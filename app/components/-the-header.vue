@@ -4,26 +4,34 @@
       <img src="@/assets/img/logo.svg" class="svg logo" />
       <nuxt-link class="h-6 no-underline" to="/">Diplomacy MOE</nuxt-link>
     </div>
-    <no-ssr>
-      <div v-if="authToken" class="pt-1">
-        <div class="cursor-pointer" @click="toggleMenu">
-          <img class="user-image" :src="image_url" />
-          <span class="dropdown-caret"></span>
-        </div>
-        <div v-if="isActive" class="menu">
-          <div class="caret">
-            <span class="caret-outer"></span> <span class="caret-inner"></span>
-          </div>
-          <ul>
-            <li>マイページ</li>
-            <li class="link" @click="clickLogout">
-              ログアウト
-            </li>
-          </ul>
-        </div>
+    <div v-if="!authToken && !isHidden" class="pt-2">
+      <nuxt-link
+        id="header-login-link"
+        class="cursor-pointer link no-underline"
+        to="/login"
+        >ログイン</nuxt-link
+      >
+    </div>
+    <div v-if="authToken && !isHidden" class="pt-1">
+      <div @click="toggleMenu" class="cursor-pointer">
+        <img
+          id="header-user-image"
+          :src="image_url.replace('http:', 'https:')"
+        />
+        <span class="dropdown-caret"></span>
       </div>
-    </no-ssr>
-    <div v-if="isActive" class="dropdown-bg" @click="closeMenu"></div>
+      <div v-if="isActive" class="menu">
+        <div class="caret">
+          <span class="caret-outer"></span>
+          <span class="caret-inner"></span>
+        </div>
+        <ul>
+          <li @click="showMypage" class="link">マイページ</li>
+          <li @click="clickLogout" class="link">ログアウト</li>
+        </ul>
+      </div>
+    </div>
+    <div v-if="isActive" @click="closeMenu" class="dropdown-bg"></div>
   </nav>
 </template>
 
@@ -33,39 +41,21 @@ import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapState('user', ['authToken', 'image_url']),
-    ...mapState('header', ['isActive'])
+    ...mapState('header', ['isActive', 'isHidden'])
   },
   mounted() {
-    setTimeout(() => {
-      const token = this.$store.state.user.authToken
-      if (token) {
-        this.$nextTick(() => {
-          this.$axios.setToken(token, 'Bearer')
-          this.$axios
-            .get('/users/0')
-            .then(res => {
-              this.$store.dispatch('user/load', res.data)
-            })
-            .catch(error => {
-              this.$store.dispatch('user/logout')
-              this.isActive = false
-              console.log(error.message)
-            })
-        })
-      }
-    }, 0)
+    this.$store.dispatch('header/showLoginLink')
   },
   methods: {
-    ...mapActions('user', ['login']),
-    ...mapActions('header', ['openMenu', 'closeMenu', 'toggleMenu']),
+    ...mapActions('user', ['logout']),
+    ...mapActions('header', ['closeMenu', 'toggleMenu']),
     clickLogout: function() {
-      this.$store.dispatch('user/logout')
-      this.$store.dispatch('header/hide')
-      this.isActive = false
+      this.logout()
+      this.closeMenu()
     },
-    waitCursor: function() {
-      this.isActive = true
-      this.pointer = 'cursor-wait'
+    showMypage: function() {
+      this.$router.push('/mypage')
+      this.closeMenu()
     }
   }
 }
@@ -85,10 +75,7 @@ export default {
 nav {
   @apply bg-gray-400 text-gray-700 text-sm;
 }
-#login-menu {
-  @apply pt-2;
-}
-.user-image {
+#header-user-image {
   @apply w-6 h-6 rounded-full inline-block mr-2 align-bottom;
 }
 .dropdown-caret {
@@ -125,29 +112,12 @@ nav {
   @apply w-full px-3 py-1 bg-transparent;
 }
 .menu ul li a {
-  @apply text-sm;
+  @apply text-sm text-gray-700;
 }
 .menu ul li:hover {
   @apply bg-blue-700 text-gray-200;
 }
 .dropdown-bg {
-  @apply w-full h-screen absolute inset-0 z-10;
-}
-</style>
-
-<style lang="postcss" scoped>
-#twitter-logo {
-  @apply w-6 h-6 inline-block align-bottom;
-  width: 24px;
-  background: url('~assets/img/twitter_logo.png') center no-repeat;
-  background-size: contain;
-}
-.btn-twitter-login {
-  @apply align-bottom py-2 px-3 rounded-sm text-sm;
-  @apply text-white;
-  background-color: #55acee;
-}
-.btn-twitter-login:hover {
-  @apply bg-blue-700;
+  @apply w-full h-screen fixed inset-0 z-10;
 }
 </style>

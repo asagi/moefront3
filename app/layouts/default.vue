@@ -9,9 +9,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import TheHeader from '@/components/-the-header'
 import TheFooter from '@/components/-the-footer'
-import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -46,7 +46,7 @@ a {
   @apply text-blue-500;
 }
 .dropdown-bg {
-  @apply w-full h-screen absolute inset-0 z-10;
+  @apply w-full h-screen fixed inset-0 z-10;
 }
 </style>
 
@@ -68,5 +68,23 @@ html {
 *:after {
   box-sizing: border-box;
   margin: 0;
+}
+</style>
+
+<style lang="postcss">
+.btn {
+  @apply font-bold py-2 px-3 rounded mt-10;
+}
+.btn-blue {
+  @apply bg-blue-500 text-white;
+}
+.btn-blue:hover {
+  @apply bg-blue-700;
+}
+.btn-gray {
+  @apply bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded;
+}
+.btn-gray:hover {
+  @apply bg-gray-500;
 }
 </style>

@@ -4,6 +4,11 @@
       <MapArea :occupieds="occupieds" :units="units" />
       <Greeting />
     </div>
+    <div class="flex flex-row flex-wrap justify-center">
+      <p class="caution">
+        当サイトは現在開発中であり、実際にプレイすることはできません。
+      </p>
+    </div>
     <AmazonLink />
     <div class="w-full flex flex-row flex-wrap justify-center">
       <Tables />
@@ -26,6 +31,12 @@ import Thanks from '@/components/-thanks-block'
 import AmazonLink from '@/components/-amazon-link'
 
 export default {
+  head() {
+    return {
+      title: 'Diplomacy MOE',
+      titleTemplate: ''
+    }
+  },
   components: {
     MapArea,
     Greeting,
@@ -567,6 +578,19 @@ html {
 }
 h2 {
   @apply w-full text-xl mb-4 pl-4 text-left;
+}
+</style>
+
+<style lang="postcss" scoped>
+.caution {
+  @apply bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative;
+  @apply flex flex-row justify-center items-center mt-10 mx-auto;
+  @apply mt-10 mx-5 p-10 bg-white text-sm;
+  max-width: 550px;
+  z-index: -10;
+}
+.caution p {
+  @apply w-full mx-auto;
 }
 </style>
 

@@ -1,16 +1,26 @@
 const path = require('path')
 const pkg = require('./package')
-require('dotenv').config()
+require('dotenv').config({ path: path.join(__dirname, '/app/.env') })
 
-module.exports = {
+const serverConf =
+  process.env.NODE_ENV !== 'production'
+    ? { port: 3000, host: '0.0.0.0' }
+    : { port: 8080, host: '0.0.0.0' }
+
+export default {
+  server: serverConf,
   mode: 'spa',
   srcDir: 'app',
+  env: {
+    baseURL: process.env.BASE_URL,
+    serverURL: process.env.SERVER_URL
+  },
 
   /*
    ** Headers of the page
    */
   head: {
-    titleTemplate: '%s | ' + pkg.name,
+    titleTemplate: '%s | Diplomacy MOE',
     htmlAttrs: { lang: 'ja' },
     meta: [
       { charset: 'utf-8' },
@@ -42,12 +52,20 @@ module.exports = {
     'nuxt-purgecss',
     '@nuxtjs/dotenv',
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    [
+      '@nuxtjs/google-adsense',
+      {
+        id: process.env.GA_ADSENSE_ID,
+        pageLevelAds: false,
+        analyticsUacct: process.env.GA_TRACKING_ID, // アナリティクスと連携する場合のみ必要
+        analyticsDomainName: process.env.DOMAIN // アナリティクスと連携する場合のみ必要
+      }
+    ]
   ],
-
-  env: {
-    baseURL: process.env.BASE_URL
-  },
+  buildModules: [
+    ['@nuxtjs/google-analytics', { id: process.env.GA_TRACKING_ID }]
+  ],
 
   /*
    ** Axios module configuration
@@ -85,7 +103,18 @@ module.exports = {
       // Disable a plugin by passing false as value
       plugins: {
         'postcss-url': {},
-        tailwindcss: path.resolve(__dirname, './tailwind.config.js'),
+        tailwindcss: {
+          prefix: '',
+          important: false,
+          separator: ':',
+          theme: {
+            container: {
+              center: true
+            }
+          },
+          variants: {},
+          plugins: []
+        },
         cssnano: {
           preset: 'default',
           discardComments: { removeAll: true },

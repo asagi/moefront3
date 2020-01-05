@@ -1,79 +1,79 @@
 <template>
   <div class="outer-map">
-    <div v-if="isSelected" class="dropdown-bg" @click="closeDescription"></div>
+    <div v-if="isSelected" @click="closeDescription" class="dropdown-bg"></div>
     <div class="map-area">
       <div class="waters">
         <img
           v-for="name in getWaters"
           :key="name"
-          class="prov"
           :class="name"
-          src="@/assets/img/prov/water.png"
           @click="showDetail(name)"
+          class="prov"
+          src="@/assets/img/prov/water.png"
         />
       </div>
       <div class="provinces">
         <img
           v-for="name in filteredProvinces"
           :key="name"
-          class="prov"
           :class="name"
-          src="@/assets/img/prov/pv.png"
           @click="showDetail(name)"
+          class="prov"
+          src="@/assets/img/prov/pv.png"
         />
       </div>
       <div class="supply-centers">
         <img
           v-for="name in filteredSupplyCenters"
           :key="name"
-          class="prov"
           :class="name"
-          src="@/assets/img/prov/sc.png"
           @click="showDetail(name)"
+          class="prov"
+          src="@/assets/img/prov/sc.png"
         />
       </div>
       <div class="occupiedProvinces">
         <img
           v-for="pv in occupiedProvinces"
           :key="pv.code"
-          class="prov"
           :class="pv.code"
           :src="require('@/assets/img/prov/pv' + pv.power + '.png')"
           @click="showDetail(pv.code)"
+          class="prov"
         />
       </div>
       <div class="occupiedSupplyCenters">
         <img
           v-for="sc in occupiedSupplyCenters"
           :key="sc.code"
-          class="prov"
           :class="sc.code"
           :src="require('@/assets/img/prov/sc' + sc.power + '.png')"
           @click="showDetail(sc.code)"
+          class="prov"
         />
       </div>
       <div class="units">
         <img
           v-for="unit in units"
           :key="unit.province.slice(0, 3)"
-          class="unit"
           :class="unit.province.slice(0, 3)"
           :src="require('@/assets/img/unit/' + unit.kind + unit.owner + '.png')"
           @click="showDetail(unit.province.slice(0, 3))"
+          class="unit"
         />
       </div>
       <div class="anchors">
         <img
           v-for="anchor in filteredAnchors"
           :key="anchor.province"
-          class="port"
           :class="anchor.province"
           :src="require('@/assets/img/unit/anchor.png')"
+          class="port"
         />
       </div>
       <img
-        class="highlight"
         :class="[prov ? prov.code : '', { inline: isSelected }]"
+        class="highlight"
         src="@/assets/img/highlight.png"
       />
       <transition>
@@ -193,7 +193,6 @@ export default {
             return unit.province.slice(0, 3) === name
           })
           if (!this.unit) return
-          console.log(this.unit.province.slice(-2))
           if (this.unit && this.unit.province.length > 3) {
             this.port = this.unit.province.slice(-2)
           }
@@ -210,21 +209,29 @@ export default {
 
 <style lang="postcss" scoped>
 .map-area {
-  @apply w-full mt-5 h-0 pb-0 flex-shrink-0 shadow relative select-none;
+  @apply flex flex-row;
+  @apply w-full h-0 pb-0 flex-shrink-0 shadow relative select-none;
   @apply bg-cover bg-top bg-no-repeat;
   background-image: url('~assets/img/map.png');
   max-width: 650px;
   min-width: 320px;
   padding-top: calc(500 / 650 * 100%);
 }
+@screen lg {
+  .map-area {
+    @apply mt-5;
+  }
+}
 </style>
 
 <style lang="postcss" scoped>
 .description {
   @apply border border-solid rounded-full bg-white shadow-lg;
-  @apply w-full pt-3 pb-5 border-gray-600 border-2;
-  @apply absolute left-0 right-auto z-20;
-  top: calc(100% + 10px);
+  @apply pt-3 pb-5 border-gray-600 border-2;
+  @apply absolute left-0 right-auto;
+  width: 98%;
+  left: 1%;
+  transform: translate(0, 10px);
 }
 .description dt {
   @apply pb-0;
