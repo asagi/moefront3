@@ -67,7 +67,7 @@ export default {
 
 <style lang="postcss" scoped>
 .btn-header-twitter-login {
-  @apply inline-block py-1 pl-1 pr-2 rounded-sm;
+  @apply inline-block py-1 pl-2 pr-3 rounded-sm;
   @apply text-white text-xs;
   background-color: #55acee;
   line-height: 1.5rem;
