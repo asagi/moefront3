@@ -3,9 +3,10 @@
     <p>
       参加登録にはログインが必要です。
     </p>
-    <nuxt-link v-cloak class="link btn btn-twitter-login" to="/login"
-      ><span id="twitter-logo"></span> Twitter アカウントでログイン</nuxt-link
-    >
+    <nuxt-link v-cloak class="link btn btn-twitter-login" to="/login">
+      <span id="twitter-logo"></span>
+      Twitter アカウントでログイン
+    </nuxt-link>
   </div>
 </template>
 
@@ -35,9 +36,10 @@ export default {
   background: url('~assets/img/twitter_logo.png') center no-repeat;
   background-size: contain;
 }
-.btn-twitter-login {
+.btn.btn-twitter-login {
   @apply inline-block align-bottom py-2 pl-3 pr-5 rounded-sm;
   @apply text-white;
+  @apply mt-2;
   background-color: #55acee;
 }
 .btn-twitter-login:hover {

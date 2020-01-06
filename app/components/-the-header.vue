@@ -9,8 +9,10 @@
         id="header-login-link"
         class="link btn-header-twitter-login"
         to="/login"
-        ><span id="header-twitter-logo"></span>ログイン</nuxt-link
       >
+        <span id="header-twitter-logo"></span>
+        ログイン
+      </nuxt-link>
     </div>
     <div v-if="authToken" class="pt-1">
       <div @click="toggleMenu" class="cursor-pointer">
