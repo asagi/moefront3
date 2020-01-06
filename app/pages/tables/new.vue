@@ -346,7 +346,6 @@ export default {
     }
   },
   mounted() {
-    const dueDate = document.getElementsByTagName('dueDate')
     setTimeout(() => {
       if (this.$store.state.user.authToken) {
         this.isVisible = true
