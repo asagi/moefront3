@@ -1,5 +1,5 @@
 <template>
-  <section v-if="authenticated" class="container">
+  <section class="container">
     <div class="btn-area">
       <nuxt-link class="btn btn-blue" to="/tables/new">
         卓を立てる
@@ -23,10 +23,8 @@
 </template>
 
 <script>
-import CheckAuth from '@/mixins/check-auth'
-
 export default {
-  mixins: [CheckAuth],
+  middleware: ['auth'],
   head() {
     return {
       title: 'マイページ'

@@ -1,5 +1,5 @@
 <template>
-  <section v-if="authenticated" class="container">
+  <section class="container">
     <h1>新規卓作成</h1>
     <form @submit.prevent="submit">
       <div class="row">
@@ -296,11 +296,10 @@
 
 <script>
 import DatePicker from 'vue2-datepicker'
-import CheckAuth from '@/mixins/check-auth'
 
 export default {
   components: { DatePicker },
-  mixins: [CheckAuth],
+  middleware: ['auth'],
   head() {
     return {
       title: '新規卓作成'
