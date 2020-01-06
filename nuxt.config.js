@@ -43,7 +43,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '@/plugins/persistedstate.js', ssr: false }],
+  plugins: [{ src: '@/plugins/persistedstate.js', mode: 'client' }],
 
   /*
    ** Nuxt.js modules

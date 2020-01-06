@@ -1,5 +1,5 @@
 <template>
-  <section v-if="isVisible" class="container">
+  <section v-if="authenticated" class="container">
     <div class="btn-area">
       <nuxt-link class="btn btn-blue" to="/tables/new">
         卓を立てる
@@ -23,23 +23,14 @@
 </template>
 
 <script>
+import CheckAuth from '@/mixins/check-auth'
+
 export default {
+  mixins: [CheckAuth],
   head() {
     return {
       title: 'マイページ'
     }
-  },
-  data: () => {
-    return { isVisible: false }
-  },
-  mounted() {
-    setTimeout(() => {
-      if (this.$store.state.user.authToken) {
-        this.isVisible = true
-      } else {
-        this.$router.push({ path: '/' })
-      }
-    }, 0)
   }
 }
 </script>
