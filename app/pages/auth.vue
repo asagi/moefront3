@@ -28,7 +28,7 @@ export default {
             this.$store.dispatch('user/logout', token)
           })
       }
-      this.$router.push({ path: '/' })
+      this.$router.push({ path: '/mypage' })
     }, 0)
   }
 }

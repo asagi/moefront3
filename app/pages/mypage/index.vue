@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <div class="btn-area">
-      <nuxt-link class="btn btn-blue" to="/tables/new">
+      <nuxt-link class="btn btn-blue" to="/mypage/newtable">
         卓を立てる
       </nuxt-link>
     </div>
