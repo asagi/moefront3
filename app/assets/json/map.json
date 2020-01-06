@@ -1,453 +1,453 @@
 {
-	"adr": {
-		"type": "Water",
-		"name": "Adriatic Sea",
-		"jname": "アドリア海"
-	},
-	"aeg": {
-		"type": "Water",
-		"name": "Aegean Sea",
-		"jname": "エーゲ海"
-	},
-	"alb": {
-		"type": "Coastal",
-		"name": "Albania",
-		"jname": "アルバニア"
-	},
-	"ank": {
-		"type": "Coastal",
-		"name": "Ankara",
-		"jname": "アンカラ",
-		"supplycenter": true,
-		"owner": "t"
-	},
-	"apu": {
-		"type": "Coastal",
-		"name": "Apulia",
-		"jname": "アプリア",
-		"owner": "i"
-	},
-	"arm": {
-		"type": "Coastal",
-		"name": "Armenia",
-		"jname": "アルメニア",
-		"owner": "t"
-	},
-	"bal": {
-		"type": "Water",
-		"name": "Baltic Sea",
-		"jname": "バルト海"
-	},
-	"bar": {
-		"type": "Water",
-		"name": "Barents Sea",
-		"jname": "バレンツ海"
-	},
-	"bel": {
-		"type": "Coastal",
-		"name": "Belgium",
-		"jname": "ベルギー",
-		"supplycenter": true
-	},
-	"ber": {
-		"type": "Coastal",
-		"name": "Berlin",
-		"jname": "ベルリン",
-		"supplycenter": true,
-		"owner": "g"
-	},
-	"bla": {
-		"type": "Water",
-		"name": "Black Sea",
-		"jname": "黒海"
-	},
-	"boh": {
-		"type": "Inland",
-		"name": "Bohemia",
-		"jname": "ボヘミア",
-		"owner": "a"
-	},
-	"bot": {
-		"type": "Water",
-		"name": "Gulf of Bothnia",
-		"jname": "ボスニア湾"
-	},
-	"bre": {
-		"type": "Coastal",
-		"name": "Brest",
-		"jname": "ブレスト",
-		"supplycenter": true,
-		"owner": "f"
-	},
-	"bud": {
-		"type": "Inland",
-		"name": "Budapest",
-		"jname": "ブダペスト",
-		"supplycenter": true,
-		"owner": "a"
-	},
-	"bul": {
-		"type": "Coastal",
-		"name": "Bulgaria",
-		"jname": "ブルガリア",
-		"supplycenter": true
-	},
-	"bur": {
-		"type": "Inland",
-		"name": "Burgundy",
-		"jname": "ブルゴーニュ",
-		"owner": "f"
-	},
-	"cly": {
-		"type": "Coastal",
-		"name": "Clyde",
-		"jname": "クライド",
-		"owner": "e"
-	},
-	"con": {
-		"type": "Coastal",
-		"name": "Constantinople",
-		"jname": "コンスタンティノープル",
-		"supplycenter": true,
-		"owner": "t"
-	},
-	"den": {
-		"type": "Coastal",
-		"name": "Denmark",
-		"jname": "デンマーク",
-		"supplycenter": true
-	},
-	"eas": {
-		"type": "Water",
-		"name": "Eastern Mediterranean",
-		"jname": "東地中海"
-	},
-	"edi": {
-		"type": "Coastal",
-		"name": "Edinburgh",
-		"jname": "エディンバラ",
-		"supplycenter": true,
-		"owner": "e"
-	},
-	"eng": {
-		"type": "Water",
-		"name": "English Channel",
-		"jname": "イギリス海峡"
-	},
-	"fin": {
-		"type": "Coastal",
-		"name": "Finland",
-		"jname": "フィンランド",
-		"owner": "r"
-	},
-	"gal": {
-		"type": "Inland",
-		"name": "Galicia",
-		"jname": "ガリツィア",
-		"owner": "a"
-	},
-	"gas": {
-		"type": "Coastal",
-		"name": "Gascony",
-		"jname": "ガスコーニュ",
-		"owner": "f"
-	},
-	"gre": {
-		"type": "Coastal",
-		"name": "Greece",
-		"jname": "ギリシア",
-		"supplycenter": true
-	},
-	"hel": {
-		"type": "Water",
-		"name": "Helgoland Bight",
-		"jname": "ヘルゴラント湾"
-	},
-	"hol": {
-		"type": "Coastal",
-		"name": "Holland",
-		"jname": "オランダ",
-		"supplycenter": true
-	},
-	"ion": {
-		"type": "Water",
-		"name": "Ionian Sea",
-		"jname": "イオニア海"
-	},
-	"iri": {
-		"type": "Water",
-		"name": "Irish Sea",
-		"jname": "アイリッシュ海"
-	},
-	"kie": {
-		"type": "Coastal",
-		"name": "Kiel",
-		"jname": "キール",
-		"supplycenter": true,
-		"owner": "g"
-	},
-	"lon": {
-		"type": "Coastal",
-		"name": "London",
-		"jname": "ロンドン",
-		"supplycenter": true,
-		"owner": "e"
-	},
-	"lvn": {
-		"type": "Coastal",
-		"name": "Livonia",
-		"jname": "リヴォニア",
-		"owner": "r"
-	},
-	"lvp": {
-		"type": "Coastal",
-		"name": "Liverpool",
-		"jname": "リヴァプール",
-		"supplycenter": true,
-		"owner": "e"
-	},
-	"lyo": {
-		"type": "Water",
-		"name": "Gulf of Lyon",
-		"jname": "リオン湾"
-	},
-	"mao": {
-		"type": "Water",
-		"name": "Mid-Atlantic Ocean",
-		"jname": "中大西洋"
-	},
-	"mar": {
-		"type": "Coastal",
-		"name": "Marseilles",
-		"jname": "マルセイユ",
-		"supplycenter": true,
-		"owner": "f"
-	},
-	"mos": {
-		"type": "Inland",
-		"name": "Moscow",
-		"jname": "モスクワ",
-		"supplycenter": true,
-		"owner": "r"
-	},
-	"mun": {
-		"type": "Inland",
-		"name": "Munich",
-		"jname": "ミュンヘン",
-		"supplycenter": true,
-		"owner": "g"
-	},
-	"naf": {
-		"type": "Coastal",
-		"name": "North Africa",
-		"jname": "北アフリカ"
-	},
-	"nao": {
-		"type": "Water",
-		"name": "North Atlantic Ocean",
-		"jname": "北大西洋"
-	},
-	"nap": {
-		"type": "Coastal",
-		"name": "Naples",
-		"jname": "ナポリ",
-		"supplycenter": true,
-		"owner": "i"
-	},
-	"nth": {
-		"type": "Water",
-		"name": "North Sea",
-		"jname": "北海"
-	},
-	"nwg": {
-		"type": "Water",
-		"name": "Norwegian Sea",
-		"jname": "ノルウェー海"
-	},
-	"nwy": {
-		"type": "Coastal",
-		"name": "Norway",
-		"jname": "ノルウェー",
-		"supplycenter": true
-	},
-	"par": {
-		"type": "Inland",
-		"name": "Paris",
-		"jname": "パリ",
-		"supplycenter": true,
-		"owner": "f"
-	},
-	"pic": {
-		"type": "Coastal",
-		"name": "Picardy",
-		"jname": "ピカルディ",
-		"owner": "f"
-	},
-	"pie": {
-		"type": "Coastal",
-		"name": "Piedmont",
-		"jname": "ピエモンテ",
-		"owner": "i"
-	},
-	"por": {
-		"type": "Coastal",
-		"name": "Portugal",
-		"jname": "ポルトガル",
-		"supplycenter": true
-	},
-	"pru": {
-		"type": "Coastal",
-		"name": "Prussia",
-		"jname": "プロイセン",
-		"owner": "g"
-	},
-	"rom": {
-		"type": "Coastal",
-		"name": "Rome",
-		"jname": "ローマ",
-		"supplycenter": true,
-		"owner": "i"
-	},
-	"ruh": {
-		"type": "Inland",
-		"name": "Ruhrl",
-		"jname": "ルール",
-		"owner": "g"
-	},
-	"rum": {
-		"type": "Coastal",
-		"name": "Rumania",
-		"jname": "ルーマニア",
-		"supplycenter": true
-	},
-	"ser": {
-		"type": "Inland",
-		"name": "Serbia",
-		"jname": "セルビア",
-		"supplycenter": true
-	},
-	"sev": {
-		"type": "Coastal",
-		"name": "Sevastopol",
-		"jname": "セヴァストポリ",
-		"supplycenter": true,
-		"owner": "r"
-	},
-	"sil": {
-		"type": "Inland",
-		"name": "Silesia",
-		"jname": "シレジア",
-		"owner": "g"
-	},
-	"ska": {
-		"type": "Water",
-		"name": "Skagerrak",
-		"jname": "スカゲラク海峡"
-	},
-	"smy": {
-		"type": "Coastal",
-		"name": "Smyrna",
-		"jname": "スミルナ",
-		"supplycenter": true,
-		"owner": "t"
-	},
-	"spa": {
-		"type": "Coastal",
-		"name": "Spain",
-		"jname": "スペイン",
-		"supplycenter": true
-	},
-	"stp": {
-		"type": "Coastal",
-		"name": "St. Petersburg",
-		"jname": "サンクトペテルブルク",
-		"supplycenter": true,
-		"owner": "r"
-	},
-	"swe": {
-		"type": "Coastal",
-		"name": "Sweden",
-		"jname": "スウェーデン",
-		"supplycenter": true
-	},
-	"syr": {
-		"type": "Coastal",
-		"name": "Syria",
-		"jname": "シリア",
-		"owner": "t"
-	},
-	"tri": {
-		"type": "Coastal",
-		"name": "Trieste",
-		"jname": "トリエステ",
-		"supplycenter": true,
-		"owner": "a"
-	},
-	"tun": {
-		"type": "Coastal",
-		"name": "Tunis",
-		"jname": "チュニス",
-		"supplycenter": true
-	},
-	"tus": {
-		"type": "Coastal",
-		"name": "Tuscany",
-		"jname": "トスカーナ",
-		"owner": "i"
-	},
-	"tyr": {
-		"type": "Inland",
-		"name": "Tyrolia",
-		"jname": "ティロル",
-		"owner": "a"
-	},
-	"tys": {
-		"type": "Water",
-		"name": "Tyrrhenian Sea",
-		"jname": "ティレニア海"
-	},
-	"ukr": {
-		"type": "Inland",
-		"name": "Ukraine",
-		"jname": "ウクライナ",
-		"owner": "r"
-	},
-	"ven": {
-		"type": "Coastal",
-		"name": "Venice",
-		"jname": "ヴェネツィア",
-		"supplycenter": true,
-		"owner": "i"
-	},
-	"vie": {
-		"type": "Inland",
-		"name": "Vienna",
-		"jname": "ウィーン",
-		"supplycenter": true,
-		"owner": "a"
-	},
-	"wal": {
-		"type": "Coastal",
-		"name": "Wales",
-		"jname": "ウェールズ",
-		"owner": "e"
-	},
-	"war": {
-		"type": "Inland",
-		"name": "Warsaw",
-		"jname": "ワルシャワ",
-		"supplycenter": true,
-		"owner": "r"
-	},
-	"wes": {
-		"type": "Water",
-		"name": "Western Mediterranean",
-		"jname": "西地中海"
-	},
-	"yor": {
-		"type": "Coastal",
-		"name": "Yorkshire",
-		"jname": "ヨークシャー",
-		"owner": "e"
-	}
+  "adr": {
+    "type": "Water",
+    "name": "Adriatic Sea",
+    "jname": "アドリア海"
+  },
+  "aeg": {
+    "type": "Water",
+    "name": "Aegean Sea",
+    "jname": "エーゲ海"
+  },
+  "alb": {
+    "type": "Coastal",
+    "name": "Albania",
+    "jname": "アルバニア"
+  },
+  "ank": {
+    "type": "Coastal",
+    "name": "Ankara",
+    "jname": "アンカラ",
+    "supplycenter": true,
+    "owner": "t"
+  },
+  "apu": {
+    "type": "Coastal",
+    "name": "Apulia",
+    "jname": "アプリア",
+    "owner": "i"
+  },
+  "arm": {
+    "type": "Coastal",
+    "name": "Armenia",
+    "jname": "アルメニア",
+    "owner": "t"
+  },
+  "bal": {
+    "type": "Water",
+    "name": "Baltic Sea",
+    "jname": "バルト海"
+  },
+  "bar": {
+    "type": "Water",
+    "name": "Barents Sea",
+    "jname": "バレンツ海"
+  },
+  "bel": {
+    "type": "Coastal",
+    "name": "Belgium",
+    "jname": "ベルギー",
+    "supplycenter": true
+  },
+  "ber": {
+    "type": "Coastal",
+    "name": "Berlin",
+    "jname": "ベルリン",
+    "supplycenter": true,
+    "owner": "g"
+  },
+  "bla": {
+    "type": "Water",
+    "name": "Black Sea",
+    "jname": "黒海"
+  },
+  "boh": {
+    "type": "Inland",
+    "name": "Bohemia",
+    "jname": "ボヘミア",
+    "owner": "a"
+  },
+  "bot": {
+    "type": "Water",
+    "name": "Gulf of Bothnia",
+    "jname": "ボスニア湾"
+  },
+  "bre": {
+    "type": "Coastal",
+    "name": "Brest",
+    "jname": "ブレスト",
+    "supplycenter": true,
+    "owner": "f"
+  },
+  "bud": {
+    "type": "Inland",
+    "name": "Budapest",
+    "jname": "ブダペスト",
+    "supplycenter": true,
+    "owner": "a"
+  },
+  "bul": {
+    "type": "Coastal",
+    "name": "Bulgaria",
+    "jname": "ブルガリア",
+    "supplycenter": true
+  },
+  "bur": {
+    "type": "Inland",
+    "name": "Burgundy",
+    "jname": "ブルゴーニュ",
+    "owner": "f"
+  },
+  "cly": {
+    "type": "Coastal",
+    "name": "Clyde",
+    "jname": "クライド",
+    "owner": "e"
+  },
+  "con": {
+    "type": "Coastal",
+    "name": "Constantinople",
+    "jname": "コンスタンティノープル",
+    "supplycenter": true,
+    "owner": "t"
+  },
+  "den": {
+    "type": "Coastal",
+    "name": "Denmark",
+    "jname": "デンマーク",
+    "supplycenter": true
+  },
+  "eas": {
+    "type": "Water",
+    "name": "Eastern Mediterranean",
+    "jname": "東地中海"
+  },
+  "edi": {
+    "type": "Coastal",
+    "name": "Edinburgh",
+    "jname": "エディンバラ",
+    "supplycenter": true,
+    "owner": "e"
+  },
+  "eng": {
+    "type": "Water",
+    "name": "English Channel",
+    "jname": "イギリス海峡"
+  },
+  "fin": {
+    "type": "Coastal",
+    "name": "Finland",
+    "jname": "フィンランド",
+    "owner": "r"
+  },
+  "gal": {
+    "type": "Inland",
+    "name": "Galicia",
+    "jname": "ガリツィア",
+    "owner": "a"
+  },
+  "gas": {
+    "type": "Coastal",
+    "name": "Gascony",
+    "jname": "ガスコーニュ",
+    "owner": "f"
+  },
+  "gre": {
+    "type": "Coastal",
+    "name": "Greece",
+    "jname": "ギリシア",
+    "supplycenter": true
+  },
+  "hel": {
+    "type": "Water",
+    "name": "Helgoland Bight",
+    "jname": "ヘルゴラント湾"
+  },
+  "hol": {
+    "type": "Coastal",
+    "name": "Holland",
+    "jname": "オランダ",
+    "supplycenter": true
+  },
+  "ion": {
+    "type": "Water",
+    "name": "Ionian Sea",
+    "jname": "イオニア海"
+  },
+  "iri": {
+    "type": "Water",
+    "name": "Irish Sea",
+    "jname": "アイリッシュ海"
+  },
+  "kie": {
+    "type": "Coastal",
+    "name": "Kiel",
+    "jname": "キール",
+    "supplycenter": true,
+    "owner": "g"
+  },
+  "lon": {
+    "type": "Coastal",
+    "name": "London",
+    "jname": "ロンドン",
+    "supplycenter": true,
+    "owner": "e"
+  },
+  "lvn": {
+    "type": "Coastal",
+    "name": "Livonia",
+    "jname": "リヴォニア",
+    "owner": "r"
+  },
+  "lvp": {
+    "type": "Coastal",
+    "name": "Liverpool",
+    "jname": "リヴァプール",
+    "supplycenter": true,
+    "owner": "e"
+  },
+  "lyo": {
+    "type": "Water",
+    "name": "Gulf of Lyon",
+    "jname": "リオン湾"
+  },
+  "mao": {
+    "type": "Water",
+    "name": "Mid-Atlantic Ocean",
+    "jname": "中大西洋"
+  },
+  "mar": {
+    "type": "Coastal",
+    "name": "Marseilles",
+    "jname": "マルセイユ",
+    "supplycenter": true,
+    "owner": "f"
+  },
+  "mos": {
+    "type": "Inland",
+    "name": "Moscow",
+    "jname": "モスクワ",
+    "supplycenter": true,
+    "owner": "r"
+  },
+  "mun": {
+    "type": "Inland",
+    "name": "Munich",
+    "jname": "ミュンヘン",
+    "supplycenter": true,
+    "owner": "g"
+  },
+  "naf": {
+    "type": "Coastal",
+    "name": "North Africa",
+    "jname": "北アフリカ"
+  },
+  "nao": {
+    "type": "Water",
+    "name": "North Atlantic Ocean",
+    "jname": "北大西洋"
+  },
+  "nap": {
+    "type": "Coastal",
+    "name": "Naples",
+    "jname": "ナポリ",
+    "supplycenter": true,
+    "owner": "i"
+  },
+  "nth": {
+    "type": "Water",
+    "name": "North Sea",
+    "jname": "北海"
+  },
+  "nwg": {
+    "type": "Water",
+    "name": "Norwegian Sea",
+    "jname": "ノルウェー海"
+  },
+  "nwy": {
+    "type": "Coastal",
+    "name": "Norway",
+    "jname": "ノルウェー",
+    "supplycenter": true
+  },
+  "par": {
+    "type": "Inland",
+    "name": "Paris",
+    "jname": "パリ",
+    "supplycenter": true,
+    "owner": "f"
+  },
+  "pic": {
+    "type": "Coastal",
+    "name": "Picardy",
+    "jname": "ピカルディ",
+    "owner": "f"
+  },
+  "pie": {
+    "type": "Coastal",
+    "name": "Piedmont",
+    "jname": "ピエモンテ",
+    "owner": "i"
+  },
+  "por": {
+    "type": "Coastal",
+    "name": "Portugal",
+    "jname": "ポルトガル",
+    "supplycenter": true
+  },
+  "pru": {
+    "type": "Coastal",
+    "name": "Prussia",
+    "jname": "プロイセン",
+    "owner": "g"
+  },
+  "rom": {
+    "type": "Coastal",
+    "name": "Rome",
+    "jname": "ローマ",
+    "supplycenter": true,
+    "owner": "i"
+  },
+  "ruh": {
+    "type": "Inland",
+    "name": "Ruhrl",
+    "jname": "ルール",
+    "owner": "g"
+  },
+  "rum": {
+    "type": "Coastal",
+    "name": "Rumania",
+    "jname": "ルーマニア",
+    "supplycenter": true
+  },
+  "ser": {
+    "type": "Inland",
+    "name": "Serbia",
+    "jname": "セルビア",
+    "supplycenter": true
+  },
+  "sev": {
+    "type": "Coastal",
+    "name": "Sevastopol",
+    "jname": "セヴァストポリ",
+    "supplycenter": true,
+    "owner": "r"
+  },
+  "sil": {
+    "type": "Inland",
+    "name": "Silesia",
+    "jname": "シレジア",
+    "owner": "g"
+  },
+  "ska": {
+    "type": "Water",
+    "name": "Skagerrak",
+    "jname": "スカゲラク海峡"
+  },
+  "smy": {
+    "type": "Coastal",
+    "name": "Smyrna",
+    "jname": "スミルナ",
+    "supplycenter": true,
+    "owner": "t"
+  },
+  "spa": {
+    "type": "Coastal",
+    "name": "Spain",
+    "jname": "スペイン",
+    "supplycenter": true
+  },
+  "stp": {
+    "type": "Coastal",
+    "name": "St. Petersburg",
+    "jname": "サンクトペテルブルク",
+    "supplycenter": true,
+    "owner": "r"
+  },
+  "swe": {
+    "type": "Coastal",
+    "name": "Sweden",
+    "jname": "スウェーデン",
+    "supplycenter": true
+  },
+  "syr": {
+    "type": "Coastal",
+    "name": "Syria",
+    "jname": "シリア",
+    "owner": "t"
+  },
+  "tri": {
+    "type": "Coastal",
+    "name": "Trieste",
+    "jname": "トリエステ",
+    "supplycenter": true,
+    "owner": "a"
+  },
+  "tun": {
+    "type": "Coastal",
+    "name": "Tunis",
+    "jname": "チュニス",
+    "supplycenter": true
+  },
+  "tus": {
+    "type": "Coastal",
+    "name": "Tuscany",
+    "jname": "トスカーナ",
+    "owner": "i"
+  },
+  "tyr": {
+    "type": "Inland",
+    "name": "Tyrolia",
+    "jname": "ティロル",
+    "owner": "a"
+  },
+  "tys": {
+    "type": "Water",
+    "name": "Tyrrhenian Sea",
+    "jname": "ティレニア海"
+  },
+  "ukr": {
+    "type": "Inland",
+    "name": "Ukraine",
+    "jname": "ウクライナ",
+    "owner": "r"
+  },
+  "ven": {
+    "type": "Coastal",
+    "name": "Venice",
+    "jname": "ヴェネツィア",
+    "supplycenter": true,
+    "owner": "i"
+  },
+  "vie": {
+    "type": "Inland",
+    "name": "Vienna",
+    "jname": "ウィーン",
+    "supplycenter": true,
+    "owner": "a"
+  },
+  "wal": {
+    "type": "Coastal",
+    "name": "Wales",
+    "jname": "ウェールズ",
+    "owner": "e"
+  },
+  "war": {
+    "type": "Inland",
+    "name": "Warsaw",
+    "jname": "ワルシャワ",
+    "supplycenter": true,
+    "owner": "r"
+  },
+  "wes": {
+    "type": "Water",
+    "name": "Western Mediterranean",
+    "jname": "西地中海"
+  },
+  "yor": {
+    "type": "Coastal",
+    "name": "Yorkshire",
+    "jname": "ヨークシャー",
+    "owner": "e"
+  }
 }

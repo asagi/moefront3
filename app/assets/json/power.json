@@ -1,50 +1,50 @@
 [
-    {
-        "symbol": "a",
-        "name": "Austria",
-        "genitive": "Austrian",
-        "jname": "オーストリア"
-    },
-    {
-        "symbol": "e",
-        "name": "England",
-        "genitive": "English",
-        "jname": "イギリス"
-    },
-    {
-        "symbol": "f",
-        "name": "France",
-        "genitive": "French",
-        "jname": "フランス"
-    },
-    {
-        "symbol": "g",
-        "name": "Germany",
-        "genitive": "German",
-        "jname": "ドイツ"
-    },
-    {
-        "symbol": "i",
-        "name": "Italy",
-        "genitive": "Italian",
-        "jname": "イタリア"
-    },
-    {
-        "symbol": "r",
-        "name": "Russia",
-        "genitive": "Russian",
-        "jname": "ロシア"
-    },
-    {
-        "symbol": "t",
-        "name": "Turky",
-        "genitive": "Turkish",
-        "jname": "トルコ"
-    },
-    {
-        "symbol": "x",
-        "name": "Master",
-        "genitive": null,
-        "jname": "管理人"
-    }
+  {
+    "symbol": "a",
+    "name": "Austria",
+    "genitive": "Austrian",
+    "jname": "オーストリア"
+  },
+  {
+    "symbol": "e",
+    "name": "England",
+    "genitive": "English",
+    "jname": "イギリス"
+  },
+  {
+    "symbol": "f",
+    "name": "France",
+    "genitive": "French",
+    "jname": "フランス"
+  },
+  {
+    "symbol": "g",
+    "name": "Germany",
+    "genitive": "German",
+    "jname": "ドイツ"
+  },
+  {
+    "symbol": "i",
+    "name": "Italy",
+    "genitive": "Italian",
+    "jname": "イタリア"
+  },
+  {
+    "symbol": "r",
+    "name": "Russia",
+    "genitive": "Russian",
+    "jname": "ロシア"
+  },
+  {
+    "symbol": "t",
+    "name": "Turky",
+    "genitive": "Turkish",
+    "jname": "トルコ"
+  },
+  {
+    "symbol": "x",
+    "name": "Master",
+    "genitive": null,
+    "jname": "管理人"
+  }
 ]

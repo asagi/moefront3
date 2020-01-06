@@ -11,8 +11,11 @@
     </div>
     <AmazonLink />
     <div class="w-full flex flex-row flex-wrap justify-center">
-      <Tables />
-      <div class="flex flex-col justify-center">
+      <div class="tables">
+        <NewTablesList :list="newTablesList" />
+        <LiveTablesList :list="liveTablesList" />
+      </div>
+      <div class="justify-center block align-top">
         <Contact />
         <Links />
       </div>
@@ -24,11 +27,14 @@
 <script>
 import MapArea from '@/components/-map-area'
 import Greeting from '@/components/-greeting-block'
-import Tables from '@/components/-tables-block'
+import NewTablesList from '@/components/-new-tables-list-block'
+import LiveTablesList from '@/components/-live-tables-list-block'
 import Contact from '@/components/-contact-block'
 import Links from '@/components/-links-block'
 import Thanks from '@/components/-thanks-block'
 import AmazonLink from '@/components/-amazon-link'
+
+import DummyTables from '~/assets/json/tables.json'
 
 export default {
   head() {
@@ -40,7 +46,8 @@ export default {
   components: {
     MapArea,
     Greeting,
-    Tables,
+    NewTablesList,
+    LiveTablesList,
     Contact,
     Links,
     Thanks,
@@ -563,7 +570,16 @@ export default {
           owner: 't',
           power: { symbol: 't' }
         }
-      ]
+      ],
+      tables: DummyTables
+    }
+  },
+  computed: {
+    newTablesList() {
+      return this.tables
+    },
+    liveTablesList() {
+      return this.tables
     }
   }
 }
@@ -617,10 +633,17 @@ h2 {
 </style>
 
 <style lang="postcss">
+.tables {
+  @apply w-full;
+}
+
 .tables-block {
-  @apply flex-col w-full px-5 mt-10;
+  @apply flex-col w-full mt-10;
 }
 @screen sm {
+  .tables {
+    @apply w-auto;
+  }
   .tables-block {
     @apply px-0;
     width: 705px;

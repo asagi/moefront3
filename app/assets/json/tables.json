@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "owner": {
+      "uid": "00000",
+      "nickname": "hogehoge",
+      "name": "ほげほげ",
+      "image_url": "",
+      "url": "https://example.com/"
+    },
+    "nubmer": 1,
+    "status": 2,
+    "turn": 1,
+    "phase": 1,
+    "regulation": {
+      "face_type": 0,
+      "duration": 1,
+      "period_rule": 1
+    },
+    "has_key": false,
+    "next_period": "2020-02-03 12:00"
+  },
+  {
+    "id": 2,
+    "owner": {
+      "uid": "00000",
+      "nickname": "fugafuga",
+      "name": "ふがふが",
+      "image_url": "",
+      "url": "https://example.com/"
+    },
+    "nubmer": null,
+    "status": 0,
+    "turn": 0,
+    "phase": 4,
+    "regulation": {
+      "face_type": 1,
+      "duration": 0,
+      "period_rule": 0
+    },
+    "has_key": false,
+    "next_period": "2020-02-06 12:00"
+  },
+  {
+    "id": 4,
+    "owner": {
+      "uid": "00000",
+      "nickname": "pekopeko",
+      "name": "ぺこぺこ",
+      "image_url": "",
+      "url": "https://example.com/"
+    },
+    "nubmer": null,
+    "status": 1,
+    "turn": 0,
+    "phase": 4,
+    "regulation": {
+      "face_type": 0,
+      "duration": 1,
+      "period_rule": 0
+    },
+    "has_key": false,
+    "next_period": "2020-02-04 12:00"
+  },
+  {
+    "id": 5,
+    "owner": {
+      "uid": "00000",
+      "nickname": "somsom",
+      "name": "そむそむ",
+      "image_url": "",
+      "url": "https://example.com/"
+    },
+    "nubmer": 2,
+    "status": 2,
+    "turn": 2,
+    "phase": 0,
+    "regulation": {
+      "face_type": 1,
+      "duration": 0,
+      "period_rule": 1
+    },
+    "has_key": true,
+    "next_period": "2020-02-03 14:00"
+  }
+]
