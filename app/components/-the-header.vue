@@ -1,8 +1,8 @@
 <template>
-  <nav class="flex justify-between flex-wrap px-6 py-2">
-    <div class="header text-xl mb-1">
+  <nav>
+    <div class="header">
       <img src="@/assets/img/logo.svg" class="svg logo" />
-      <nuxt-link class="h-6 no-underline" to="/">Diplomacy MOE</nuxt-link>
+      <nuxt-link class="no-underline" to="/">Diplomacy MOE</nuxt-link>
     </div>
     <div v-if="!authToken && allowLogin" class="pt-1">
       <nuxt-link
@@ -58,14 +58,34 @@ export default {
 }
 </script>
 
-<style lang="postcss">
-.logo {
-  @apply inline-block;
-  width: 32px;
+<style lang="postcss" scoped>
+.link {
+  @apply cursor-pointer;
 }
 </style>
 
 <style lang="postcss" scoped>
+nav {
+  @apply flex justify-between flex-wrap;
+  @apply px-3 py-1;
+  @apply bg-gray-400 text-gray-700 text-sm;
+}
+.logo {
+  @apply inline-block;
+  width: 24px;
+}
+.header {
+  @apply text-lg pt-2;
+}
+.header a {
+  @apply text-gray-800;
+}
+#header-twitter-logo {
+  @apply w-6 h-6 inline-block align-bottom;
+  width: 16px;
+  background: url('~assets/img/twitter_logo.png') center no-repeat;
+  background-size: contain;
+}
 .btn-header-twitter-login {
   @apply inline-block py-1 pl-2 pr-3 rounded-sm;
   @apply text-white text-xs;
@@ -74,18 +94,6 @@ export default {
 }
 .btn-header-twitter-login:hover {
   @apply bg-blue-700;
-}
-#header-twitter-logo {
-  @apply w-6 h-6 inline-block align-bottom;
-  width: 16px;
-  background: url('~assets/img/twitter_logo.png') center no-repeat;
-  background-size: contain;
-}
-.header a {
-  @apply text-gray-800;
-}
-nav {
-  @apply bg-gray-400 text-gray-700 text-sm;
 }
 #header-user-image {
   @apply w-6 h-6 rounded-full inline-block mr-2 align-bottom;
@@ -107,29 +115,46 @@ nav {
   border-top-width: 8px;
   transform: rotate(180deg);
 }
-.link {
-  @apply cursor-pointer;
-}
 .menu {
-  @apply w-40 border border-solid rounded bg-white shadow-md;
+  @apply w-56;
+  @apply border border-solid rounded bg-white shadow-md;
   @apply py-2 m-3;
   @apply absolute left-auto right-0 z-20;
   border-left: 1px #edf2f7 solid;
   border-right: 1px #edf2f7 solid;
 }
 .menu ul {
-  @apply p-0 text-sm z-30 w-full list-none;
+  @apply p-0 z-30 w-full list-none;
 }
 .menu ul li {
-  @apply w-full px-3 py-1 bg-transparent;
+  @apply w-full py-1 bg-transparent;
+  @apply px-5 text-xl;
 }
 .menu ul li a {
-  @apply text-sm text-gray-700;
+  @apply text-gray-700;
 }
 .menu ul li:hover {
   @apply bg-blue-700 text-gray-200;
 }
 .dropdown-bg {
   @apply w-full h-screen fixed inset-0 z-10;
+}
+
+@screen sm {
+  nav {
+    @apply px-6;
+  }
+  .logo {
+    width: 32px;
+  }
+  .header {
+    @apply text-xl pt-1;
+  }
+  .menu {
+    @apply w-48;
+  }
+  .menu ul li {
+    @apply px-3 text-base;
+  }
 }
 </style>
