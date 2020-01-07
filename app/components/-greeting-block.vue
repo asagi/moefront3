@@ -28,18 +28,24 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.greeting {
-  @apply mt-5 pt-5 w-auto text-center flex-shrink;
-}
-@screen sm {
-  .greeting {
-    @apply px-5;
+.greeting-block {
+  & .greeting {
+    @apply mt-5 pt-5 w-auto text-center flex-shrink;
+
+    & h1 {
+      @apply text-xl;
+    }
+    & p {
+      @apply text-base my-5 text-left px-4;
+    }
   }
 }
-.greeting h1 {
-  @apply text-xl;
-}
-.greeting p {
-  @apply text-base my-5 text-left px-4;
+
+@screen sm {
+  .greeting-block {
+    & .greeting {
+      @apply px-5;
+    }
+  }
 }
 </style>

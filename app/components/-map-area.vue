@@ -208,37 +208,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.map-area {
-  @apply flex flex-row;
-  @apply w-full h-0 pb-0 flex-shrink-0 shadow relative select-none;
-  @apply bg-cover bg-top bg-no-repeat;
-  background-image: url('~assets/img/map.png');
-  max-width: 650px;
-  min-width: 320px;
-  padding-top: calc(500 / 650 * 100%);
-}
-@screen lg {
-  .map-area {
-    @apply mt-5;
-  }
-}
-</style>
-
-<style lang="postcss" scoped>
-.description {
-  @apply border border-solid rounded-full bg-white shadow-lg;
-  @apply pt-3 pb-5 border-gray-600 border-2;
-  @apply absolute left-0 right-auto;
-  width: 98%;
-  left: 1%;
-  transform: translate(0, 10px);
-}
-.description dt {
-  @apply pb-0;
-}
-.description .unit-info {
-  @apply pt-3;
-}
 .v-enter-active,
 .v-leave-active {
   transition: all 0.3s;
@@ -249,6 +218,37 @@ export default {
 .v-enter,
 .v-leave-to {
   opacity: 0;
+}
+</style>
+
+<style lang="postcss" scoped>
+.outer-map {
+  & .map-area {
+    @apply flex flex-row;
+    @apply w-full h-0 pb-0 flex-shrink-0 shadow relative select-none;
+    @apply bg-cover bg-top bg-no-repeat;
+    background-image: url('~assets/img/map.png');
+    max-width: 650px;
+    min-width: 320px;
+    padding-top: calc(500 / 650 * 100%);
+
+    & .description {
+      @apply border border-solid rounded-full bg-white shadow-lg;
+      @apply pt-3 pb-5 border-gray-600 border-2;
+      @apply absolute left-0 right-auto;
+      width: 98%;
+      left: 1%;
+      transform: translate(0, 10px);
+
+      & dt {
+        @apply pb-0;
+      }
+
+      & .unit-info {
+        @apply pt-3;
+      }
+    }
+  }
 }
 </style>
 
@@ -269,13 +269,12 @@ export default {
   width: 10px;
 }
 .highlight {
-  @apply hidden;
   width: 16px;
-}
-.highlight {
+  @apply hidden;
   @apply pointer-events-none;
 }
-@media screen and (min-width: 500px) {
+
+@screen sm {
   .prov {
     width: 10px;
   }
@@ -632,13 +631,13 @@ export default {
 .unit {
   transform: translate(10%, -10%);
 }
+.highlight.inline {
+  @apply inline;
+  transform: translate(-30%, -30%);
+}
 @screen sm {
   .unit {
     transform: translate(20%, -5%);
   }
-}
-.highlight.inline {
-  @apply inline;
-  transform: translate(-30%, -30%);
 }
 </style>

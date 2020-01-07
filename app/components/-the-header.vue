@@ -61,45 +61,53 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.link {
-  @apply cursor-pointer;
-}
-</style>
-
-<style lang="postcss" scoped>
 nav {
   @apply flex justify-between flex-wrap;
   @apply px-3 py-1;
   @apply bg-gray-400 text-gray-700 text-sm;
+
+  & .header {
+    @apply text-lg pt-2;
+
+    & img.logo {
+      @apply inline-block;
+      width: 24px;
+    }
+
+    & a {
+      @apply text-gray-800;
+    }
+  }
+
+  & a.link {
+    @apply cursor-pointer;
+  }
+
+  & a.btn-header-twitter-login {
+    @apply inline-block py-1 pl-2 pr-3 rounded-sm;
+    @apply text-white text-xs;
+    background-color: #55acee;
+    line-height: 1.5rem;
+
+    &:hover {
+      @apply bg-blue-700;
+    }
+
+    & #header-twitter-logo {
+      @apply w-6 h-6 inline-block align-bottom;
+      width: 16px;
+      background: url('~assets/img/twitter_logo.png') center no-repeat;
+      background-size: contain;
+    }
+  }
+
+  & #header-user-image {
+    @apply w-6 h-6 rounded-full inline-block mr-2 align-bottom;
+  }
 }
-.logo {
-  @apply inline-block;
-  width: 24px;
-}
-.header {
-  @apply text-lg pt-2;
-}
-.header a {
-  @apply text-gray-800;
-}
-#header-twitter-logo {
-  @apply w-6 h-6 inline-block align-bottom;
-  width: 16px;
-  background: url('~assets/img/twitter_logo.png') center no-repeat;
-  background-size: contain;
-}
-.btn-header-twitter-login {
-  @apply inline-block py-1 pl-2 pr-3 rounded-sm;
-  @apply text-white text-xs;
-  background-color: #55acee;
-  line-height: 1.5rem;
-}
-.btn-header-twitter-login:hover {
-  @apply bg-blue-700;
-}
-#header-user-image {
-  @apply w-6 h-6 rounded-full inline-block mr-2 align-bottom;
-}
+</style>
+
+<style lang="postcss" scoped>
 .dropdown-caret {
   @apply border-gray-700;
   @apply border-solid border-b-0 h-0 w-0 inline-block align-middle;
@@ -141,7 +149,9 @@ nav {
 .dropdown-bg {
   @apply w-full h-screen fixed inset-0 z-10;
 }
+</style>
 
+<style lang="postcss" scoped>
 @screen sm {
   nav {
     @apply px-6;

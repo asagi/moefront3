@@ -25,24 +25,31 @@ export default {
 <style lang="postcss" scoped>
 #login-area {
   @apply py-5 bg-white rounded-lg text-sm shadow w-full flex-shrink;
-}
-#login-area p {
-  @apply px-2;
-  height: 2rem;
-}
-#twitter-logo {
-  @apply w-6 h-6 inline-block align-bottom;
-  width: 24px;
-  background: url('~assets/img/twitter_logo.png') center no-repeat;
-  background-size: contain;
-}
-.btn.btn-twitter-login {
-  @apply inline-block align-bottom py-2 pl-3 pr-5 rounded-sm;
-  @apply text-white;
-  @apply mt-2;
-  background-color: #55acee;
-}
-.btn-twitter-login:hover {
-  @apply bg-blue-700;
+
+  & p {
+    @apply px-2;
+    height: 2rem;
+  }
+
+  // nuxt-link
+  & a {
+    &.btn-twitter-login {
+      @apply inline-block align-bottom py-2 pl-3 pr-5 rounded-sm;
+      @apply text-white;
+      @apply mt-2;
+      background-color: #55acee;
+    }
+
+    &.btn-twitter-login:hover {
+      @apply bg-blue-700;
+    }
+
+    & span#twitter-logo {
+      @apply w-6 h-6 inline-block align-bottom;
+      width: 24px;
+      background: url('~assets/img/twitter_logo.png') center no-repeat;
+      background-size: contain;
+    }
+  }
 }
 </style>

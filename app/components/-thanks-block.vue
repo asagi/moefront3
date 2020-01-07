@@ -16,19 +16,31 @@
 </template>
 
 <style lang="postcss" scoped>
-li {
-  @apply pb-2;
-}
-.thanks p {
-  @apply text-left pt-5 pl-5;
-}
-@screen sm {
-  .thanks {
-    @apply px-10;
+.thanks-block {
+  & .thanks {
+    & ul {
+      & li {
+        @apply pb-2;
+
+        & a {
+          & .icon-twitter {
+            @apply inline-block w-5 h-5 mx-1 bg-cover align-text-bottom;
+            background-image: url('~assets/img/icon-twitter.png');
+          }
+        }
+      }
+    }
+    & p {
+      @apply text-left pt-5 pl-5;
+    }
   }
 }
-.icon-twitter {
-  @apply inline-block w-5 h-5 mx-1 bg-cover align-text-bottom;
-  background-image: url('~assets/img/icon-twitter.png');
+
+@screen sm {
+  .thanks-block {
+    & .thanks {
+      @apply px-10;
+    }
+  }
 }
 </style>
