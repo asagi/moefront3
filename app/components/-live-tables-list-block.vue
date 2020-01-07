@@ -157,10 +157,13 @@ h2 {
     border-top: solid 2px #000;
     border-right: solid 2px #000;
     transition: all 0.2s ease-in-out;
+    -webkit-transition: -webkit-transform 0.2s;
     transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
   }
   &.open:before {
     transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
   }
 }
 
