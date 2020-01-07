@@ -4,13 +4,15 @@
       <MapArea :occupieds="occupieds" :units="units" />
       <Greeting />
     </div>
-    <div class="flex flex-row flex-wrap justify-center">
+    <AmazonLink />
+
+    <div class="caution-wrap">
       <p class="caution">
         当サイトは現在開発中であり、実際にプレイすることはできません。
       </p>
     </div>
-    <AmazonLink />
-    <div class="w-full flex flex-row flex-wrap justify-center">
+
+    <div class="flex-area">
       <div class="tables">
         <NewTablesList :list="newTablesList" />
         <LiveTablesList :list="liveTablesList" />
@@ -588,108 +590,131 @@ export default {
 <style lang="postcss">
 html {
   @apply overflow-y-scroll;
-}
-.container {
-  @apply my-0 items-start justify-center text-center;
-}
-h2 {
-  @apply w-full text-xl mb-4 pl-4 text-left;
-}
-</style>
+  & .container {
+    @apply my-0 items-start justify-center text-center;
 
-<style lang="postcss" scoped>
-.caution {
-  @apply bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative;
-  @apply flex flex-row justify-center items-center mt-10 mx-auto;
-  @apply mt-10 mx-5 p-10 bg-white text-sm;
-  max-width: 550px;
-  z-index: -10;
-}
-.caution p {
-  @apply w-full mx-auto;
-}
-</style>
+    & .outer-map {
+      @apply w-full;
+    }
 
-<style lang="postcss">
-.outer-map {
-  width: 500px;
-}
-</style>
+    & .greeting-block {
+      @apply flex flex-col w-full items-start justify-center items-center px-5;
+      max-width: 560px;
+    }
 
-<style lang="postcss">
-.greeting-block {
-  @apply flex flex-col w-full items-start justify-center items-center px-5;
-}
-@screen sm {
-  .greeting-block {
-    max-width: 600px;
+    & .amaquick-box {
+      @apply w-auto mx-4 my-8 py-5;
+    }
+
+    & .caution-wrap {
+      @apply flex flex-row flex-wrap justify-center;
+      @apply mt-5 mb-10;
+
+      & .caution {
+        @apply bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative;
+        @apply flex flex-row justify-center items-center mx-auto;
+        @apply mx-5 p-10 bg-white text-sm;
+        max-width: 550px;
+        z-index: -10;
+
+        & p {
+          @apply w-full mx-auto;
+        }
+      }
+    }
+
+    & h2 {
+      @apply w-full text-xl mb-4 pl-4 text-left;
+    }
+
+    & .tables {
+      @apply w-full mt-1 mb-5;
+    }
+
+    & .contact-block {
+      @apply w-full px-5 mt-1;
+
+      & ul {
+        @apply list-none text-left mx-5 pb-0;
+      }
+    }
+
+    & .links-block {
+      @apply w-full px-5 mt-10;
+
+      & ul {
+        @apply list-none text-left mx-5 pb-0;
+      }
+    }
+
+    & .thanks-block {
+      @apply flex flex-col justify-center items-center;
+      @apply w-full px-5 mt-10;
+
+      & ul {
+        @apply list-none text-left mx-5 pb-0;
+      }
+    }
   }
 }
+</style>
+
+<style lang="postcss">
+@screen sm {
+  html {
+    & .container {
+      & .outer-map {
+        max-width: 638px;
+      }
+
+      & .greeting-block {
+        max-width: 560px;
+      }
+
+      & .amaquick-box {
+        max-width: 991px;
+      }
+
+      & .flex-area {
+        @apply w-full flex flex-row flex-wrap justify-center;
+      }
+
+      & .tables {
+        max-width: 724px;
+      }
+
+      & .contact-block {
+        width: 300px;
+      }
+
+      & .links-block {
+        width: 300px;
+      }
+
+      .thanks-block {
+        @apply w-full flex flex-col justify-center;
+      }
+    }
+  }
+}
+</style>
+
+<style lang="postcss">
 @screen lg {
-  .greeting-block {
-    max-width: 500px;
-  }
-}
-</style>
+  html {
+    & .container {
+      & .greeting-block {
+        max-width: 350px;
+      }
 
-<style lang="postcss">
-.tables {
-  @apply w-full;
-}
+      & .amaquick-box {
+        @apply mx-auto;
+      }
 
-.tables-block {
-  @apply flex-col w-full mt-10;
-}
-@screen sm {
-  .tables {
-    @apply w-auto;
-  }
-  .tables-block {
-    @apply px-0;
-    width: 705px;
-  }
-}
-</style>
-
-<style lang="postcss">
-.contact-block {
-  @apply w-full px-5 mt-10;
-}
-.contact-block ul {
-  @apply list-none text-left mx-5 pb-0;
-}
-@screen sm {
-  .contact-block {
-    width: 300px;
-  }
-}
-</style>
-
-<style lang="postcss">
-.links-block {
-  @apply w-full px-5 mt-10;
-}
-.links-block ul {
-  @apply list-none text-left mx-5 pb-0;
-}
-@screen sm {
-  .links-block {
-    width: 300px;
-  }
-}
-</style>
-
-<style lang="postcss">
-.thanks-block {
-  @apply flex flex-col justify-center items-center;
-  @apply w-full px-5 mt-10;
-}
-.thanks-block ul {
-  @apply list-none text-left mx-5 pb-0;
-}
-@screen sm {
-  .thanks-block {
-    @apply w-full flex flex-col justify-center;
+      & .tables {
+        @apply w-auto flex-grow;
+      }
+    }
   }
 }
 </style>

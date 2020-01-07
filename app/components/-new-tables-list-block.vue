@@ -10,7 +10,7 @@
         @before-leave="beforeLeave"
         @leave="leave"
       >
-        <div v-if="isOpened || !isSP" class="talbe-wrapper">
+        <div v-if="isOpened" class="talbe-wrapper">
           <table>
             <tbody>
               <tr v-for="table in list" v-bind:key="table.id">
@@ -71,7 +71,7 @@ export default {
   },
   computed: {
     isSP: function() {
-      return this.width <= 1004
+      return this.width < 1024
     }
   },
   created: function() {
@@ -132,6 +132,7 @@ h2 {
     transform: rotate(-45deg);
   }
 }
+
 table {
   @apply w-full mx-0 my-auto;
   @apply border-separate border-0;

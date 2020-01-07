@@ -6,6 +6,6 @@
 
 <style lang="postcss">
 .footer {
-  @apply mb-10 overflow-hidden;
+  @apply overflow-hidden;
 }
 </style>

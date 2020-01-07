@@ -15,23 +15,21 @@
 </template>
 
 <style lang="postcss" scoped>
-li {
-  @apply pb-2;
-}
-.contact {
-  @apply w-full mt-4;
-}
-@screen sm {
-  .contact {
-    @apply pl-5 pr-0;
+.contact-block {
+  & ul {
+    & li {
+      @apply pb-2;
+
+      & .icon-mail {
+        @apply inline-block w-5 h-5 mx-2 bg-cover align-text-bottom;
+        background-image: url('~assets/img/icon-mail.png');
+      }
+
+      & .icon-twitter {
+        @apply inline-block w-5 h-5 mx-2 bg-cover align-text-bottom;
+        background-image: url('~assets/img/icon-twitter.png');
+      }
+    }
   }
-}
-.icon-mail {
-  @apply inline-block w-5 h-5 mx-2 bg-cover align-text-bottom;
-  background-image: url('~assets/img/icon-mail.png');
-}
-.icon-twitter {
-  @apply inline-block w-5 h-5 mx-2 bg-cover align-text-bottom;
-  background-image: url('~assets/img/icon-twitter.png');
 }
 </style>
