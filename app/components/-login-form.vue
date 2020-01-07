@@ -31,7 +31,6 @@ export default {
     height: 2rem;
   }
 
-  // nuxt-link
   & a {
     &.btn-twitter-login {
       @apply inline-block align-bottom py-2 pl-3 pr-5 rounded-sm;
