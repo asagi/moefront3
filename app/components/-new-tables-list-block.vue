@@ -13,7 +13,7 @@
         <div v-if="isOpened" class="talbe-wrapper">
           <table>
             <tbody>
-              <tr v-for="table in list" v-bind:key="table.id">
+              <tr v-for="table in tables" v-bind:key="table.id">
                 <th data-label="卓主" class="with-label">
                   {{ table.owner.name }}
                   <span class="twttier-account">
@@ -72,6 +72,9 @@ export default {
   computed: {
     isSP: function() {
       return this.width < 1024
+    },
+    tables: function() {
+      return this.list.filter(this.filter)
     }
   },
   created: function() {
@@ -98,6 +101,11 @@ export default {
     },
     leave: el => {
       el.style.height = '0'
+    },
+    filter: (value, index, array) => {
+      if (value.turn !== 0) return false
+      if (value.status !== 0) return false
+      return true
     }
   }
 }
@@ -107,10 +115,6 @@ export default {
 div.talbe-wrapper {
   overflow-y: hidden;
   transition: height 0.2s ease;
-
-  &.locked {
-    transition: none;
-  }
 }
 
 h2 {
@@ -155,7 +159,7 @@ table {
         @apply text-left px-2 py-2;
         @apply relative pl-16;
         @apply font-normal;
-        @apply bg-gray-400;
+        @apply bg-indigo-200;
       }
 
       & td {
