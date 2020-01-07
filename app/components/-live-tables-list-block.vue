@@ -139,11 +139,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-div.talbe-wrapper {
-  overflow-y: hidden;
-  transition: height 0.2s ease;
-}
-
 h2 {
   @apply py-3 mb-1;
   @apply bg-gray-100;
@@ -167,86 +162,73 @@ h2 {
   }
 }
 
-table {
-  @apply w-full mx-0 my-auto;
-  @apply border-separate border-0;
-  @apply leading-normal;
+div.talbe-wrapper {
+  overflow-y: hidden;
+  transition: height 0.2s ease;
+  & table {
+    @apply w-full mx-0 my-auto;
+    @apply border-separate border-0;
+    @apply leading-normal;
 
-  & theader {
-    display: none;
-  }
-
-  & tbody {
-    & tr {
-      @apply block mx-2 mb-2 p-2;
-      @apply rounded shadow;
-      @apply border-solid border border-gray-400;
-      @apply bg-white;
-
-      & th {
-        @apply block overflow-hidden;
-        @apply rounded;
-        @apply text-left px-4 py-2;
-
-        &.girl {
-          @apply bg-pink-200;
-        }
-        &.flag {
-          @apply bg-orange-200;
-        }
-
-        & span.table-number {
-          @apply font-bold;
-        }
-      }
-
-      & td {
-        @apply block;
-        @apply text-left px-2 py-2;
-        @apply relative pl-24;
-        @apply font-normal text-sm;
-        @apply border-b;
-
-        &.half {
-          @apply w-1/2 -mx-1;
-          @apply inline-block;
-        }
-
-        &.button {
-          @apply px-0 pt-4;
-          @apply text-center;
-        }
-
-        & .twttier-account {
-          @apply text-xs;
-        }
-      }
-
-      & th.with-label::before,
-      & td.with-label::before {
-        @apply font-bold;
-        @apply absolute;
-        content: attr(data-label) ' : ';
-        left: 10px;
-      }
-      & td:last-child {
-        @apply border-b-0;
-      }
+    & theader {
+      display: none;
     }
-  }
-}
 
-@screen sm {
-  table {
     & tbody {
       & tr {
+        @apply block mx-2 mb-2 p-2;
+        @apply rounded shadow;
+        @apply border-solid border border-gray-400;
+        @apply bg-white;
+
+        & th {
+          @apply block overflow-hidden;
+          @apply rounded;
+          @apply text-left px-4 py-2;
+
+          &.girl {
+            @apply bg-pink-200;
+          }
+          &.flag {
+            @apply bg-orange-200;
+          }
+
+          & span.table-number {
+            @apply font-bold;
+          }
+        }
+
         & td {
+          @apply block;
+          @apply text-left px-2 py-2;
+          @apply relative pl-24;
+          @apply font-normal text-sm;
+          @apply border-b;
+
           &.half {
+            @apply w-1/2 -mx-1;
+            @apply inline-block;
+          }
+
+          &.button {
+            @apply px-0 pt-4;
+            @apply text-center;
+          }
+
+          & .twttier-account {
+            @apply text-xs;
           }
         }
 
         & th.with-label::before,
         & td.with-label::before {
+          @apply font-bold;
+          @apply absolute;
+          content: attr(data-label) ' : ';
+          left: 10px;
+        }
+        & td:last-child {
+          @apply border-b-0;
         }
       }
     }
