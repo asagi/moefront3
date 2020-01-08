@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <div class="flex flex-row flex-wrap justify-center">
+    <div class="top-area">
       <MapArea :occupieds="occupieds" :units="units" />
       <Greeting />
     </div>
@@ -19,7 +19,7 @@
         <LiveTablesList :list="liveTablesList" />
         <ClosedTablesList :list="closedTablesList" />
       </div>
-      <div class="justify-center block align-top">
+      <div class="links">
         <hr class="border-top" />
         <Contact />
         <Links />
@@ -90,13 +90,17 @@ html {
   & .container {
     @apply my-0 items-start justify-center text-center;
 
-    & .outer-map {
-      @apply w-full;
-    }
+    & .top-area {
+      @apply flex flex-row flex-wrap justify-center;
 
-    & .greeting-block {
-      @apply flex flex-col w-full items-start justify-center items-center px-5;
-      max-width: 560px;
+      & .outer-map {
+        @apply w-full;
+      }
+
+      & .greeting-block {
+        @apply flex flex-col w-full items-start justify-center items-center px-5;
+        max-width: 560px;
+      }
     }
 
     & .amaquick-box {
@@ -157,19 +161,23 @@ html {
       @apply w-full mt-1 mb-10;
     }
 
-    & .contact-block {
-      @apply w-full px-5 mt-1;
+    & .links {
+      @apply justify-center block align-top;
 
-      & ul {
-        @apply list-none text-left mx-5 pb-0;
+      & .contact-block {
+        @apply w-full px-5 mt-1;
+
+        & ul {
+          @apply list-none text-left mx-5 pb-0;
+        }
       }
-    }
 
-    & .links-block {
-      @apply w-full px-5 mt-10;
+      & .links-block {
+        @apply w-full px-5 mt-10;
 
-      & ul {
-        @apply list-none text-left mx-5 pb-0;
+        & ul {
+          @apply list-none text-left mx-5 pb-0;
+        }
       }
     }
 
@@ -234,30 +242,32 @@ html {
       }
 
       & .flex-area {
-        & hr {
-          @apply inline-block;
-          @apply w-2/3;
+        & .tables {
+          @apply w-auto flex-grow;
+        }
 
-          &.border-top {
-            @apply mt-12 mb-10;
+        & .links {
+          & hr {
+            @apply inline-block;
+            @apply w-2/3;
+
+            &.border-top {
+              @apply mt-12 mb-10;
+            }
+
+            &.border-bottom {
+              @apply my-10;
+            }
           }
 
-          &.border-bottom {
-            @apply my-10;
+          & .contact-block {
+            @apply w-full;
+          }
+
+          & .links-block {
+            @apply w-full;
           }
         }
-
-        & .contact-block {
-          @apply w-full;
-        }
-
-        & .links-block {
-          @apply w-full;
-        }
-      }
-
-      & .tables {
-        @apply w-auto flex-grow;
       }
     }
   }
