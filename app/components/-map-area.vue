@@ -233,7 +233,7 @@ export default {
     padding-top: calc(500 / 650 * 100%);
 
     & .description {
-      @apply border border-solid rounded-full bg-white shadow-lg;
+      @apply border border-solid rounded-lg bg-white shadow-lg;
       @apply pt-3 pb-5 border-gray-600 border-2;
       @apply absolute left-0 right-auto;
       width: 98%;

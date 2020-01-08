@@ -65,6 +65,7 @@ nav {
   @apply flex justify-between flex-wrap;
   @apply px-3 py-1;
   @apply bg-gray-400 text-gray-700 text-sm;
+  @apply fixed w-full z-50;
 
   & .header {
     @apply text-lg pt-2;

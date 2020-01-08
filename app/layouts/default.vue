@@ -34,19 +34,32 @@ export default {
 body {
   @apply bg-gray-200;
   min-width: 320px;
+
+  & a {
+    @apply text-blue-500;
+  }
+
+  & .dropdown-bg {
+    @apply w-full h-screen fixed inset-0 z-10;
+  }
+
+  & .outer-frame {
+    @apply flex flex-col items-center;
+    padding-top: 44px;
+
+    & .container {
+      @apply pb-10;
+      max-width: 1280px;
+    }
+  }
 }
-.outer-frame {
-  @apply flex flex-col items-center;
-}
-.container {
-  @apply pb-10;
-  max-width: 1280px;
-}
-a {
-  @apply text-blue-500;
-}
-.dropdown-bg {
-  @apply w-full h-screen fixed inset-0 z-10;
+
+@screen sm {
+  body {
+    & .outer-frame {
+      @apply pt-16;
+    }
+  }
 }
 </style>
 

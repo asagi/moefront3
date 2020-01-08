@@ -1,6 +1,6 @@
 <template>
   <div class="tables-block">
-    <div class="tables">
+    <div :class="{ open: isOpened }" class="tables">
       <h2 @click="isOpened = !isOpened" :class="{ open: isOpened }">
         募集中の卓一覧
       </h2>
@@ -112,86 +112,104 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-h2 {
-  @apply py-3 mb-1;
-  @apply bg-gray-100;
-  @apply border-solid border-t border-b border-gray-400;
+.tables-block {
+  & .tables {
+    @apply my-0;
 
-  &:before {
-    @apply inline-block relative mr-3;
-    content: '';
-    width: 12px;
-    height: 12px;
-    border-top: solid 2px #000;
-    border-right: solid 2px #000;
-    transition: all 0.2s ease-in-out;
-    transform: rotate(135deg);
-  }
-  &.open:before {
-    transform: rotate(-45deg);
+    & h2 {
+      @apply py-3 mb-0;
+      @apply bg-gray-100;
+      @apply border-solid border-t border-b border-gray-400;
+      margin-bottom: -1px;
+
+      &:before {
+        @apply inline-block relative mr-3;
+        content: '';
+        width: 12px;
+        height: 12px;
+        border-top: solid 2px #000;
+        border-right: solid 2px #000;
+        transition: all 0.2s ease-in-out;
+        transform: rotate(135deg);
+      }
+      &.open:before {
+        transform: rotate(-45deg);
+      }
+    }
+
+    & .talbe-wrapper {
+      @apply my-2;
+      overflow-y: hidden;
+      transition: height 0.2s ease;
+
+      & table {
+        @apply w-full mx-0 my-auto;
+        @apply border-separate border-0;
+        @apply leading-normal;
+
+        & theader {
+          display: none;
+        }
+
+        & tbody {
+          & tr {
+            @apply block mx-2 mb-2 p-2;
+            @apply rounded shadow;
+            @apply border-solid border border-gray-400;
+            @apply bg-white;
+
+            & th {
+              @apply block overflow-hidden;
+              @apply rounded;
+              @apply text-left px-2 py-2;
+              @apply relative pl-16;
+              @apply font-normal;
+              @apply bg-indigo-200;
+            }
+
+            & td {
+              @apply block;
+              @apply text-left px-2 py-2;
+              @apply relative pl-24;
+              @apply font-normal text-sm;
+              @apply border-b;
+
+              &.half {
+                @apply w-1/2 -mx-1;
+                @apply inline-block;
+              }
+
+              &.button {
+                @apply px-0 pt-4;
+                @apply text-center;
+              }
+
+              & .twttier-account {
+                @apply text-xs;
+              }
+            }
+
+            & th.with-label::before,
+            & td.with-label::before {
+              @apply font-bold;
+              @apply absolute;
+              content: attr(data-label) ' : ';
+              left: 10px;
+            }
+            & td:last-child {
+              @apply border-b-0;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
-div.talbe-wrapper {
-  overflow-y: hidden;
-  transition: height 0.2s ease;
-  & table {
-    @apply w-full mx-0 my-auto;
-    @apply border-separate border-0;
-    @apply leading-normal;
-
-    & theader {
-      display: none;
-    }
-
-    & tbody {
-      & tr {
-        @apply block mx-2 mb-2 p-2;
-        @apply rounded shadow;
-        @apply border-solid border border-gray-400;
-        @apply bg-white;
-
-        & th {
-          @apply block overflow-hidden;
-          @apply rounded;
-          @apply text-left px-2 py-2;
-          @apply relative pl-16;
-          @apply font-normal;
-          @apply bg-indigo-200;
-        }
-
-        & td {
-          @apply block;
-          @apply text-left px-2 py-2;
-          @apply relative pl-24;
-          @apply font-normal text-sm;
-          @apply border-b;
-
-          &.half {
-            @apply w-1/2 -mx-1;
-            @apply inline-block;
-          }
-
-          &.button {
-            @apply px-0 pt-4;
-            @apply text-center;
-          }
-
-          & .twttier-account {
-            @apply text-xs;
-          }
-        }
-
-        & th.with-label::before,
-        & td.with-label::before {
-          @apply font-bold;
-          @apply absolute;
-          content: attr(data-label) ' : ';
-          left: 10px;
-        }
-        & td:last-child {
-          @apply border-b-0;
-        }
+@screen sm {
+  .tables-block {
+    & .tables {
+      & h2 {
       }
     }
   }
