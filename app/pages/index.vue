@@ -16,6 +16,7 @@
       <div class="tables">
         <NewTablesList :list="newTablesList" />
         <LiveTablesList :list="liveTablesList" />
+        <ClosedTablesList :list="closedTablesList" />
       </div>
       <div class="justify-center block align-top">
         <Contact />
@@ -31,6 +32,7 @@ import MapArea from '@/components/-map-area'
 import Greeting from '@/components/-greeting-block'
 import NewTablesList from '@/components/-new-tables-list-block'
 import LiveTablesList from '@/components/-live-tables-list-block'
+import ClosedTablesList from '@/components/-closed-tables-list-block'
 import Contact from '@/components/-contact-block'
 import Links from '@/components/-links-block'
 import Thanks from '@/components/-thanks-block'
@@ -50,6 +52,7 @@ export default {
     Greeting,
     NewTablesList,
     LiveTablesList,
+    ClosedTablesList,
     Contact,
     Links,
     Thanks,
@@ -581,6 +584,9 @@ export default {
       return this.tables
     },
     liveTablesList() {
+      return this.tables
+    },
+    closedTablesList() {
       return this.tables
     }
   }

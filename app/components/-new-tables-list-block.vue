@@ -2,7 +2,7 @@
   <div class="tables-block">
     <div :class="{ open: isOpened }" class="tables">
       <h2 @click="isOpened = !isOpened" :class="{ open: isOpened }">
-        募集中の卓一覧
+        募集中の卓の一覧
       </h2>
       <transition
         @before-enter="beforeEnter"
@@ -11,7 +11,10 @@
         @leave="leave"
       >
         <div v-if="isOpened" class="talbe-wrapper">
-          <table>
+          <div v-if="tables.length === 0" class="empty-message">
+            現在募集中の卓はありません。
+          </div>
+          <table v-if="tables.length > 0">
             <tbody>
               <tr v-for="table in tables" v-bind:key="table.id">
                 <th data-label="卓主" class="with-label">
@@ -129,7 +132,6 @@ export default {
         height: 12px;
         border-top: solid 2px #000;
         border-right: solid 2px #000;
-        transition: all 0.2s ease-in-out;
         transform: rotate(135deg);
       }
       &.open:before {
@@ -141,6 +143,12 @@ export default {
       @apply my-2;
       overflow-y: hidden;
       transition: height 0.2s ease;
+
+      & .empty-message {
+        @apply py-4 px-4 mx-4;
+        @apply bg-gray-400 rounded-lg;
+        @apply text-center;
+      }
 
       & table {
         @apply w-full mx-0 my-auto;
