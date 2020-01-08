@@ -1,8 +1,24 @@
 <template>
   <div class="tables-block">
-    <div :class="{ open: isOpened }" class="tables">
+    <div
+      :class="{
+        open: isOpened,
+        new: mode == 0,
+        live: mode == 1,
+        closed: mode == 2
+      }"
+      class="tables"
+    >
       <h2 @click="isOpened = !isOpened" :class="{ open: isOpened }">
-        終了した卓の一覧
+        <template v-if="mode == 0">
+          募集中の卓の一覧
+        </template>
+        <template v-if="mode == 1">
+          進行中の卓の一覧
+        </template>
+        <template v-if="mode == 2">
+          終了した卓の一覧
+        </template>
       </h2>
       <transition
         @before-enter="beforeEnter"
@@ -12,11 +28,94 @@
       >
         <div v-if="isOpened" class="talbe-wrapper">
           <div v-if="tables.length === 0" class="empty-message">
-            終了した卓はありません。
+            <template v-if="mode == 0">
+              現在募集中の卓はありません。
+            </template>
+            <template v-if="mode == 1">
+              現在進行中の卓はありません。
+            </template>
+            <template v-if="mode == 2">
+              終了した卓はありません。
+            </template>
           </div>
           <table v-if="tables.length > 0">
             <tbody>
               <tr v-for="table in tables" v-bind:key="table.id">
+                <template v-if="mode == 0">
+                  <th data-label="卓主" class="with-label new">
+                    {{ table.owner.name }}
+                    <span class="twttier-account">
+                      <a :href="table.owner.url" target="_blank">
+                        {{ '@' + table.owner.nickname }}
+                      </a>
+                    </span>
+                  </th>
+                  <td data-label="フェイス" class="with-label half">
+                    {{ table.regulation.face_type == 0 ? '娘' : '旗' }}
+                  </td>
+                  <td data-label="鍵の有無" class="with-label half">
+                    {{ table.has_key ? 'あり' : 'なし' }}
+                  </td>
+                  <td data-label="外交期間" class="with-label half">
+                    {{ table.regulation.duration == 0 ? '短期' : '標準' }}
+                  </td>
+                  <td data-label="更新種別" class="with-label half">
+                    {{ table.regulation.period_rule == 0 ? '固定' : '変動' }}
+                  </td>
+                  <td data-label="開始日時" class="with-label">
+                    {{ table.next_period }}
+                  </td>
+                </template>
+
+                <template v-if="mode == 1">
+                  <th
+                    :class="{
+                      girl: table.regulation.face_type == 0,
+                      flag: table.regulation.face_type == 1
+                    }"
+                  >
+                    <span class="turn-number">
+                      {{ getTableNumber(table.number) }}
+                      {{ table.regulation.face_type == 0 ? '娘' : '旗' }}
+                      :
+                    </span>
+                    {{ getTurn(table.turn, table.phase) }}
+                  </th>
+
+                  <td data-label="次回更新" class="with-label">
+                    {{ table.next_period }}
+                  </td>
+                  <td data-label="外交期間" class="with-label half">
+                    {{ table.regulation.duration == 0 ? '短期' : '標準' }}
+                  </td>
+                  <td data-label="更新種別" class="with-label half">
+                    {{ table.regulation.period_rule == 0 ? '固定' : '変動' }}
+                  </td>
+                </template>
+
+                <template v-if="mode == 2">
+                  <th
+                    :class="{
+                      girl: table.regulation.face_type == 0,
+                      flag: table.regulation.face_type == 1
+                    }"
+                  >
+                    <span class="turn-number">
+                      {{ getTableNumber(table.number) }}
+                      {{ table.regulation.face_type == 0 ? '娘' : '旗' }}
+                      :
+                    </span>
+                    {{ getTurn(table.turn, table.phase) }}
+                  </th>
+
+                  <td data-label="外交期間" class="with-label half">
+                    {{ table.regulation.duration == 0 ? '短期' : '標準' }}
+                  </td>
+                  <td data-label="更新種別" class="with-label half">
+                    {{ table.regulation.period_rule == 0 ? '固定' : '変動' }}
+                  </td>
+                </template>
+
                 <td class="button">
                   <nuxt-link :to="'/tables/' + table.id" class="btn btn-blue">
                     表示する
@@ -36,6 +135,12 @@ import debounce from 'lodash/debounce'
 
 export default {
   props: {
+    mode: {
+      type: Number,
+      default: () => {
+        return 1
+      }
+    },
     list: {
       type: Array,
       default: () => {
@@ -68,7 +173,6 @@ export default {
   },
   methods: {
     getTableNumber: number => {
-      console.log(number)
       return '#' + ('000' + number).slice(-3)
     },
     getTurn: (turn, phase) => {
@@ -171,16 +275,28 @@ export default {
             & th {
               @apply block overflow-hidden;
               @apply rounded;
-              @apply text-left px-4 py-2;
+
+              &.new {
+                /* mode == 0 */
+                @apply text-left px-2 py-2;
+                @apply relative pl-16;
+                @apply font-normal;
+                @apply bg-indigo-200;
+              }
 
               &.girl {
+                /* mode == 1 */
+                @apply text-left px-4 py-2;
                 @apply bg-pink-200;
               }
               &.flag {
+                /* mode == 1 */
+                @apply text-left px-4 py-2;
                 @apply bg-orange-200;
               }
 
               & span.table-number {
+                /* mode == 1 */
                 @apply font-bold;
               }
             }
@@ -226,9 +342,19 @@ export default {
 
 @screen sm {
   .tables-block {
-    & .tables {
+    & .tables.new {
+      & h2 {
+      }
+    }
+
+    & .tables.live {
       & h2 {
         @apply mt-10;
+      }
+    }
+
+    & .tables.closed {
+      & h2 {
       }
     }
   }

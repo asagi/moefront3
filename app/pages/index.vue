@@ -15,9 +15,9 @@
     <div class="flex-area">
       <div class="tables">
         <h2>Tables</h2>
-        <NewTablesList :list="newTablesList" />
-        <LiveTablesList :list="liveTablesList" />
-        <ClosedTablesList :list="closedTablesList" />
+        <TablesList :list="newTablesList" :mode="0" />
+        <TablesList :list="liveTablesList" :mode="1" />
+        <TablesList :list="closedTablesList" :mode="2" />
       </div>
       <div class="links">
         <hr class="border-top" />
@@ -33,9 +33,7 @@
 <script>
 import MapArea from '@/components/-map-area'
 import Greeting from '@/components/-greeting-block'
-import NewTablesList from '@/components/-new-tables-list-block'
-import LiveTablesList from '@/components/-live-tables-list-block'
-import ClosedTablesList from '@/components/-closed-tables-list-block'
+import TablesList from '@/components/-tables-list-block'
 import Contact from '@/components/-contact-block'
 import Links from '@/components/-links-block'
 import Thanks from '@/components/-thanks-block'
@@ -55,9 +53,7 @@ export default {
   components: {
     MapArea,
     Greeting,
-    NewTablesList,
-    LiveTablesList,
-    ClosedTablesList,
+    TablesList,
     Contact,
     Links,
     Thanks,
