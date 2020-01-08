@@ -355,6 +355,7 @@ export default {
 
     & .tables.closed {
       & h2 {
+        @apply mt-10;
       }
     }
   }
