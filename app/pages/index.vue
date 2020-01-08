@@ -15,9 +15,9 @@
     <div class="flex-area">
       <div class="tables">
         <h2>Tables</h2>
-        <TablesList :list="newTablesList" :mode="0" />
-        <TablesList :list="liveTablesList" :mode="1" />
-        <TablesList :list="closedTablesList" :mode="2" />
+        <TablesList :list="newTablesList" :mode="TableList.MODE_NEW" />
+        <TablesList :list="liveTablesList" :mode="TableList.MODE_LIVE" />
+        <TablesList :list="closedTablesList" :mode="TableList.MODE_CLOSED" />
       </div>
       <div class="links">
         <hr class="border-top" />
@@ -61,6 +61,7 @@ export default {
   },
   data: () => {
     return {
+      TableList: TablesList.data().Const,
       occupieds: Occupides,
       units: Units,
       tables: DummyTables

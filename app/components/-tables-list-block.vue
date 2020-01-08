@@ -3,20 +3,20 @@
     <div
       :class="{
         open: isOpened,
-        new: mode == 0,
-        live: mode == 1,
-        closed: mode == 2
+        new: mode == Const.MODE_NEW,
+        live: mode == Const.MODE_LIVE,
+        closed: mode == Const.MODE_CLOSED
       }"
       class="tables"
     >
       <h2 @click="isOpened = !isOpened" :class="{ open: isOpened }">
-        <template v-if="mode == 0">
+        <template v-if="mode == Const.MODE_NEW">
           募集中の卓の一覧
         </template>
-        <template v-if="mode == 1">
+        <template v-if="mode == Const.MODE_LIVE">
           進行中の卓の一覧
         </template>
-        <template v-if="mode == 2">
+        <template v-if="mode == Const.MODE_CLOSED">
           終了した卓の一覧
         </template>
       </h2>
@@ -28,20 +28,20 @@
       >
         <div v-if="isOpened" class="talbe-wrapper">
           <div v-if="tables.length === 0" class="empty-message">
-            <template v-if="mode == 0">
+            <template v-if="mode == Const.MODE_NEW">
               現在募集中の卓はありません。
             </template>
-            <template v-if="mode == 1">
+            <template v-if="mode == Const.MODE_LIVE">
               現在進行中の卓はありません。
             </template>
-            <template v-if="mode == 2">
+            <template v-if="mode == Const.MODE_CLOSED">
               終了した卓はありません。
             </template>
           </div>
           <table v-if="tables.length > 0">
             <tbody>
               <tr v-for="table in tables" v-bind:key="table.id">
-                <template v-if="mode == 0">
+                <template v-if="mode == Const.MODE_NEW">
                   <th data-label="卓主" class="with-label new">
                     {{ table.owner.name }}
                     <span class="twttier-account">
@@ -67,7 +67,7 @@
                   </td>
                 </template>
 
-                <template v-if="mode == 1">
+                <template v-if="mode == Const.MODE_LIVE">
                   <th
                     :class="{
                       girl: table.regulation.face_type == 0,
@@ -93,7 +93,7 @@
                   </td>
                 </template>
 
-                <template v-if="mode == 2">
+                <template v-if="mode == Const.MODE_CLOSED">
                   <th
                     :class="{
                       girl: table.regulation.face_type == 0,
@@ -150,6 +150,11 @@ export default {
   },
   data() {
     return {
+      Const: {
+        MODE_NEW: 0,
+        MODE_LIVE: 1,
+        MODE_CLOSED: 2
+      },
       isOpened: false,
       width: 0
     }
@@ -180,22 +185,22 @@ export default {
       let season = ''
       switch (phase) {
         case 0:
-          season = '春外交'
+          season = '春外交フェイズ'
           break
         case 1:
-          season = '春撤退'
+          season = '春撤退フェイズ'
           break
         case 2:
-          season = '秋外交'
+          season = '秋外交フェイズ'
           break
         case 3:
-          season = '秋撤退'
+          season = '秋撤退フェイズ'
           break
         case 4:
-          season = '秋調整'
+          season = '秋調整フェイズ'
           break
       }
-      return year + ' 年' + season
+      return year + '年' + season
     },
     resize: function() {
       this.width = window.innerWidth
@@ -285,18 +290,18 @@ export default {
               }
 
               &.girl {
-                /* mode == 1 */
+                /* mode == 1 or 2*/
                 @apply text-left px-4 py-2;
                 @apply bg-pink-200;
               }
               &.flag {
-                /* mode == 1 */
+                /* mode == 1 or 2*/
                 @apply text-left px-4 py-2;
                 @apply bg-orange-200;
               }
 
               & span.table-number {
-                /* mode == 1 */
+                /* mode == 1 or 2*/
                 @apply font-bold;
               }
             }

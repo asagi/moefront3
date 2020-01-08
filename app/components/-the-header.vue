@@ -63,7 +63,7 @@ export default {
 <style lang="postcss" scoped>
 nav {
   @apply flex justify-between flex-wrap;
-  @apply px-3 py-1;
+  @apply px-3 pb-1;
   @apply bg-gray-400 text-gray-700 text-sm;
   @apply fixed w-full z-50;
 
@@ -85,7 +85,7 @@ nav {
   }
 
   & a.btn-header-twitter-login {
-    @apply inline-block py-1 pl-2 pr-3 rounded-sm;
+    @apply inline-block mt-1 py-0 pl-1 pr-2 rounded-sm;
     @apply text-white text-xs;
     background-color: #55acee;
     line-height: 1.5rem;
