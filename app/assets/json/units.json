@@ -1,0 +1,178 @@
+[
+  {
+    "id": 67,
+    "province": "vie",
+    "keepout": null,
+    "kind": "a",
+    "owner": "a",
+    "power": { "symbol": "a" }
+  },
+  {
+    "id": 68,
+    "province": "bud",
+    "keepout": null,
+    "kind": "a",
+    "owner": "a",
+    "power": { "symbol": "a" }
+  },
+  {
+    "id": 69,
+    "province": "tri",
+    "keepout": null,
+    "kind": "f",
+    "owner": "a",
+    "power": { "symbol": "a" }
+  },
+  {
+    "id": 70,
+    "province": "lvp",
+    "keepout": null,
+    "kind": "a",
+    "owner": "e",
+    "power": { "symbol": "e" }
+  },
+  {
+    "id": 71,
+    "province": "lon",
+    "keepout": null,
+    "kind": "f",
+    "owner": "e",
+    "power": { "symbol": "e" }
+  },
+  {
+    "id": 72,
+    "province": "edi",
+    "keepout": null,
+    "kind": "f",
+    "owner": "e",
+    "power": { "symbol": "e" }
+  },
+  {
+    "id": 73,
+    "province": "par",
+    "keepout": null,
+    "kind": "a",
+    "owner": "f",
+    "power": { "symbol": "f" }
+  },
+  {
+    "id": 74,
+    "province": "mar",
+    "keepout": null,
+    "kind": "a",
+    "owner": "f",
+    "power": { "symbol": "f" }
+  },
+  {
+    "id": 75,
+    "province": "bre",
+    "keepout": null,
+    "kind": "f",
+    "owner": "f",
+    "power": { "symbol": "f" }
+  },
+  {
+    "id": 76,
+    "province": "ber",
+    "keepout": null,
+    "kind": "a",
+    "owner": "g",
+    "power": { "symbol": "g" }
+  },
+  {
+    "id": 77,
+    "province": "mun",
+    "keepout": null,
+    "kind": "a",
+    "owner": "g",
+    "power": { "symbol": "g" }
+  },
+  {
+    "id": 78,
+    "province": "kie",
+    "keepout": null,
+    "kind": "f",
+    "owner": "g",
+    "power": { "symbol": "g" }
+  },
+  {
+    "id": 79,
+    "province": "rom",
+    "keepout": null,
+    "kind": "a",
+    "owner": "i",
+    "power": { "symbol": "i" }
+  },
+  {
+    "id": 80,
+    "province": "ven",
+    "keepout": null,
+    "kind": "a",
+    "owner": "i",
+    "power": { "symbol": "i" }
+  },
+  {
+    "id": 81,
+    "province": "nap",
+    "keepout": null,
+    "kind": "f",
+    "owner": "i",
+    "power": { "symbol": "i" }
+  },
+  {
+    "id": 82,
+    "province": "mos",
+    "keepout": null,
+    "kind": "a",
+    "owner": "r",
+    "power": { "symbol": "r" }
+  },
+  {
+    "id": 83,
+    "province": "war",
+    "keepout": null,
+    "kind": "a",
+    "owner": "r",
+    "power": { "symbol": "r" }
+  },
+  {
+    "id": 84,
+    "province": "stp_sc",
+    "keepout": null,
+    "kind": "f",
+    "owner": "r",
+    "power": { "symbol": "r" }
+  },
+  {
+    "id": 85,
+    "province": "sev",
+    "keepout": null,
+    "kind": "f",
+    "owner": "r",
+    "power": { "symbol": "r" }
+  },
+  {
+    "id": 86,
+    "province": "con",
+    "keepout": null,
+    "kind": "a",
+    "owner": "t",
+    "power": { "symbol": "t" }
+  },
+  {
+    "id": 87,
+    "province": "smy",
+    "keepout": null,
+    "kind": "a",
+    "owner": "t",
+    "power": { "symbol": "t" }
+  },
+  {
+    "id": 88,
+    "province": "ank",
+    "keepout": null,
+    "kind": "f",
+    "owner": "t",
+    "power": { "symbol": "t" }
+  }
+]
