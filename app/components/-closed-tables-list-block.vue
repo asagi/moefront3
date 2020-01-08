@@ -77,10 +77,7 @@ export default {
       return this.width < 1024
     },
     tables: function() {
-      return this.list.filter((value, index, array) => {
-        if (value.status === 5) return true
-        return false
-      })
+      return this.list
     }
   },
   created: function() {

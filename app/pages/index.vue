@@ -72,13 +72,25 @@ export default {
   },
   computed: {
     newTablesList() {
-      return this.tables
+      return this.tables.filter((value, index, array) => {
+        if (value.status !== 0) return false
+        if (value.turn !== 0) return false
+        return true
+      })
     },
     liveTablesList() {
-      return this.tables
+      return this.tables.filter((value, index, array) => {
+        if (value.status === 2) return true
+        if (value.status === 3) return true
+        if (value.status === 4) return true
+        return false
+      })
     },
     closedTablesList() {
-      return this.tables
+      return this.tables.filter((value, index, array) => {
+        if (value.status === 5) return true
+        return false
+      })
     }
   }
 }

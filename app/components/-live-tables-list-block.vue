@@ -77,12 +77,7 @@ export default {
       return this.width < 1024
     },
     tables: function() {
-      return this.list.filter((value, index, array) => {
-        if (value.status === 2) return true
-        if (value.status === 3) return true
-        if (value.status === 4) return true
-        return false
-      })
+      return this.list
     }
   },
   created: function() {
@@ -96,7 +91,6 @@ export default {
   },
   methods: {
     getTableNumber: number => {
-      console.log(number)
       return '#' + ('000' + number).slice(-3)
     },
     getTurn: (turn, phase) => {
