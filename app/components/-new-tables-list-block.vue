@@ -77,7 +77,11 @@ export default {
       return this.width < 1024
     },
     tables: function() {
-      return this.list.filter(this.filter)
+      return this.list.filter((value, index, array) => {
+        if (value.status !== 0) return false
+        if (value.turn !== 0) return false
+        return true
+      })
     }
   },
   created: function() {
@@ -104,11 +108,6 @@ export default {
     },
     leave: el => {
       el.style.height = '0'
-    },
-    filter: (value, index, array) => {
-      if (value.turn !== 0) return false
-      if (value.status !== 0) return false
-      return true
     }
   }
 }

@@ -77,7 +77,12 @@ export default {
       return this.width < 1024
     },
     tables: function() {
-      return this.list.filter(this.filter)
+      return this.list.filter((value, index, array) => {
+        if (value.status === 2) return true
+        if (value.status === 3) return true
+        if (value.status === 4) return true
+        return false
+      })
     }
   },
   created: function() {
@@ -130,12 +135,6 @@ export default {
     },
     leave: el => {
       el.style.height = '0'
-    },
-    filter: (value, index, array) => {
-      if (value.status === 0) return false
-      if (value.status === 1) return false
-      if (value.status === 5) return false
-      return true
     }
   }
 }
