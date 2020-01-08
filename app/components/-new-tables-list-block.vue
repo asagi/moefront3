@@ -115,6 +115,9 @@ export default {
 
 <style lang="postcss" scoped>
 .tables-block {
+  @apply my-0;
+  margin-top: -1px;
+
   & .tables {
     @apply my-0;
 
@@ -122,7 +125,6 @@ export default {
       @apply py-3 mb-0;
       @apply bg-gray-100;
       @apply border-solid border-t border-b border-gray-400;
-      margin-bottom: -1px;
 
       &:before {
         @apply inline-block relative mr-3;
@@ -139,7 +141,7 @@ export default {
     }
 
     & .talbe-wrapper {
-      @apply my-2;
+      @apply my-0 py-2;
       overflow-y: hidden;
       transition: height 0.2s ease;
 

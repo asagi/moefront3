@@ -14,13 +14,16 @@
 
     <div class="flex-area">
       <div class="tables">
+        <h2>Tables</h2>
         <NewTablesList :list="newTablesList" />
         <LiveTablesList :list="liveTablesList" />
         <ClosedTablesList :list="closedTablesList" />
       </div>
       <div class="justify-center block align-top">
+        <hr class="border-top" />
         <Contact />
         <Links />
+        <hr class="border-bottom" />
       </div>
     </div>
     <Thanks />
@@ -612,6 +615,35 @@ html {
       @apply w-auto mx-4 my-8 py-5;
     }
 
+    & .flex-area {
+      & hr {
+        @apply relative;
+
+        height: 1px;
+        border-width: 0;
+        background-image: -webkit-linear-gradient(
+          left,
+          transparent 0%,
+          #000 50%,
+          transparent 100%
+        );
+        background-image: linear-gradient(
+          90deg,
+          transparent 0%,
+          #000 50%,
+          transparent 100%
+        );
+
+        &.border-top {
+          @apply mt-16 mb-8;
+        }
+
+        &.border-bottom {
+          @apply mt-8 mb-16;
+        }
+      }
+    }
+
     & .caution-wrap {
       @apply flex flex-row flex-wrap justify-center;
       @apply mt-5 mb-10;
@@ -634,7 +666,7 @@ html {
     }
 
     & .tables {
-      @apply w-full mt-1 mb-5;
+      @apply w-full mt-1 mb-10;
     }
 
     & .contact-block {
@@ -683,18 +715,14 @@ html {
 
       & .flex-area {
         @apply w-full flex flex-row flex-wrap justify-center;
+
+        & hr {
+          width: 600px;
+        }
       }
 
       & .tables {
         max-width: 724px;
-      }
-
-      & .contact-block {
-        width: 300px;
-      }
-
-      & .links-block {
-        width: 300px;
       }
 
       .thanks-block {
@@ -715,6 +743,29 @@ html {
 
       & .amaquick-box {
         @apply mx-auto;
+      }
+
+      & .flex-area {
+        & hr {
+          @apply inline-block;
+          @apply w-2/3;
+
+          &.border-top {
+            @apply mt-12 mb-10;
+          }
+
+          &.border-bottom {
+            @apply my-10;
+          }
+        }
+
+        & .contact-block {
+          @apply w-full;
+        }
+
+        & .links-block {
+          @apply w-full;
+        }
       }
 
       & .tables {
