@@ -45,7 +45,7 @@ body {
 
   & .outer-frame {
     @apply flex flex-col items-center;
-    padding-top: 40px;
+    padding-top: 39px;
 
     & .container {
       @apply pb-10;

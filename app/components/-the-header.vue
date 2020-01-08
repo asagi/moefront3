@@ -14,7 +14,7 @@
         ログイン
       </nuxt-link>
     </div>
-    <div v-if="authToken" class="pt-1">
+    <div v-if="authToken" class="pt-2">
       <div @click="toggleMenu" class="cursor-pointer">
         <img
           id="header-user-image"

@@ -5,8 +5,9 @@
       <ul>
         <li>
           旗卓国旗は <em>DLK</em> さん、 娘卓画像は <em>緑一色</em> 先生（
+          <span class="icon-twitter"></span>
           <a target="_blank" href="https://twitter.com/aru_mido">
-            <span class="icon-twitter"></span>@aru_mido
+            @aru_mido
           </a>
           ）からご提供頂きました。
         </li>
@@ -22,11 +23,9 @@
       & li {
         @apply pb-2;
 
-        & a {
-          & .icon-twitter {
-            @apply inline-block w-5 h-5 mx-1 bg-cover align-text-bottom;
-            background-image: url('~assets/img/icon-twitter.png');
-          }
+        & .icon-twitter {
+          @apply inline-block w-4 h-4 mx-0 bg-cover align-text-bottom;
+          background-image: url('~assets/img/icon-twitter.png');
         }
       }
     }

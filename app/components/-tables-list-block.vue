@@ -233,6 +233,7 @@ export default {
       @apply py-3 my-0;
       @apply bg-gray-100;
       @apply border-solid border-t border-b border-gray-400;
+      @apply cursor-pointer;
 
       &:before {
         @apply inline-block relative mr-3;
