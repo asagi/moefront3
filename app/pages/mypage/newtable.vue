@@ -11,7 +11,7 @@
               <label for="face-type-1">
                 <div class="outer-image">
                   <img
-                    v-if="params.faceType == 1"
+                    v-if="form.faceType == 1"
                     :src="require('@/assets/img/power/girl/pla100.png')"
                   />
                   <img
@@ -22,7 +22,7 @@
                 <div>
                   <input
                     id="face-type-1"
-                    v-model="params.faceType"
+                    v-model="form.faceType"
                     class="radio"
                     type="radio"
                     name="face-type"
@@ -37,7 +37,7 @@
               <label for="face-type-2">
                 <div class="outer-image">
                   <img
-                    v-if="params.faceType == 2"
+                    v-if="form.faceType == 2"
                     :src="require('@/assets/img/power/flag/pla100.png')"
                   />
                   <img
@@ -48,7 +48,7 @@
                 <div>
                   <input
                     id="face-type-2"
-                    v-model="params.faceType"
+                    v-model="form.faceType"
                     class="radio"
                     type="radio"
                     name="face-type"
@@ -67,7 +67,7 @@
           <p class="label">更新時刻</p>
           <input
             id="period-rule-1"
-            v-model="params.periodRule"
+            v-model="form.periodRule"
             class="radio"
             type="radio"
             name="period-rule"
@@ -77,7 +77,7 @@
           <label for="period-rule-1">固定</label>
           <input
             id="period-rule-2"
-            v-model="params.periodRule"
+            v-model="form.periodRule"
             class="radio"
             type="radio"
             name="period-rule"
@@ -86,13 +86,13 @@
           <label for="period-rule-2">変動</label>
           <div class="banner">
             <dl>
-              <div v-if="params.periodRule == 1">
+              <div v-if="form.periodRule == 1">
                 <dt>固定</dt>
                 <dd>
                   外交フェイズの終了時刻は、卓作成時に設定した開始時刻で固定されます。
                 </dd>
               </div>
-              <div v-if="params.periodRule == 2">
+              <div v-if="form.periodRule == 2">
                 <dt>変動</dt>
                 <dd>
                   外交フェイズの終了時刻は、前回外交フェイズ終了時間から計算されます。
@@ -106,7 +106,7 @@
           <p class="label">時間種別</p>
           <input
             id="duration-2"
-            v-model="params.duration"
+            v-model="form.duration"
             class="radio"
             type="radio"
             name="duration"
@@ -116,7 +116,7 @@
           <label for="duration-2">標準</label>
           <input
             id="duration-1"
-            v-model="params.duration"
+            v-model="form.duration"
             class="radio"
             type="radio"
             name="duration"
@@ -125,14 +125,14 @@
           <label for="duration-1">短期</label>
           <div class="banner">
             <dl>
-              <div v-if="params.duration == 2">
+              <div v-if="form.duration == 2">
                 <dt>標準</dt>
                 <dd>
                   外交フェイズは 24 時間、撤退・調整フェイズはそれぞれ最長 30
                   分です。
                 </dd>
               </div>
-              <div v-if="params.duration == 1">
+              <div v-if="form.duration == 1">
                 <dt>短期</dt>
                 <dd>
                   外交フェイズは 1 時間、撤退・調整フェイズはそれぞれ最長 15
@@ -147,7 +147,7 @@
         <div class="items">
           <p class="label">開始日</p>
           <date-picker
-            v-model="params.dueDate"
+            v-model="form.dueDate"
             :input-attr="{ id: 'dueDate' }"
             :lang="lang"
             :not-before="today()"
@@ -170,7 +170,7 @@
         <div class="items">
           <p class="label">開始時刻</p>
           <div class="select relative">
-            <select v-model="params.startDate">
+            <select v-model="form.startDate">
               <option disabled value="">選択して下さい</option>
               <option>0:00</option>
               <option>1:00</option>
@@ -197,19 +197,7 @@
               <option>22:00</option>
               <option>23:00</option>
             </select>
-            <div
-              class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-10 text-gray-700"
-            >
-              <svg
-                class="fill-current h-4 w-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                />
-              </svg>
-            </div>
+            <SelectBoxIcon />
           </div>
           <div class="banner">
             <dl>
@@ -231,7 +219,7 @@
           <p class="label">掛け持ち</p>
           <input
             id="juggling-1"
-            v-model="params.juggling"
+            v-model="form.juggling"
             class="radio"
             type="radio"
             name="juggling"
@@ -241,7 +229,7 @@
           <label for="juggling-1">可</label>
           <input
             id="juggling-2"
-            v-model="params.juggling"
+            v-model="form.juggling"
             class="radio"
             type="radio"
             name="juggling"
@@ -250,13 +238,13 @@
           <label for="juggling-2">不可</label>
           <div class="banner">
             <dl>
-              <div v-if="params.juggling == 1">
+              <div v-if="form.juggling == 1">
                 <dt>掛け持ち可</dt>
                 <dd>
                   他の掛け持ち可の卓に参加できます。
                 </dd>
               </div>
-              <div v-if="params.juggling == 2">
+              <div v-if="form.juggling == 2">
                 <dt>掛け持ち不可</dt>
                 <dd>
                   感想戦を迎えるか担当国が滅亡するまで、他の卓には参加できません。
@@ -269,19 +257,47 @@
         <div class="items">
           <p class="label">
             鍵
-            <input v-model="params.lock" name="lock" type="checkbox" />
+            <input v-model="form.lock" name="lock" type="checkbox" />
           </p>
           <input
-            v-model="params.keyword"
-            :disabled="!params.lock"
+            v-model="form.keyword"
+            :disabled="!form.lock"
             name="keyword"
             type="text"
           />
-          <div v-if="params.lock" class="banner">
+          <div v-if="form.lock" class="banner">
             参加希望者は、ここで設定されたキーワードを入力する必要があります。
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="items">
+          <p class="label">希望国</p>
+          <div class="select relative">
+            <select v-model="form.power">
+              <option value="">おまかせ</option>
+              <template v-for="power in powers">
+                <template v-if="power.symbol !== 'x'">
+                  <option :key="power.id" :value="power.symbol">
+                    {{ power.jname }}
+                  </option>
+                </template>
+              </template>
+            </select>
+            <SelectBoxIcon />
+          </div>
+          <div class="banner">
+            <dl>
+              <dd>
+                担当を希望する国を選択してください。
+                複数のプレイヤーが同じ国を希望した場合は抽選になります。
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
       <div class="btn-area">
         <nuxt-link class="btn btn-gray" to="/mypage">
           戻る
@@ -296,9 +312,12 @@
 
 <script>
 import DatePicker from 'vue2-datepicker'
+import SelectBoxIcon from '@/components/-select-box-icon'
+
+import Powers from '~/assets/json/power.json'
 
 export default {
-  components: { DatePicker },
+  components: { DatePicker, SelectBoxIcon },
   middleware: ['auth'],
   head() {
     return {
@@ -307,7 +326,8 @@ export default {
   },
   data: () => {
     return {
-      params: {
+      powers: Powers,
+      form: {
         faceType: '1',
         periodRule: '1',
         duration: '2',
@@ -315,7 +335,8 @@ export default {
         lock: false,
         keyword: '',
         dueDate: '',
-        startDate: ''
+        startDate: '',
+        power: ''
       },
       lang: {
         days: ['日', '月', '火', '水', '木', '金', '土'],
@@ -348,7 +369,7 @@ export default {
   },
   methods: {
     submit: function() {
-      console.log(JSON.stringify(this.params))
+      console.log(JSON.stringify(this.form))
     },
     today: () => {
       return new Date()
