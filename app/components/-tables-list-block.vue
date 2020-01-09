@@ -53,7 +53,7 @@
                   <td data-label="フェイス" class="with-label half">
                     {{ table.regulation.face_type == 0 ? '娘' : '旗' }}
                   </td>
-                  <td data-label="鍵の有無" class="with-label half">
+                  <td data-label="鍵" class="with-label half">
                     {{ table.has_key ? 'あり' : 'なし' }}
                   </td>
                   <td data-label="外交期間" class="with-label half">
@@ -258,7 +258,7 @@ export default {
       @apply border-solid border-t border-b border-gray-400;
       @apply cursor-pointer;
 
-      &:before {
+      &::before {
         @apply inline-block relative mr-3;
         content: '';
         width: 12px;
@@ -268,7 +268,7 @@ export default {
         transform: rotate(135deg);
       }
       &.open {
-        &:before {
+        &::before {
           transform: rotate(-45deg);
         }
       }
@@ -352,10 +352,16 @@ export default {
               }
             }
 
-            & th.with-label::before,
-            & td.with-label::before {
+            & th.with-label::before {
               @apply font-bold;
               @apply absolute;
+              content: attr(data-label) ' : ';
+              left: 10px;
+            }
+
+            & td.with-label::before {
+              @apply font-bold;
+              @apply absolute inline-block w-20 text-right;
               content: attr(data-label) ' : ';
               left: 10px;
             }
