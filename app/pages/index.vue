@@ -15,9 +15,9 @@
     <div class="flex-area">
       <div class="tables">
         <h2>Tables</h2>
-        <TablesList :list="newTablesList" :mode="TableList.MODE_NEW" />
-        <TablesList :list="liveTablesList" :mode="TableList.MODE_LIVE" />
-        <TablesList :list="closedTablesList" :mode="TableList.MODE_CLOSED" />
+        <TablesList :list="tableList" :mode="TableList.MODE_NEW" />
+        <TablesList :list="tableList" :mode="TableList.MODE_LIVE" />
+        <TablesList :list="tableList" :mode="TableList.MODE_CLOSED" />
       </div>
       <div class="links">
         <hr class="border-top" />
@@ -63,31 +63,8 @@ export default {
     return {
       TableList: TablesList.data().Const,
       occupieds: Occupides,
-      units: Units,
-      tables: DummyTables
-    }
-  },
-  computed: {
-    newTablesList() {
-      return this.tables.filter((value, index, array) => {
-        if (value.status !== 0) return false
-        if (value.turn !== 0) return false
-        return true
-      })
-    },
-    liveTablesList() {
-      return this.tables.filter((value, index, array) => {
-        if (value.status === 2) return true
-        if (value.status === 3) return true
-        if (value.status === 4) return true
-        return false
-      })
-    },
-    closedTablesList() {
-      return this.tables.filter((value, index, array) => {
-        if (value.status === 5) return true
-        return false
-      })
+      tableList: DummyTables,
+      units: Units
     }
   }
 }

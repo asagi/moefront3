@@ -155,6 +155,7 @@ export default {
         MODE_LIVE: 1,
         MODE_CLOSED: 2
       },
+      tables: [],
       isOpened: false,
       width: 0
     }
@@ -162,9 +163,6 @@ export default {
   computed: {
     isSP: function() {
       return this.width < 1024
-    },
-    tables: function() {
-      return this.list
     }
   },
   created: function() {
@@ -172,6 +170,31 @@ export default {
   },
   mounted: function() {
     window.addEventListener('resize', this.handleResize)
+    switch (this.mode) {
+      case this.Const.MODE_NEW:
+        this.tables = this.list.filter((value, index, array) => {
+          if (value.status !== 0) return false
+          if (value.turn !== 0) return false
+          return true
+        })
+        break
+      case this.Const.MODE_LIVE:
+        this.tables = this.list.filter((value, index, array) => {
+          if (value.status === 2) return true
+          if (value.status === 3) return true
+          if (value.status === 4) return true
+          return false
+        })
+        break
+      case this.Const.MODE_CLOSED:
+        this.tables = this.list.filter((value, index, array) => {
+          if (value.status === 5) return true
+          return false
+        })
+        break
+      default:
+        throw new Error()
+    }
   },
   beforeDestroy: function() {
     window.removeEventListener('resize', this.handleResize)
