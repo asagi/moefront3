@@ -363,7 +363,7 @@ export default {
               @apply font-bold;
               @apply absolute inline-block w-20 text-right;
               content: attr(data-label) ' : ';
-              left: 10px;
+              left: 0;
             }
             & td:last-child {
               @apply border-b-0;
