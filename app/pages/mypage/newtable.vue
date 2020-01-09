@@ -1,6 +1,13 @@
 <template>
   <section class="container">
     <h1>新規卓作成</h1>
+
+    <div class="btn-area top">
+      <nuxt-link class="btn btn-gray" to="/mypage">
+        戻る
+      </nuxt-link>
+    </div>
+
     <form @submit.prevent="submit">
       <div class="row">
         <!-- face-type -->
@@ -298,7 +305,7 @@
         </div>
       </div>
 
-      <div class="btn-area">
+      <div class="btn-area bottom">
         <nuxt-link class="btn btn-gray" to="/mypage">
           戻る
         </nuxt-link>
@@ -473,6 +480,13 @@ select:focus {
 <style lang="postcss" scoped>
 .btn-area {
   @apply flex flex-row justify-center;
+
+  &.top {
+    @apply my-5;
+  }
+  &.bottom {
+    @apply mt-10;
+  }
 }
 .btn + .btn {
   @apply ml-5;

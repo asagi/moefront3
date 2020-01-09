@@ -36,6 +36,7 @@ export default {
 <style lang="postcss" scoped>
 .btn-area {
   @apply flex flex-row justify-center;
+  @apply my-10;
 }
 </style>
 

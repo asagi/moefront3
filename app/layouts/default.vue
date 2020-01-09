@@ -86,7 +86,7 @@ html {
 
 <style lang="postcss">
 .btn {
-  @apply font-bold py-2 px-3 rounded mt-10;
+  @apply font-bold py-2 px-3 rounded;
 }
 .btn-blue {
   @apply bg-blue-500 text-white;
