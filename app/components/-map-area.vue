@@ -104,6 +104,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import Powers from '~/assets/json/power.json'
 
 export default {
   props: {
@@ -165,8 +166,7 @@ export default {
       'getWaters',
       'getProvinces',
       'getSupplyCenters'
-    ]),
-    ...mapGetters('power', ['getPowerInfo'])
+    ])
   },
   methods: {
     getOwner: function(name) {
@@ -175,6 +175,11 @@ export default {
       })
       if (!prov) return null
       return prov.power
+    },
+    getPowerInfo(symbol) {
+      return Powers.find(power => {
+        return power.symbol === symbol
+      })
     },
     showDetail: function(name) {
       if (this.prov && name === this.prov.code) {
