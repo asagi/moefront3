@@ -18,7 +18,7 @@
               <label for="face-type-1">
                 <div class="outer-image">
                   <img
-                    v-if="form.faceType == 1"
+                    v-if="form.face_type == 1"
                     :src="require('@/assets/img/power/girl/pla100.png')"
                   />
                   <img
@@ -29,7 +29,7 @@
                 <div>
                   <input
                     id="face-type-1"
-                    v-model="form.faceType"
+                    v-model="form.face_type"
                     class="radio"
                     type="radio"
                     name="face-type"
@@ -44,7 +44,7 @@
               <label for="face-type-2">
                 <div class="outer-image">
                   <img
-                    v-if="form.faceType == 2"
+                    v-if="form.face_type == 2"
                     :src="require('@/assets/img/power/flag/pla100.png')"
                   />
                   <img
@@ -55,7 +55,7 @@
                 <div>
                   <input
                     id="face-type-2"
-                    v-model="form.faceType"
+                    v-model="form.face_type"
                     class="radio"
                     type="radio"
                     name="face-type"
@@ -74,7 +74,7 @@
           <p class="label">更新時刻</p>
           <input
             id="period-rule-1"
-            v-model="form.periodRule"
+            v-model="form.period_rule"
             class="radio"
             type="radio"
             name="period-rule"
@@ -84,7 +84,7 @@
           <label for="period-rule-1">固定</label>
           <input
             id="period-rule-2"
-            v-model="form.periodRule"
+            v-model="form.period_rule"
             class="radio"
             type="radio"
             name="period-rule"
@@ -93,13 +93,13 @@
           <label for="period-rule-2">変動</label>
           <div class="banner">
             <dl>
-              <div v-if="form.periodRule == 1">
+              <div v-if="form.period_rule == 1">
                 <dt>固定</dt>
                 <dd>
                   外交フェイズの終了時刻は、卓作成時に設定した開始時刻で固定されます。
                 </dd>
               </div>
-              <div v-if="form.periodRule == 2">
+              <div v-if="form.period_rule == 2">
                 <dt>変動</dt>
                 <dd>
                   外交フェイズの終了時刻は、前回外交フェイズ終了時間から計算されます。
@@ -154,8 +154,8 @@
         <div class="items">
           <p class="label">開始日</p>
           <date-picker
-            v-model="form.dueDate"
-            :input-attr="{ id: 'dueDate' }"
+            v-model="form.due_date"
+            :input-attr="{ id: 'due_date' }"
             :lang="lang"
             :not-before="today()"
             :not-after="notAfter()"
@@ -177,7 +177,7 @@
         <div class="items">
           <p class="label">開始時刻</p>
           <div class="select relative">
-            <select v-model="form.startDate">
+            <select v-model="form.start_time">
               <option disabled value="">選択して下さい</option>
               <option>0:00</option>
               <option>1:00</option>
@@ -264,15 +264,15 @@
         <div class="items">
           <p class="label">
             鍵
-            <input v-model="form.lock" name="lock" type="checkbox" />
+            <input v-model="form.private" name="private" type="checkbox" />
           </p>
           <input
             v-model="form.keyword"
-            :disabled="!form.lock"
+            :disabled="!form.private"
             name="keyword"
             type="text"
           />
-          <div v-if="form.lock" class="banner">
+          <div v-if="form.private" class="banner">
             参加希望者は、ここで設定されたキーワードを入力する必要があります。
           </div>
         </div>
@@ -335,14 +335,14 @@ export default {
     return {
       powers: Powers,
       form: {
-        faceType: '1',
-        periodRule: '1',
+        face_type: '1',
+        period_rule: '1',
         duration: '2',
         juggling: '1',
-        lock: false,
+        private: false,
         keyword: '',
-        dueDate: '',
-        startDate: '',
+        due_date: '',
+        start_time: '',
         power: ''
       },
       lang: {
