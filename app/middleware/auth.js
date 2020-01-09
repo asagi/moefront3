@@ -1,5 +1,7 @@
 export default function({ store, redirect }) {
-  if (!store.state.user.authToken) {
-    return redirect('/')
-  }
+  setTimeout(() => {
+    if (!store.getters['user/getAuthToken']) {
+      return redirect('/')
+    }
+  }, 0)
 }
