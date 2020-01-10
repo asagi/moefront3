@@ -13,7 +13,7 @@ export default {
   srcDir: 'app',
   env: {
     baseURL: process.env.BASE_URL,
-    serverURL: process.env.SERVER_URL
+    frontURL: process.env.FRONT_URL
   },
 
   /*

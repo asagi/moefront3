@@ -12,7 +12,7 @@ export default {
   fetch({ store, env, redirect }) {
     store.dispatch('header/unsetAllowLogin')
     window.location.href =
-      env.baseURL + '/login/twitter?callback=' + env.serverURL + '/auth'
+      env.baseURL + '/login/twitter?callback=' + env.frontURL + '/auth'
   }
 }
 </script>
