@@ -1,5 +1,3 @@
-import createPersistedState from 'vuex-persistedstate'
-
 export const state = () => ({
   authToken: null,
   image_url: null
@@ -15,9 +13,6 @@ export const mutations = {
 }
 
 export const actions = {
-  persistedstate() {
-    createPersistedState({ paths: ['user'] })(this)
-  },
   login({ commit }, token) {
     commit('setToken', token)
   },

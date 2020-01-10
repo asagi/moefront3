@@ -1,3 +1,3 @@
 export default async context => {
-  await context.store.dispatch('user/persistedstate', context)
+  await context.store.dispatch('persistedstate', context)
 }
