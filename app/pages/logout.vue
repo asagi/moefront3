@@ -27,8 +27,9 @@ export default {
 .container {
   @apply flex flex-col justify-center text-center;
   min-height: calc(100vh - 54px);
-}
-.container div {
-  @apply text-center w-full p-2 mb-5;
+
+  & div {
+    @apply text-center w-full p-2 mb-5;
+  }
 }
 </style>

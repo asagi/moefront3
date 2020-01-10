@@ -28,14 +28,14 @@ export default {
             this.$store.dispatch('user/logout', token)
           })
       }
-      this.$router.push({ path: '/mypage' })
+      this.$router.replace({ path: '/mypage' })
     }, 0)
   }
 }
 </script>
 
-<style scoped>
-body {
+<style lang="postcss" scoped>
+* {
   display: none;
 }
 </style>

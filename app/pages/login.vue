@@ -1,5 +1,5 @@
 <template>
-  <div>OAuth プロバイダの認証画面に遷移します</div>
+  <div>認証画面に遷移します</div>
 </template>
 
 <script>
@@ -11,14 +11,15 @@ export default {
   },
   fetch({ store, env, redirect }) {
     store.dispatch('header/unsetAllowLogin')
-    window.location.href =
+    const path =
       env.baseURL + '/login/twitter?callback=' + env.frontURL + '/auth'
+    window.location.replace(path)
   }
 }
 </script>
 
-<style scoped>
-body {
+<style lang="postcss" scoped>
+* {
   display: none;
 }
 </style>
