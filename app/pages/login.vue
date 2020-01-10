@@ -1,5 +1,5 @@
 <template>
-  <div />
+  <div>OAuth プロバイダの認証画面に遷移します</div>
 </template>
 
 <script>

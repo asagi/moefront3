@@ -1,5 +1,5 @@
 <template>
-  <div />
+  <div>認証処理中です</div>
 </template>
 
 <script>
