@@ -1,10 +1,10 @@
 <template>
   <div :class="[scrollLock]">
-    <TheHeader />
+    <the-header />
     <div class="outer-frame">
       <nuxt />
     </div>
-    <TheFooter />
+    <the-footer />
   </div>
 </template>
 

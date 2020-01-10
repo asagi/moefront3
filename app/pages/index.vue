@@ -1,10 +1,10 @@
 <template>
   <section class="container">
     <div class="top-area">
-      <MapArea :occupieds="occupieds" :units="units" />
-      <Greeting />
+      <map-area :occupieds="occupieds" :units="units" />
+      <greeting />
     </div>
-    <AmazonLink />
+    <amazon-link />
 
     <div class="caution-wrap">
       <p class="caution">
@@ -15,18 +15,18 @@
     <div class="flex-area">
       <div class="tables">
         <h2>Tables</h2>
-        <TablesList :list="tableList" :mode="TableList.MODE_NEW" />
-        <TablesList :list="tableList" :mode="TableList.MODE_LIVE" />
-        <TablesList :list="tableList" :mode="TableList.MODE_CLOSED" />
+        <tables-list :list="tableList" :mode="TableList.MODE_NEW" />
+        <tables-list :list="tableList" :mode="TableList.MODE_LIVE" />
+        <tables-list :list="tableList" :mode="TableList.MODE_CLOSED" />
       </div>
       <div class="links">
         <hr class="border-top" />
-        <Contact />
-        <Links />
+        <contact />
+        <links />
         <hr class="border-bottom" />
       </div>
     </div>
-    <Thanks />
+    <thanks />
   </section>
 </template>
 

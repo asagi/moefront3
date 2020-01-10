@@ -13,7 +13,7 @@
         外交手腕を発揮して欧州の覇権を争います。
       </p>
     </div>
-    <LoginForm />
+    <login-form />
   </div>
 </template>
 
