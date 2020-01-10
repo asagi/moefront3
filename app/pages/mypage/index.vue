@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  middleware: ['auth'],
+  layout: 'private',
   head() {
     return {
       title: 'マイページ'

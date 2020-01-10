@@ -14,6 +14,7 @@ import TheHeader from '@/components/-the-header'
 import TheFooter from '@/components/-the-footer'
 
 export default {
+  middleware: ['auth'],
   components: {
     TheHeader,
     TheFooter
