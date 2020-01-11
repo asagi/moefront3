@@ -13,11 +13,23 @@ export default {
     store.dispatch('header/unsetAllowLogin')
   },
   mounted() {
-    setTimeout(() => {
+    setTimeout(async () => {
       const token = this.$route.query.token
       if (token) {
-        this.$store.dispatch('user/login', token)
         this.$axios.setToken(token, 'Bearer')
+        await this.$axios
+          .get('/refresh')
+          .then(res => {
+            this.$store.dispatch('user/login', res.data.token)
+          })
+          .catch(error => {
+            console.log(error.message)
+            this.$store.dispatch('user/logout', token)
+            this.$router.replace({ path: '/' })
+          })
+
+        const newToken = this.$store.getters['user/getAuthToken']
+        this.$axios.setToken(newToken, 'Bearer')
         this.$axios
           .get('/users/me')
           .then(res => {
@@ -25,7 +37,8 @@ export default {
           })
           .catch(error => {
             console.log(error.message)
-            this.$store.dispatch('user/logout', token)
+            this.$store.dispatch('user/logout', newToken)
+            this.$router.replace({ path: '/' })
           })
       }
       this.$router.replace({ path: '/mypage' })
