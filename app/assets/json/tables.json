@@ -13,9 +13,10 @@
     "turn": 1,
     "phase": 1,
     "regulation": {
-      "face_type": 0,
-      "duration": 1,
-      "period_rule": 1
+      "face_type": 1,
+      "duration": 2,
+      "period_rule": 2,
+      "juggling": 1
     },
     "has_key": false,
     "next_period": "2020-02-03 12:00"
@@ -34,9 +35,10 @@
     "turn": 0,
     "phase": 4,
     "regulation": {
-      "face_type": 1,
-      "duration": 0,
-      "period_rule": 0
+      "face_type": 2,
+      "duration": 1,
+      "period_rule": 1,
+      "juggling": 2
     },
     "has_key": false,
     "next_period": "2020-02-06 12:00"
@@ -55,9 +57,10 @@
     "turn": 0,
     "phase": 4,
     "regulation": {
-      "face_type": 0,
-      "duration": 1,
-      "period_rule": 0
+      "face_type": 1,
+      "duration": 2,
+      "period_rule": 1,
+      "juggling": 2
     },
     "has_key": false,
     "next_period": "2020-02-04 12:00"
@@ -76,9 +79,10 @@
     "turn": 2,
     "phase": 0,
     "regulation": {
-      "face_type": 1,
-      "duration": 0,
-      "period_rule": 1
+      "face_type": 2,
+      "duration": 1,
+      "period_rule": 2,
+      "juggling": 2
     },
     "has_key": true,
     "next_period": "2020-02-03 14:00"

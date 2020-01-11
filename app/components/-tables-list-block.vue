@@ -50,33 +50,36 @@
                       </a>
                     </span>
                   </th>
-                  <td data-label="フェイス" class="with-label half">
-                    {{ table.regulation.face_type == 0 ? '娘' : '旗' }}
-                  </td>
-                  <td data-label="鍵" class="with-label half">
-                    {{ table.has_key ? 'あり' : 'なし' }}
-                  </td>
-                  <td data-label="外交期間" class="with-label half">
-                    {{ table.regulation.duration == 0 ? '短期' : '標準' }}
-                  </td>
-                  <td data-label="更新種別" class="with-label half">
-                    {{ table.regulation.period_rule == 0 ? '固定' : '変動' }}
-                  </td>
                   <td data-label="開始日時" class="with-label">
                     {{ table.next_period }}
+                  </td>
+                  <td data-label="フェイス" class="with-label">
+                    {{ getFaceType(table.regulation.face_type) }}
+                  </td>
+                  <td data-label="外交期間" class="with-label half">
+                    {{ getDuration(table.regulation.duration) }}
+                  </td>
+                  <td data-label="更新種別" class="with-label half">
+                    {{ getPeriodRule(table.regulation.period_rule) }}
+                  </td>
+                  <td data-label="掛け持ち" class="with-label half">
+                    {{ getPrivateState(table.regulation.juggling) }}
+                  </td>
+                  <td data-label="鍵" class="with-label half">
+                    {{ getPrivateState(table.has_key) }}
                   </td>
                 </template>
 
                 <template v-if="mode == Const.MODE_LIVE">
                   <th
                     :class="{
-                      girl: table.regulation.face_type == 0,
-                      flag: table.regulation.face_type == 1
+                      girl: table.regulation.face_type == 1,
+                      flag: table.regulation.face_type == 2
                     }"
                   >
                     <span class="turn-number">
                       {{ getTableNumber(table.number) }}
-                      {{ table.regulation.face_type == 0 ? '娘' : '旗' }}
+                      {{ getFaceType(table.regulation.face_type) }}
                       :
                     </span>
                     {{ getTurn(table.turn, table.phase) }}
@@ -86,10 +89,13 @@
                     {{ table.next_period }}
                   </td>
                   <td data-label="外交期間" class="with-label half">
-                    {{ table.regulation.duration == 0 ? '短期' : '標準' }}
+                    {{ getDuration(table.regulation.duration) }}
                   </td>
                   <td data-label="更新種別" class="with-label half">
-                    {{ table.regulation.period_rule == 0 ? '固定' : '変動' }}
+                    {{ getPeriodRule(table.regulation.period_rule) }}
+                  </td>
+                  <td data-label="掛け持ち" class="with-label">
+                    {{ getPrivateState(table.regulation.juggling) }}
                   </td>
                 </template>
 
@@ -102,17 +108,17 @@
                   >
                     <span class="turn-number">
                       {{ getTableNumber(table.number) }}
-                      {{ table.regulation.face_type == 0 ? '娘' : '旗' }}
+                      {{ getFaceType(table.regulation.face_type) }}
                       :
                     </span>
                     {{ getTurn(table.turn, table.phase) }}
                   </th>
 
                   <td data-label="外交期間" class="with-label half">
-                    {{ table.regulation.duration == 0 ? '短期' : '標準' }}
+                    {{ getDuration(table.regulation.duration) }}
                   </td>
                   <td data-label="更新種別" class="with-label half">
-                    {{ table.regulation.period_rule == 0 ? '固定' : '変動' }}
+                    {{ getPeriodRule(table.regulation.period_rule) }}
                   </td>
                 </template>
 
@@ -200,6 +206,39 @@ export default {
     window.removeEventListener('resize', this.handleResize)
   },
   methods: {
+    getDuration: value => {
+      switch (value) {
+        case 1:
+          return '短期'
+        case 2:
+          return '標準'
+        default:
+          return 'unknown'
+      }
+    },
+    getFaceType: value => {
+      switch (value) {
+        case 1:
+          return '娘'
+        case 2:
+          return '旗'
+        default:
+          return 'unknown'
+      }
+    },
+    getPeriodRule: value => {
+      switch (value) {
+        case 1:
+          return '固定'
+        case 2:
+          return '変動'
+        default:
+          return 'unknown'
+      }
+    },
+    getPrivateState: value => {
+      return value === 1 ? 'あり' : 'なし'
+    },
     getTableNumber: number => {
       return '#' + ('000' + number).slice(-3)
     },
@@ -208,19 +247,19 @@ export default {
       let season = ''
       switch (phase) {
         case 0:
-          season = '春外交フェイズ'
+          season = '春 外交'
           break
         case 1:
-          season = '春撤退フェイズ'
+          season = '春 撤退'
           break
         case 2:
-          season = '秋外交フェイズ'
+          season = '秋 外交'
           break
         case 3:
-          season = '秋撤退フェイズ'
+          season = '秋 撤退'
           break
         case 4:
-          season = '秋調整フェイズ'
+          season = '秋 調整'
           break
       }
       return year + '年' + season
