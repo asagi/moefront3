@@ -517,13 +517,15 @@ input {
   @apply ml-4;
   width: calc(100% - 3rem);
   height: 3.5rem;
+
+  & >>> .mx-input-wrapper {
+    @apply h-full w-full;
+  }
+  & >>> .mx-input {
+    @apply h-full border-none w-full;
+  }
 }
-.mx-datepicker >>> .mx-input-wrapper {
-  @apply h-full w-full;
-}
-.mx-datepicker >>> .mx-input {
-  @apply h-full border-none w-full;
-}
+
 select {
   @apply block appearance-none;
   @apply ml-5 py-4 px-4 pr-8 leading-tight;

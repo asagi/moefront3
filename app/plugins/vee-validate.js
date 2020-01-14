@@ -24,7 +24,7 @@ extend('startdatetime', {
     const minStartDateTime = new Date()
     minStartDateTime.setTime(minStartDateTime.getTime() + 1 * 60 * 60 * 1000)
     const selectedDatetime = new Date(dueDate + ' ' + value)
-    return minStartDateTime < selectedDatetime
+    return minStartDateTime.getTime() < selectedDatetime.getTime()
   }
 })
 
