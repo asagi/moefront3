@@ -18,7 +18,7 @@ extend('startdatetime', {
       isTarget: true
     }
   ],
-  message: '開始日時が現在時刻から 1 時間以内となる時刻は指定できません。',
+  message: '開始日時が現在時刻の 1 時間後よりも過去の時刻です',
   validate(value, { dueDate }) {
     if (dueDate === '') return true
     const minStartDateTime = new Date()
