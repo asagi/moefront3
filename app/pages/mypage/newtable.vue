@@ -302,7 +302,6 @@
               </p>
             </validation-provider>
             <div v-if="form.private" class="banner">
-              <dt>キーワード</dt>
               <dd>
                 鍵卓のキーワードを 10 文字までの長さで設定してください。
               </dd>
@@ -332,7 +331,9 @@
             <div class="banner">
               <dl>
                 <dd>
-                  担当を希望する国を選択してください。
+                  あなたが担当を希望する国を選択してください。
+                </dd>
+                <dd>
                   複数のプレイヤーが同じ国を希望した場合は抽選になります。
                 </dd>
               </dl>
@@ -521,7 +522,7 @@ select:focus {
   width: calc(100% - 2rem);
 }
 .banner dt {
-  @apply font-bold;
+  @apply font-bold mb-1;
 }
 .banner dd {
   @apply pl-2 pb-2;
