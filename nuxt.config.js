@@ -45,7 +45,7 @@ export default {
    */
   plugins: [
     { src: '@/plugins/persistedstate.js', mode: 'client' },
-    '~/plugins/vee-validate'
+    { src: '@/plugins/vee-validate', mode: 'client' }
   ],
 
   /*

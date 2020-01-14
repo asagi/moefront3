@@ -221,10 +221,10 @@
                   <option>23:00</option>
                 </select>
                 <SelectBoxIcon />
-                <p v-show="errors.length" class="help is-danger">
-                  {{ errors[0] }}
-                </p>
               </div>
+              <p v-show="errors.length" class="help is-danger">
+                {{ errors[0] }}
+              </p>
               <div class="banner">
                 <dl>
                   <dt>HH:MM</dt>

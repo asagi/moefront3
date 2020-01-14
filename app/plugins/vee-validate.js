@@ -22,8 +22,8 @@ extend('startdatetime', {
   validate(value, { dueDate }) {
     if (dueDate === '') return true
     const minStartDateTime = new Date()
-    minStartDateTime.setTime(minStartDateTime.getTime() + 1 * 60 * 60 * 1000)
-    const selectedDatetime = new Date(dueDate + ' ' + value)
+    minStartDateTime.setTime(minStartDateTime.getTime() + 60 * 60 * 1000)
+    const selectedDatetime = new Date(dueDate + ' ' + ('0' + value).slice(-5))
     return minStartDateTime.getTime() < selectedDatetime.getTime()
   }
 })
