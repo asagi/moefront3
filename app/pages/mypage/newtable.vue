@@ -433,11 +433,30 @@ export default {
 
 <style lang="postcss" scoped>
 .container {
-  @apply flex flex-row flex-wrap justify-center;
+  @apply flex flex-row flex-wrap justify-center max-w-sm;
   @apply text-left;
 
   & h1 {
     @apply text-xl font-bold my-5 ml-10 w-full;
+  }
+
+  & .btn-area {
+    @apply flex flex-row justify-center w-full;
+
+    &.top {
+      @apply my-5;
+    }
+    &.bottom {
+      @apply mt-10;
+    }
+
+    & .btn + .btn {
+      @apply ml-5;
+    }
+
+    & .btn[type='submit']:disabled {
+      @apply opacity-50 cursor-not-allowed;
+    }
   }
 
   & form {
@@ -526,27 +545,6 @@ select:focus {
 }
 .banner dd {
   @apply pl-2 pb-2;
-}
-</style>
-
-<style lang="postcss" scoped>
-.btn-area {
-  @apply flex flex-row justify-center;
-
-  &.top {
-    @apply my-5;
-  }
-  &.bottom {
-    @apply mt-10;
-  }
-
-  & .btn + .btn {
-    @apply ml-5;
-  }
-
-  & .btn[type='submit']:disabled {
-    @apply opacity-50 cursor-not-allowed;
-  }
 }
 </style>
 
