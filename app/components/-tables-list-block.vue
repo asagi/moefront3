@@ -63,7 +63,7 @@
                     {{ getPeriodRule(table.regulation.period_rule) }}
                   </td>
                   <td data-label="掛け持ち" class="with-label half">
-                    {{ getPrivateState(table.regulation.juggling) }}
+                    {{ getJugglingState(table.regulation.juggling) }}
                   </td>
                   <td data-label="鍵" class="with-label half">
                     {{ getPrivateState(table.has_key) }}
@@ -95,7 +95,7 @@
                     {{ getPeriodRule(table.regulation.period_rule) }}
                   </td>
                   <td data-label="掛け持ち" class="with-label">
-                    {{ getPrivateState(table.regulation.juggling) }}
+                    {{ getJugglingState(table.regulation.juggling) }}
                   </td>
                 </template>
 
@@ -238,6 +238,9 @@ export default {
     },
     getPrivateState: value => {
       return value === 1 ? 'あり' : 'なし'
+    },
+    getJugglingState: value => {
+      return value === 1 ? '可' : '不可'
     },
     getTableNumber: number => {
       return '#' + ('000' + number).slice(-3)

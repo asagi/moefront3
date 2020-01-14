@@ -43,7 +43,10 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '@/plugins/persistedstate.js', mode: 'client' }],
+  plugins: [
+    { src: '@/plugins/persistedstate.js', mode: 'client' },
+    '~/plugins/vee-validate'
+  ],
 
   /*
    ** Nuxt.js modules
@@ -143,6 +146,7 @@ export default {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    transpile: ['vee-validate/dist/rules']
   }
 }

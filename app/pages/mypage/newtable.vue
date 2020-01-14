@@ -8,312 +8,352 @@
       </nuxt-link>
     </div>
 
-    <form @submit.prevent="submit">
-      <div class="row">
-        <!-- face-type -->
-        <div class="items">
-          <p class="label">フェイスタイプ</p>
-          <div class="facetypes">
-            <div class="facetype">
-              <label for="face-type-1">
-                <div class="outer-image">
-                  <img
-                    v-if="form.face_type == 1"
-                    :src="require('@/assets/img/power/girl/pla100.png')"
-                  />
-                  <img
-                    v-else
-                    :src="require('@/assets/img/power/girl/dfpla100.png')"
-                  />
-                </div>
-                <div>
-                  <input
-                    id="face-type-1"
-                    v-model="form.face_type"
-                    class="radio"
-                    type="radio"
-                    name="face-type"
-                    value="1"
-                    checked
-                  />
-                  <span class="caption">娘</span>
-                </div>
-              </label>
+    <validation-observer v-slot="{ invalid, passes }">
+      <form @submit.prevent="passes(submit)">
+        <div class="row">
+          <!-- face-type -->
+          <div class="items">
+            <p class="label">フェイスタイプ</p>
+            <div class="facetypes">
+              <div class="facetype">
+                <label for="face-type-1">
+                  <div class="outer-image">
+                    <img
+                      v-if="form.face_type == 1"
+                      :src="require('@/assets/img/power/girl/pla100.png')"
+                    />
+                    <img
+                      v-else
+                      :src="require('@/assets/img/power/girl/dfpla100.png')"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      id="face-type-1"
+                      v-model="form.face_type"
+                      class="radio"
+                      type="radio"
+                      name="face-type"
+                      value="1"
+                      checked
+                    />
+                    <span class="caption">娘</span>
+                  </div>
+                </label>
+              </div>
+              <div class="facetype">
+                <label for="face-type-2">
+                  <div class="outer-image">
+                    <img
+                      v-if="form.face_type == 2"
+                      :src="require('@/assets/img/power/flag/pla100.png')"
+                    />
+                    <img
+                      v-else
+                      :src="require('@/assets/img/power/flag/dfpla100.png')"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      id="face-type-2"
+                      v-model="form.face_type"
+                      class="radio"
+                      type="radio"
+                      name="face-type"
+                      value="2"
+                    />
+                    <span class="caption">旗</span>
+                  </div>
+                </label>
+              </div>
             </div>
-            <div class="facetype">
-              <label for="face-type-2">
-                <div class="outer-image">
-                  <img
-                    v-if="form.face_type == 2"
-                    :src="require('@/assets/img/power/flag/pla100.png')"
-                  />
-                  <img
-                    v-else
-                    :src="require('@/assets/img/power/flag/dfpla100.png')"
-                  />
+          </div>
+        </div>
+        <div class="row">
+          <!-- period-rule -->
+          <div class="items">
+            <p class="label">更新種別</p>
+            <input
+              id="period-rule-1"
+              v-model="form.period_rule"
+              class="radio"
+              type="radio"
+              name="period-rule"
+              value="1"
+              checked
+            />
+            <label for="period-rule-1">固定</label>
+            <input
+              id="period-rule-2"
+              v-model="form.period_rule"
+              class="radio"
+              type="radio"
+              name="period-rule"
+              value="2"
+            />
+            <label for="period-rule-2">変動</label>
+            <div class="banner">
+              <dl>
+                <div v-if="form.period_rule == 1">
+                  <dt>固定</dt>
+                  <dd>
+                    外交フェイズの終了時刻は、卓作成時に設定した開始時刻で固定されます。
+                  </dd>
                 </div>
-                <div>
-                  <input
-                    id="face-type-2"
-                    v-model="form.face_type"
-                    class="radio"
-                    type="radio"
-                    name="face-type"
-                    value="2"
-                  />
-                  <span class="caption">旗</span>
+                <div v-if="form.period_rule == 2">
+                  <dt>変動</dt>
+                  <dd>
+                    外交フェイズの終了時刻は、前回外交フェイズ終了時間から計算されます。
+                  </dd>
                 </div>
-              </label>
+              </dl>
+            </div>
+          </div>
+          <!-- duration -->
+          <div class="items">
+            <p class="label">外交期間</p>
+            <input
+              id="duration-2"
+              v-model="form.duration"
+              class="radio"
+              type="radio"
+              name="duration"
+              value="2"
+              checked
+            />
+            <label for="duration-2">標準</label>
+            <input
+              id="duration-1"
+              v-model="form.duration"
+              class="radio"
+              type="radio"
+              name="duration"
+              value="1"
+            />
+            <label for="duration-1">短期</label>
+            <div class="banner">
+              <dl>
+                <div v-if="form.duration == 2">
+                  <dt>標準</dt>
+                  <dd>
+                    外交フェイズは 24 時間、撤退・調整フェイズはそれぞれ最長 30
+                    分です。
+                  </dd>
+                </div>
+                <div v-if="form.duration == 1">
+                  <dt>短期</dt>
+                  <dd>
+                    外交フェイズは 1 時間、撤退・調整フェイズはそれぞれ最長 15
+                    分です。
+                  </dd>
+                </div>
+              </dl>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <!-- period-rule -->
-        <div class="items">
-          <p class="label">更新時刻</p>
-          <input
-            id="period-rule-1"
-            v-model="form.period_rule"
-            class="radio"
-            type="radio"
-            name="period-rule"
-            value="1"
-            checked
-          />
-          <label for="period-rule-1">固定</label>
-          <input
-            id="period-rule-2"
-            v-model="form.period_rule"
-            class="radio"
-            type="radio"
-            name="period-rule"
-            value="2"
-          />
-          <label for="period-rule-2">変動</label>
-          <div class="banner">
-            <dl>
-              <div v-if="form.period_rule == 1">
-                <dt>固定</dt>
+        <div class="row">
+          <div class="items">
+            <p class="label">開始日</p>
+            <validation-provider
+              v-slot="{ errors }"
+              vid="dueDate"
+              rules="required"
+              name="開始日"
+            >
+              <date-picker
+                v-model="form.due_date"
+                :input-attr="{ id: 'due_date' }"
+                :lang="lang"
+                :not-before="today()"
+                :not-after="notAfter()"
+                :editable="false"
+                value-type="format"
+              ></date-picker>
+              <p v-show="errors.length" class="help is-danger">
+                {{ errors[0] }}
+              </p>
+            </validation-provider>
+            <div class="banner">
+              <dl>
+                <dt>YYYY-MM-DD</dt>
                 <dd>
-                  外交フェイズの終了時刻は、卓作成時に設定した開始時刻で固定されます。
+                  指定日の開始時刻にゲームが開始されます。
                 </dd>
-              </div>
-              <div v-if="form.period_rule == 2">
-                <dt>変動</dt>
                 <dd>
-                  外交フェイズの終了時刻は、前回外交フェイズ終了時間から計算されます。
+                  開始までにプレイヤーが揃わなかった場合は廃卓となります。
                 </dd>
+              </dl>
+            </div>
+          </div>
+          <div class="items">
+            <p class="label">開始時刻</p>
+            <validation-provider
+              v-slot="{ errors }"
+              rules="required|startdatetime:dueDate"
+              name="開始時刻"
+            >
+              <div class="select relative">
+                <select v-model="form.start_time">
+                  <option disabled value="">選択して下さい</option>
+                  <option>0:00</option>
+                  <option>1:00</option>
+                  <option>2:00</option>
+                  <option>3:00</option>
+                  <option>4:00</option>
+                  <option>5:00</option>
+                  <option>6:00</option>
+                  <option>7:00</option>
+                  <option>8:00</option>
+                  <option>9:00</option>
+                  <option>10:00</option>
+                  <option>11:00</option>
+                  <option>12:00</option>
+                  <option>13:00</option>
+                  <option>14:00</option>
+                  <option>15:00</option>
+                  <option>16:00</option>
+                  <option>17:00</option>
+                  <option>18:00</option>
+                  <option>19:00</option>
+                  <option>20:00</option>
+                  <option>21:00</option>
+                  <option>22:00</option>
+                  <option>23:00</option>
+                </select>
+                <SelectBoxIcon />
+                <p v-show="errors.length" class="help is-danger">
+                  {{ errors[0] }}
+                </p>
               </div>
-            </dl>
+              <div class="banner">
+                <dl>
+                  <dt>HH:MM</dt>
+                  <dd>
+                    ゲーム開始時刻です。
+                  </dd>
+                  <dd>
+                    開始日時が現在時刻から 1
+                    時間以内となる時刻は指定できません。
+                  </dd>
+                </dl>
+              </div>
+            </validation-provider>
           </div>
         </div>
-        <!-- duration -->
-        <div class="items">
-          <p class="label">時間種別</p>
-          <input
-            id="duration-2"
-            v-model="form.duration"
-            class="radio"
-            type="radio"
-            name="duration"
-            value="2"
-            checked
-          />
-          <label for="duration-2">標準</label>
-          <input
-            id="duration-1"
-            v-model="form.duration"
-            class="radio"
-            type="radio"
-            name="duration"
-            value="1"
-          />
-          <label for="duration-1">短期</label>
-          <div class="banner">
-            <dl>
-              <div v-if="form.duration == 2">
-                <dt>標準</dt>
-                <dd>
-                  外交フェイズは 24 時間、撤退・調整フェイズはそれぞれ最長 30
-                  分です。
-                </dd>
-              </div>
-              <div v-if="form.duration == 1">
-                <dt>短期</dt>
-                <dd>
-                  外交フェイズは 1 時間、撤退・調整フェイズはそれぞれ最長 15
-                  分です。
-                </dd>
-              </div>
-            </dl>
+        <div class="row">
+          <!-- duration -->
+          <div class="items">
+            <p class="label">掛け持ち</p>
+            <input
+              id="juggling-1"
+              v-model="form.juggling"
+              class="radio"
+              type="radio"
+              name="juggling"
+              value="1"
+              checked
+            />
+            <label for="juggling-1">可</label>
+            <input
+              id="juggling-2"
+              v-model="form.juggling"
+              class="radio"
+              type="radio"
+              name="juggling"
+              value="2"
+            />
+            <label for="juggling-2">不可</label>
+            <div class="banner">
+              <dl>
+                <div v-if="form.juggling == 1">
+                  <dt>掛け持ち可</dt>
+                  <dd>
+                    他の掛け持ち可の卓に参加できます。
+                  </dd>
+                </div>
+                <div v-if="form.juggling == 2">
+                  <dt>掛け持ち不可</dt>
+                  <dd>
+                    感想戦を迎えるか担当国が滅亡するまで、他の卓には参加できません。
+                  </dd>
+                </div>
+              </dl>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="items">
-          <p class="label">開始日</p>
-          <date-picker
-            v-model="form.due_date"
-            :input-attr="{ id: 'due_date' }"
-            :lang="lang"
-            :not-before="today()"
-            :not-after="notAfter()"
-            :editable="false"
-            value-type="format"
-          ></date-picker>
-          <div class="banner">
-            <dl>
-              <dt>YYYY-MM-DD</dt>
+          <!-- keyword -->
+          <div class="items">
+            <p class="label">
+              鍵
+              <input v-model="form.private" name="private" type="checkbox" />
+            </p>
+            <validation-provider
+              v-slot="{ errors }"
+              :rules="form.private ? 'required|max:10' : null"
+              name="鍵卓のキーワード"
+            >
+              <input
+                v-model="form.keyword"
+                :disabled="!form.private"
+                name="keyword"
+                type="text"
+              />
+              <p v-show="form.private && errors.length" class="help is-danger">
+                {{ errors[0] }}
+              </p>
+            </validation-provider>
+            <div v-if="form.private" class="banner">
+              <dt>キーワード</dt>
               <dd>
-                指定日の開始時刻にゲームが開始されます。
+                鍵卓のキーワードを 10 文字までの長さで設定してください。
               </dd>
               <dd>
-                開始までにプレイヤーが揃わなかった場合は廃卓となります。
+                参加希望者は、ここで設定されたキーワードを入力する必要があります。
               </dd>
-            </dl>
+            </div>
           </div>
         </div>
-        <div class="items">
-          <p class="label">開始時刻</p>
-          <div class="select relative">
-            <select v-model="form.start_time">
-              <option disabled value="">選択して下さい</option>
-              <option>0:00</option>
-              <option>1:00</option>
-              <option>2:00</option>
-              <option>3:00</option>
-              <option>4:00</option>
-              <option>5:00</option>
-              <option>6:00</option>
-              <option>7:00</option>
-              <option>8:00</option>
-              <option>9:00</option>
-              <option>10:00</option>
-              <option>11:00</option>
-              <option>12:00</option>
-              <option>13:00</option>
-              <option>14:00</option>
-              <option>15:00</option>
-              <option>16:00</option>
-              <option>17:00</option>
-              <option>18:00</option>
-              <option>19:00</option>
-              <option>20:00</option>
-              <option>21:00</option>
-              <option>22:00</option>
-              <option>23:00</option>
-            </select>
-            <SelectBoxIcon />
-          </div>
-          <div class="banner">
-            <dl>
-              <dt>HH:MM</dt>
-              <dd>
-                ゲーム開始時刻です。
-              </dd>
-              <dd>
-                開始日と合わせて現在の時間から 1
-                時間後より以前の時刻は指定できません。
-              </dd>
-            </dl>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <!-- duration -->
-        <div class="items">
-          <p class="label">掛け持ち</p>
-          <input
-            id="juggling-1"
-            v-model="form.juggling"
-            class="radio"
-            type="radio"
-            name="juggling"
-            value="1"
-            checked
-          />
-          <label for="juggling-1">可</label>
-          <input
-            id="juggling-2"
-            v-model="form.juggling"
-            class="radio"
-            type="radio"
-            name="juggling"
-            value="2"
-          />
-          <label for="juggling-2">不可</label>
-          <div class="banner">
-            <dl>
-              <div v-if="form.juggling == 1">
-                <dt>掛け持ち可</dt>
-                <dd>
-                  他の掛け持ち可の卓に参加できます。
-                </dd>
-              </div>
-              <div v-if="form.juggling == 2">
-                <dt>掛け持ち不可</dt>
-                <dd>
-                  感想戦を迎えるか担当国が滅亡するまで、他の卓には参加できません。
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-        <!-- keyword -->
-        <div class="items">
-          <p class="label">
-            鍵
-            <input v-model="form.private" name="private" type="checkbox" />
-          </p>
-          <input
-            v-model="form.keyword"
-            :disabled="!form.private"
-            name="keyword"
-            type="text"
-          />
-          <div v-if="form.private" class="banner">
-            参加希望者は、ここで設定されたキーワードを入力する必要があります。
-          </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="items">
-          <p class="label">希望国</p>
-          <div class="select relative">
-            <select v-model="form.power">
-              <option value="">おまかせ</option>
-              <template v-for="power in powers">
-                <template v-if="power.symbol !== 'x'">
-                  <option :key="power.id" :value="power.symbol">
-                    {{ power.jname }}
-                  </option>
+        <div class="row">
+          <div class="items">
+            <p class="label">希望国</p>
+            <div class="select relative">
+              <select v-model="form.power">
+                <option value="">おまかせ</option>
+                <template v-for="power in powers">
+                  <template v-if="power.symbol !== 'x'">
+                    <option :key="power.id" :value="power.symbol">
+                      {{ power.jname }}
+                    </option>
+                  </template>
                 </template>
-              </template>
-            </select>
-            <SelectBoxIcon />
-          </div>
-          <div class="banner">
-            <dl>
-              <dd>
-                担当を希望する国を選択してください。
-                複数のプレイヤーが同じ国を希望した場合は抽選になります。
-              </dd>
-            </dl>
+              </select>
+              <SelectBoxIcon />
+            </div>
+            <div class="banner">
+              <dl>
+                <dd>
+                  担当を希望する国を選択してください。
+                  複数のプレイヤーが同じ国を希望した場合は抽選になります。
+                </dd>
+              </dl>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="btn-area bottom">
-        <nuxt-link class="btn btn-gray" to="/mypage">
-          戻る
-        </nuxt-link>
-        <button type="submit" class="btn btn-blue">
-          作成する
-        </button>
-      </div>
-    </form>
+        <p v-show="invalid" class="help is-danger-global">
+          設定内容を見直してください。
+        </p>
+
+        <div class="btn-area bottom">
+          <nuxt-link class="btn btn-gray" to="/mypage">
+            戻る
+          </nuxt-link>
+          <button :disabled="invalid" type="submit" class="btn btn-blue">
+            作成する
+          </button>
+        </div>
+      </form>
+    </validation-observer>
   </section>
 </template>
 
@@ -394,41 +434,52 @@ export default {
 .container {
   @apply flex flex-row flex-wrap justify-center;
   @apply text-left;
-}
-form {
-  @apply w-full;
-}
-h1 {
-  @apply text-xl font-bold my-5 ml-10 w-full;
-}
-.row {
-  @apply flex flex-row flex-wrap justify-center;
-}
-.items {
-  @apply mt-5 mb-2 mx-5 mb-5 w-full;
-  max-width: 472px;
-}
-.facetypes {
-  @apply flex flex-row justify-center items-center;
-}
-label {
-  @apply cursor-pointer;
-}
-.label {
-  @apply font-bold mb-3 px-3 py-2 bg-gray-300;
-}
-.facetype {
-  @apply inline-block ml-5;
-}
-.facetype + .facetype {
-  @apply ml-10;
-}
-.facetype .outer-image {
-  @apply table-cell align-middle mb-3;
-  height: 100px;
-}
-.facetype img {
-  @apply rounded-lg;
+
+  & h1 {
+    @apply text-xl font-bold my-5 ml-10 w-full;
+  }
+
+  & form {
+    @apply w-full;
+
+    & .row {
+      @apply flex flex-row flex-wrap justify-center;
+    }
+
+    & .items {
+      @apply mt-5 mb-2 mx-5 mb-5 w-full;
+      max-width: 472px;
+
+      & label {
+        @apply cursor-pointer;
+      }
+
+      & .label {
+        @apply font-bold mb-3 px-3 py-2 bg-gray-300;
+      }
+
+      & .facetypes {
+        @apply flex flex-row justify-center items-center;
+
+        & .facetype {
+          @apply inline-block ml-5;
+
+          & .outer-image {
+            @apply table-cell align-middle mb-3;
+            height: 100px;
+          }
+
+          & img {
+            @apply rounded-lg;
+          }
+        }
+
+        & .facetype + .facetype {
+          @apply ml-10;
+        }
+      }
+    }
+  }
 }
 input[type='radio'],
 input[type='checkbox'] {
@@ -487,8 +538,33 @@ select:focus {
   &.bottom {
     @apply mt-10;
   }
+
+  & .btn + .btn {
+    @apply ml-5;
+  }
+
+  & .btn[type='submit']:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
 }
-.btn + .btn {
-  @apply ml-5;
+</style>
+
+<style lang="postcss" scoped>
+.is-danger {
+  @apply mx-5 py-2;
+  @apply text-sm text-red-500;
+}
+
+.is-danger-global {
+  @apply mx-5 mt-5 px-4 py-4;
+  @apply border border-red-400 text-red-700 rounded;
+  @apply text-base bg-red-100 text-red-500;
+}
+
+@screen sm {
+  .is-danger-global {
+    @apply w-3/5 mx-auto text-center;
+    min-width: 600px;
+  }
 }
 </style>
