@@ -20,7 +20,9 @@ export default {
    ** Headers of the page
    */
   head: {
-    titleTemplate: '%s | Diplomacy MOE',
+    titleTemplate: titleChunk => {
+      return titleChunk ? titleChunk + ' | Diplomacy MOE' : 'Diplomacy MOE'
+    },
     htmlAttrs: { lang: 'ja' },
     meta: [
       { charset: 'utf-8' },

@@ -44,12 +44,6 @@ import Occupides from '~/assets/json/occupieds.json'
 import DummyTables from '~/assets/json/tables.json'
 
 export default {
-  head() {
-    return {
-      title: 'Diplomacy MOE',
-      titleTemplate: ''
-    }
-  },
   components: {
     MapArea,
     Greeting,

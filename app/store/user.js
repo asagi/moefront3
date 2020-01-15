@@ -20,7 +20,6 @@ export const actions = {
     this.$axios.setToken(state.authToken, 'Bearer')
     this.$axios.get('/logout')
     commit('setToken', null)
-    this.$router.push({ path: '/logout' })
   },
   load({ commit }, info) {
     commit('setInfo', info)

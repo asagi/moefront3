@@ -51,10 +51,11 @@ export default {
     clickLogout: function() {
       this.logout()
       this.closeMenu()
+      this.$root.$router.push('/logout')
     },
     showMypage: function() {
-      this.$router.push('/mypage')
       this.closeMenu()
+      this.$root.$router.push('/mypage')
     }
   }
 }
