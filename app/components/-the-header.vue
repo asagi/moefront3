@@ -49,13 +49,13 @@ export default {
     ...mapActions('user', ['logout']),
     ...mapActions('header', ['closeMenu', 'toggleMenu']),
     clickLogout: function() {
-      this.logout()
       this.closeMenu()
-      this.$root.$router.push('/logout')
+      this.logout()
+      this.$router.push('/logout')
     },
     showMypage: function() {
       this.closeMenu()
-      this.$root.$router.push('/mypage')
+      this.$router.push('/mypage')
     }
   }
 }

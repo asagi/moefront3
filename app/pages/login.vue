@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  middleware: ['disable-direct-access'],
   head() {
     return {
       title: 'ログイン'

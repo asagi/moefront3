@@ -1,7 +1,7 @@
 <template>
   <div :class="[scrollLock]">
     <the-header />
-    <div v-if="isAUthenticated" class="outer-frame">
+    <div class="outer-frame">
       <nuxt />
     </div>
     <the-footer />
@@ -26,9 +26,6 @@ export default {
         'overflow-hidden': this.isActive,
         'h-screen': this.isActive
       }
-    },
-    isAUthenticated() {
-      return this.$store.getters['user/getAuthToken']
     }
   }
 }
