@@ -507,7 +507,13 @@ input[type='checkbox'] {
 }
 input[type='radio'] + .caption,
 input[type='radio'] + label {
-  @apply inline-block ml-1;
+  @apply inline-block mt-5 ml-1;
+  height: 2rem;
+}
+
+input[name='keyword'] {
+  @apply inline-block;
+  width: calc(100% - 3rem);
 }
 
 input {
