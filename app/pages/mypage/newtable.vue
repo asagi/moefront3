@@ -427,10 +427,8 @@ export default {
   },
   methods: {
     submit: async function() {
-      this.offsetY = document.body.scrollTop
-      if (this.offsetY === 0) {
-        this.offsetY = document.documentElement.scrollTop
-      }
+      this.offsetY =
+        document.documentElement.scrollTop || document.body.scrollTop
       await this.$store.dispatch('layout/showConfirmDialog')
       document.getElementById('__content').scroll(0, this.offsetY)
     },
