@@ -365,8 +365,8 @@ import SelectBoxIcon from '@/components/-select-box-icon'
 import Powers from '~/assets/json/power.json'
 
 export default {
-  layout: 'private',
   components: { DatePicker, SelectBoxIcon },
+  middleware: ['auth'],
   head() {
     return {
       title: '新規卓作成'
