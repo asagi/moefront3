@@ -1,5 +1,5 @@
 <template>
-  <div :class="[scrollLock]">
+  <div id="__content" :class="[scrollLock]">
     <the-header />
     <div class="outer-frame">
       <nuxt />
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import debounce from 'lodash/debounce'
+
 import { mapState } from 'vuex'
 import TheHeader from '@/components/-the-header'
 import TheFooter from '@/components/-the-footer'
@@ -25,6 +27,25 @@ export default {
         'overflow-hidden': this.isMenuActive,
         'h-screen': this.isMenuActive
       }
+    }
+  },
+  created: function() {
+    this.handleResize = debounce(this.removeAdsStyle, 100)
+  },
+  mounted: function() {
+    window.addEventListener('resize', this.handleResize)
+  },
+  beforeDestroy: function() {
+    window.removeEventListener('resize', this.handleResize)
+  },
+  methods: {
+    removeAdsStyle: () => {
+      setTimeout(() => {
+        console.log('fire!')
+        document.getElementById('__nuxt').removeAttribute('style')
+        document.getElementById('__layout').removeAttribute('style')
+        document.getElementById('__content').removeAttribute('style')
+      }, 1)
     }
   }
 }
