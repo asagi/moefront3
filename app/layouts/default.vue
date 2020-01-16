@@ -21,11 +21,11 @@ export default {
     TheFooter
   },
   computed: {
-    ...mapState('header', ['isMenuActive']),
+    ...mapState('layout', ['isMenuActive', 'isConfirmDialogActive']),
     scrollLock: function() {
       return {
-        'overflow-hidden': this.isMenuActive,
-        'h-screen': this.isMenuActive
+        'overflow-hidden': this.isMenuActive || this.isConfirmDialogActive,
+        'h-screen': this.isMenuActive || this.isConfirmDialogActive
       }
     }
   },
@@ -41,7 +41,6 @@ export default {
   methods: {
     removeAdsStyle: () => {
       setTimeout(() => {
-        console.log('fire!')
         document.getElementById('__nuxt').removeAttribute('style')
         document.getElementById('__layout').removeAttribute('style')
         document.getElementById('__content').removeAttribute('style')

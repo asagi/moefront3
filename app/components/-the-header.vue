@@ -43,11 +43,12 @@ import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapState('user', ['authToken', 'image_url']),
-    ...mapState('header', ['isMenuActive', 'allowLogin'])
+    ...mapState('header', ['allowLogin']),
+    ...mapState('layout', ['isMenuActive'])
   },
   methods: {
     ...mapActions('user', ['logout']),
-    ...mapActions('header', ['closeMenu', 'toggleMenu']),
+    ...mapActions('layout', ['closeMenu', 'toggleMenu']),
     clickLogout: function() {
       this.closeMenu()
       this.logout()

@@ -355,10 +355,16 @@
         </div>
       </form>
     </validation-observer>
+    <div
+      v-if="isConfirmDialogActive"
+      @click="closeConfirmDialog"
+      class="dropdown-bg"
+    ></div>
   </section>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import DatePicker from 'vue2-datepicker'
 import SelectBoxIcon from '@/components/-select-box-icon'
 
@@ -415,8 +421,15 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState('layout', ['isConfirmDialogActive'])
+  },
   methods: {
+    ...mapActions('layout', ['closeConfirmDialog']),
     submit: function() {
+      this.$store.dispatch('layout/showConfirmDialog')
+    },
+    callCreateTableAPI: function() {
       console.log(JSON.stringify(this.form))
     },
     today: () => {
@@ -435,6 +448,10 @@ export default {
 .container {
   @apply flex flex-row flex-wrap justify-center max-w-sm;
   @apply text-left;
+
+  & .dropdown-bg {
+    @apply bg-black opacity-75;
+  }
 
   & h1 {
     @apply text-xl font-bold my-5 ml-10 w-full;
