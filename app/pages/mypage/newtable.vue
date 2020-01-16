@@ -358,13 +358,13 @@
     <div
       v-if="isConfirmDialogActive"
       @click="closeConfirmDialog"
-      class="dropdown-bg"
+      class="dialog-bg"
     ></div>
   </section>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import DatePicker from 'vue2-datepicker'
 import SelectBoxIcon from '@/components/-select-box-icon'
 
@@ -380,6 +380,7 @@ export default {
   },
   data: () => {
     return {
+      offsetY: 0,
       powers: Powers,
       form: {
         face_type: '1',
@@ -425,12 +426,20 @@ export default {
     ...mapState('layout', ['isConfirmDialogActive'])
   },
   methods: {
-    ...mapActions('layout', ['closeConfirmDialog']),
-    submit: function() {
-      this.$store.dispatch('layout/showConfirmDialog')
+    submit: async function() {
+      this.offsetY = document.body.scrollTop
+      if (this.offsetY === 0) {
+        this.offsetY = document.documentElement.scrollTop
+      }
+      await this.$store.dispatch('layout/showConfirmDialog')
+      document.getElementById('__content').scroll(0, this.offsetY)
     },
     callCreateTableAPI: function() {
       console.log(JSON.stringify(this.form))
+    },
+    closeConfirmDialog: async function() {
+      await this.$store.dispatch('layout/closeConfirmDialog')
+      window.scroll(0, this.offsetY)
     },
     today: () => {
       return new Date()
@@ -449,8 +458,8 @@ export default {
   @apply flex flex-row flex-wrap justify-center max-w-sm;
   @apply text-left;
 
-  & .dropdown-bg {
-    @apply bg-black opacity-75;
+  & .dialog-bg {
+    @apply bg-black opacity-50 fixed z-50 w-screen h-screen top-0;
   }
 
   & h1 {
