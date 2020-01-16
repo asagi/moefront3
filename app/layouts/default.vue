@@ -25,7 +25,8 @@ export default {
     scrollLock: function() {
       return {
         'overflow-hidden': this.isMenuActive || this.isConfirmDialogActive,
-        'h-screen': this.isMenuActive || this.isConfirmDialogActive
+        'h-screen': this.isMenuActive || this.isConfirmDialogActive,
+        fixed: this.isMenuActive || this.isConfirmDialogActive
       }
     }
   },
