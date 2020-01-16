@@ -1,17 +1,17 @@
 export const state = () => ({
-  isActive: false,
+  isMenuActive: false,
   allowLogin: true
 })
 
 export const mutations = {
   setActive(state) {
-    state.isActive = true
+    state.isMenuActive = true
   },
   unsetActive(state) {
-    state.isActive = false
+    state.isMenuActive = false
   },
   toggleActive(state) {
-    state.isActive = !state.isActive
+    state.isMenuActive = !state.isMenuActive
   },
   setAllowLogin(state) {
     state.allowLogin = true

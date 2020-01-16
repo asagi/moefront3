@@ -19,11 +19,11 @@ export default {
     TheFooter
   },
   computed: {
-    ...mapState('header', ['isActive']),
+    ...mapState('header', ['isMenuActive']),
     scrollLock: function() {
       return {
-        'overflow-hidden': this.isActive,
-        'h-screen': this.isActive
+        'overflow-hidden': this.isMenuActive,
+        'h-screen': this.isMenuActive
       }
     }
   }

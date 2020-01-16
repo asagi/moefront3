@@ -22,7 +22,7 @@
         />
         <span class="dropdown-caret"></span>
       </div>
-      <div v-if="isActive" class="menu">
+      <div v-if="isMenuActive" class="menu">
         <div class="caret">
           <span class="caret-outer"></span>
           <span class="caret-inner"></span>
@@ -33,7 +33,7 @@
         </ul>
       </div>
     </div>
-    <div v-if="isActive" @click="closeMenu" class="dropdown-bg"></div>
+    <div v-if="isMenuActive" @click="closeMenu" class="dropdown-bg"></div>
   </nav>
 </template>
 
@@ -43,7 +43,7 @@ import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapState('user', ['authToken', 'image_url']),
-    ...mapState('header', ['isActive', 'allowLogin'])
+    ...mapState('header', ['isMenuActive', 'allowLogin'])
   },
   methods: {
     ...mapActions('user', ['logout']),
