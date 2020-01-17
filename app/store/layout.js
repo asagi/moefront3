@@ -10,9 +10,6 @@ export const mutations = {
   unsetMenuActive(state) {
     state.isMenuActive = false
   },
-  toggleMenuActive(state) {
-    state.isMenuActive = !state.isMenuActive
-  },
   setConfirmDialogActive(state) {
     state.isConfirmDialogActive = true
   },
@@ -27,9 +24,6 @@ export const actions = {
   },
   closeMenu({ commit }) {
     commit('unsetMenuActive')
-  },
-  toggleMenu({ commit }) {
-    commit('toggleMenuActive')
   },
   showConfirmDialog({ commit }) {
     commit('setConfirmDialogActive')

@@ -15,7 +15,7 @@
       </nuxt-link>
     </div>
     <div v-if="authToken" class="pt-2">
-      <div @click="toggleMenu" class="cursor-pointer">
+      <div @click="openMenu" class="cursor-pointer">
         <img
           id="header-user-image"
           :src="image_url.replace('http:', 'https:')"
@@ -41,6 +41,11 @@
 import { mapState, mapActions } from 'vuex'
 
 export default {
+  data: function() {
+    return {
+      offsetY: 0
+    }
+  },
   computed: {
     ...mapState('user', ['authToken', 'image_url']),
     ...mapState('header', ['allowLogin']),
@@ -48,7 +53,16 @@ export default {
   },
   methods: {
     ...mapActions('user', ['logout']),
-    ...mapActions('layout', ['closeMenu', 'toggleMenu']),
+    openMenu: async function() {
+      this.offsetY =
+        document.documentElement.scrollTop || document.body.scrollTop
+      await this.$store.dispatch('layout/openMenu')
+      document.getElementById('__content').scroll(0, this.offsetY)
+    },
+    closeMenu: async function() {
+      await this.$store.dispatch('layout/closeMenu')
+      window.scroll(0, this.offsetY)
+    },
     clickLogout: function() {
       this.closeMenu()
       this.logout()
