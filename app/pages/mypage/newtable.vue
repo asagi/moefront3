@@ -9,7 +9,7 @@
     </div>
 
     <validation-observer v-slot="{ invalid, passes }">
-      <form @submit.prevent="passes(submit)">
+      <form @submit.prevent="passes(confirm)">
         <div class="row">
           <!-- face-type -->
           <div class="items">
@@ -339,6 +339,52 @@
       @click="closeConfirmDialog"
       class="dialog-bg"
     ></div>
+    <div v-if="isConfirmDialogActive" class="dialog">
+      <div class="caution">
+        <h2>注意事項</h2>
+        <p>
+          下記の事項に同意された場合にのみ作成を実行してください。
+        </p>
+        <ul>
+          <li>
+            卓主は卓が終了するまでの期間の進行管理責任を負う。
+          </li>
+          <li>
+            卓主は不適切なプレイヤーを除名する権限と責任を負う。
+          </li>
+          <li>
+            卓主は担当国が滅亡しても終了まで他卓に参加できない。
+          </li>
+          <li>
+            卓主の無政府化は士道不覚悟と心得よ。
+          </li>
+          <li>
+            卓主は猫をあがめよ。
+          </li>
+          <li>
+            卓主のおやつは 300 円まで。
+          </li>
+        </ul>
+      </div>
+
+      <p class="label ">
+        同意する
+        <input v-model="agree" type="checkbox" />
+      </p>
+      <div class="btn-area">
+        <button @click="closeConfirmDialog" class="btn btn-gray">
+          中断する
+        </button>
+        <button
+          @click="submit"
+          :disabled="!agree"
+          type="submit"
+          class="btn btn-blue"
+        >
+          作成を実行する
+        </button>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -361,6 +407,7 @@ export default {
     return {
       offsetY: 0,
       powers: Powers,
+      agree: false,
       form: {
         face_type: '1',
         period_rule: '1',
@@ -405,14 +452,15 @@ export default {
     ...mapState('layout', ['isConfirmDialogActive'])
   },
   methods: {
-    submit: async function() {
+    confirm: async function() {
       this.offsetY =
         document.documentElement.scrollTop || document.body.scrollTop
       await this.$store.dispatch('layout/showConfirmDialog')
       document.getElementById('__content').scroll(0, this.offsetY)
     },
-    callCreateTableAPI: function() {
+    submit: function() {
       console.log(JSON.stringify(this.form))
+      this.closeConfirmDialog()
     },
     closeConfirmDialog: async function() {
       await this.$store.dispatch('layout/closeConfirmDialog')
@@ -436,7 +484,47 @@ export default {
   @apply text-left;
 
   & .dialog-bg {
-    @apply bg-black opacity-50 fixed z-50 w-screen h-screen top-0;
+    @apply bg-black opacity-50 fixed z-50 w-full h-screen top-0;
+  }
+
+  & .dialog {
+    @apply fixed z-50;
+    @apply w-11/12 max-w-xl px-3 pt-10;
+    @apply bg-white rounded;
+    margin-top: 2rem;
+    height: calc(100vh - 10rem);
+
+    & .caution {
+      @apply text-red-600;
+
+      & h2 {
+        @apply w-full mb-3 px-0 text-center;
+      }
+
+      & p {
+        @apply mb-5 text-sm;
+      }
+
+      & ul {
+        @apply block list-disc pl-5 text-xs;
+        @apply overflow-scroll;
+        height: calc(100vh - 28rem);
+
+        & li {
+          @apply mb-1;
+        }
+      }
+    }
+
+    & p.label {
+      @apply text-center absolute w-full left-0;
+      bottom: 6rem;
+    }
+
+    & .btn-area {
+      @apply absolute left-0;
+      bottom: 2.5rem;
+    }
   }
 
   & h1 {
@@ -445,6 +533,10 @@ export default {
 
   & .btn-area {
     @apply flex flex-row justify-center w-full;
+
+    & .row {
+      @apply w-full;
+    }
 
     &.top {
       @apply my-5;
@@ -572,6 +664,42 @@ select:focus {
 }
 
 @screen sm {
+  .container {
+    & .dialog {
+      @apply px-10 pt-20;
+      margin-top: 3rem;
+      height: calc(100vh - 13rem);
+
+      & .caution {
+        & h2 {
+          @apply mb-5;
+        }
+        & p {
+          @apply mb-10 text-base;
+        }
+
+        & ul {
+          @apply text-sm mx-5;
+          @apply overflow-auto;
+          height: auto;
+
+          & li {
+            @apply mb-3;
+          }
+        }
+      }
+
+      & p.label {
+        bottom: 9rem;
+      }
+
+      & .btn-area {
+        @apply absolute left-0;
+        bottom: 5rem;
+      }
+    }
+  }
+
   .is-danger-global {
     @apply w-3/5 mx-auto text-center;
     min-width: 600px;
