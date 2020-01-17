@@ -151,7 +151,9 @@
             </div>
           </div>
         </div>
+
         <div class="row">
+          <!-- due_date -->
           <div class="items">
             <p class="label">開始日</p>
             <validation-provider
@@ -185,6 +187,7 @@
               </dl>
             </div>
           </div>
+          <!-- start_time -->
           <div class="items">
             <p class="label">開始時刻</p>
             <validation-provider
@@ -219,8 +222,9 @@
             </validation-provider>
           </div>
         </div>
+
         <div class="row">
-          <!-- duration -->
+          <!-- juggling -->
           <div class="items">
             <p class="label">掛け持ち</p>
             <input
@@ -259,6 +263,7 @@
               </dl>
             </div>
           </div>
+
           <!-- keyword -->
           <div class="items">
             <p class="label">
@@ -292,6 +297,7 @@
         </div>
 
         <div class="row">
+          <!-- power -->
           <div class="items">
             <p class="label">希望国</p>
             <div class="select relative">
@@ -321,7 +327,7 @@
         </div>
 
         <p v-show="invalid" class="help is-danger-global">
-          設定内容を見直してください。
+          設定が完了していません。内容を見直してください。
         </p>
 
         <div class="btn-area bottom">
@@ -334,6 +340,8 @@
         </div>
       </form>
     </validation-observer>
+
+    <!-- dialog -->
     <div
       v-if="isConfirmDialogActive"
       @click="closeConfirmDialog"
@@ -482,138 +490,132 @@ export default {
 .container {
   @apply flex flex-row flex-wrap justify-center max-w-sm;
   @apply text-left;
+}
 
-  & .dialog-bg {
-    @apply bg-black opacity-50 fixed z-50 w-full h-screen top-0;
+h1 {
+  @apply text-xl font-bold my-5 ml-10 w-full;
+}
+
+.is-danger {
+  @apply mx-5 py-2;
+  @apply text-sm text-red-500;
+}
+
+.is-danger-global {
+  @apply mx-5 mt-5 px-4 py-4;
+  @apply border border-red-400 text-red-700 rounded;
+  @apply text-base bg-red-100 text-red-500;
+}
+</style>
+
+<style lang="postcss" scoped>
+.btn-area {
+  @apply flex flex-row justify-center w-full;
+
+  & .btn + .btn {
+    @apply ml-5;
   }
 
-  & .dialog {
-    @apply fixed z-50;
-    @apply w-11/12 max-w-xl px-3 pt-10;
-    @apply bg-white rounded;
-    margin-top: 2rem;
-    height: calc(100vh - 10rem);
+  & .btn[type='submit']:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+}
+.btn-area.top {
+  @apply my-5;
+}
+.btn-area.bottom {
+  @apply mt-10;
+}
+</style>
 
-    & .caution {
-      @apply text-red-600;
+<style lang="postcss" scoped>
+form {
+  @apply w-full;
 
-      & h2 {
-        @apply w-full mb-3 px-0 text-center;
-      }
-
-      & p {
-        @apply mb-5 text-sm;
-      }
-
-      & ul {
-        @apply block list-disc pl-5 text-xs;
-        @apply overflow-scroll;
-        height: calc(100vh - 28rem);
-
-        & li {
-          @apply mb-1;
-        }
-      }
-    }
-
-    & p.label {
-      @apply text-center absolute w-full left-0;
-      bottom: 6rem;
-    }
-
-    & .btn-area {
-      @apply absolute left-0;
-      bottom: 2.5rem;
-    }
+  & .row {
+    @apply flex flex-row flex-wrap justify-center;
   }
 
-  & h1 {
-    @apply text-xl font-bold my-5 ml-10 w-full;
-  }
+  & .items {
+    @apply mt-5 mb-2 mx-5 mb-5 w-full;
+    max-width: 472px;
 
-  & .btn-area {
-    @apply flex flex-row justify-center w-full;
-
-    & .row {
-      @apply w-full;
-    }
-
-    &.top {
-      @apply my-5;
-    }
-    &.bottom {
-      @apply mt-10;
-    }
-
-    & .btn + .btn {
-      @apply ml-5;
-    }
-
-    & .btn[type='submit']:disabled {
-      @apply opacity-50 cursor-not-allowed;
-    }
-  }
-
-  & form {
-    @apply w-full;
-
-    & .row {
-      @apply flex flex-row flex-wrap justify-center;
-    }
-
-    & .items {
-      @apply mt-5 mb-2 mx-5 mb-5 w-full;
-      max-width: 472px;
-
-      & label {
+    & input {
+      @apply px-4 py-3 ml-5;
+      &[type='radio'],
+      &[type='checkbox'] {
         @apply cursor-pointer;
       }
-
-      & .label {
-        @apply font-bold mb-3 px-3 py-2 bg-gray-300;
+      &[type='radio'] + .caption,
+      &[type='radio'] + label {
+        @apply inline-block mt-5 ml-1;
+        height: 2rem;
       }
-
-      & .facetypes {
-        @apply flex flex-row justify-center items-center;
-
-        & .facetype {
-          @apply inline-block ml-5;
-
-          & .outer-image {
-            @apply table-cell align-middle mb-3;
-            height: 100px;
-          }
-
-          & img {
-            @apply rounded-lg;
-          }
-        }
-
-        & .facetype + .facetype {
-          @apply ml-10;
-        }
+      &[name='keyword'] {
+        @apply inline-block;
+        width: calc(100% - 3rem);
       }
+    }
+
+    & select {
+      @apply block appearance-none;
+      @apply ml-5 py-4 px-4 pr-8 leading-tight;
+      @apply border border-gray-200 rounded;
+      @apply bg-white;
+      width: calc(100% - 50px);
+      &:focus {
+        @apply outline-none bg-white border-gray-500;
+      }
+    }
+
+    & .label {
+      @apply font-bold mb-3 px-3 py-2 bg-gray-300;
+    }
+
+    & label {
+      @apply cursor-pointer;
+    }
+
+    & .banner {
+      @apply border-t border-b border-blue-500;
+      @apply bg-blue-100 text-blue-700 px-4 py-3;
+      @apply m-4 mb-0 text-sm;
+      width: calc(100% - 2rem);
+    }
+    & .banner dt {
+      @apply font-bold mb-1;
+    }
+    & .banner dd {
+      @apply pl-2 pb-2;
     }
   }
 }
-input[type='radio'],
-input[type='checkbox'] {
-  @apply cursor-pointer;
-}
-input[type='radio'] + .caption,
-input[type='radio'] + label {
-  @apply inline-block mt-5 ml-1;
-  height: 2rem;
-}
+</style>
 
-input[name='keyword'] {
-  @apply inline-block;
-  width: calc(100% - 3rem);
-}
+<style lang="postcss" scoped>
+.facetypes {
+  @apply flex flex-row justify-center items-center;
 
-input {
-  @apply px-4 py-3 ml-5;
+  & .facetype {
+    @apply inline-block ml-5;
+
+    & .outer-image {
+      @apply table-cell align-middle mb-3;
+      height: 100px;
+    }
+
+    & img {
+      @apply rounded-lg;
+    }
+  }
+
+  & .facetype + .facetype {
+    @apply ml-10;
+  }
 }
+</style>
+
+<style lang="postcss" scoped>
 .mx-datepicker {
   @apply ml-4;
   width: calc(100% - 3rem);
@@ -626,49 +628,67 @@ input {
     @apply h-full border-none w-full;
   }
 }
+</style>
 
-select {
-  @apply block appearance-none;
-  @apply ml-5 py-4 px-4 pr-8 leading-tight;
-  @apply border border-gray-200 rounded;
-  @apply bg-white;
-  width: calc(100% - 50px);
+<style lang="postcss" scoped>
+.dialog-bg {
+  @apply bg-black opacity-50 fixed z-50 w-full h-screen top-0;
 }
-select:focus {
-  @apply outline-none bg-white border-gray-500;
-}
-.banner {
-  @apply border-t border-b border-blue-500;
-  @apply bg-blue-100 text-blue-700 px-4 py-3;
-  @apply m-4 mb-0 text-sm;
-  width: calc(100% - 2rem);
-}
-.banner dt {
-  @apply font-bold mb-1;
-}
-.banner dd {
-  @apply pl-2 pb-2;
+
+.dialog {
+  @apply fixed z-50;
+  @apply w-11/12 max-w-xl px-3 pt-10;
+  @apply bg-white rounded;
+  height: calc(100vh - 12rem);
+  margin-top: 2rem;
+  min-width: 292px;
+  min-height: 376px;
+
+  & .caution {
+    @apply text-red-600;
+
+    & h2 {
+      @apply w-full mb-3 px-0 text-center;
+    }
+
+    & p {
+      @apply mb-5 text-sm;
+    }
+
+    & ul {
+      @apply block list-disc pl-5 text-xs mx-2;
+      @apply border-solid border border-gray-500;
+      @apply overflow-y-scroll;
+      height: calc(100vh - 29rem);
+      min-height: 85px;
+
+      & li {
+        @apply mb-1;
+      }
+    }
+  }
+
+  & p.label {
+    @apply text-center absolute w-full left-0;
+    bottom: 6rem;
+  }
+
+  & .btn-area {
+    @apply absolute left-0;
+    bottom: 2.5rem;
+  }
 }
 </style>
 
 <style lang="postcss" scoped>
-.is-danger {
-  @apply mx-5 py-2;
-  @apply text-sm text-red-500;
-}
-
-.is-danger-global {
-  @apply mx-5 mt-5 px-4 py-4;
-  @apply border border-red-400 text-red-700 rounded;
-  @apply text-base bg-red-100 text-red-500;
-}
-
 @screen sm {
   .container {
     & .dialog {
       @apply px-10 pt-20;
       margin-top: 3rem;
-      height: calc(100vh - 13rem);
+      min-height: 464px;
+      min-width: 292px;
+      height: calc(100vh - 20rem);
 
       & .caution {
         & h2 {
@@ -681,7 +701,7 @@ select:focus {
         & ul {
           @apply text-sm mx-5;
           @apply overflow-auto;
-          height: auto;
+          height: calc(100vh - 43rem);
 
           & li {
             @apply mb-3;
