@@ -195,30 +195,9 @@
               <div class="select relative">
                 <select v-model="form.start_time">
                   <option disabled value="">選択して下さい</option>
-                  <option>0:00</option>
-                  <option>1:00</option>
-                  <option>2:00</option>
-                  <option>3:00</option>
-                  <option>4:00</option>
-                  <option>5:00</option>
-                  <option>6:00</option>
-                  <option>7:00</option>
-                  <option>8:00</option>
-                  <option>9:00</option>
-                  <option>10:00</option>
-                  <option>11:00</option>
-                  <option>12:00</option>
-                  <option>13:00</option>
-                  <option>14:00</option>
-                  <option>15:00</option>
-                  <option>16:00</option>
-                  <option>17:00</option>
-                  <option>18:00</option>
-                  <option>19:00</option>
-                  <option>20:00</option>
-                  <option>21:00</option>
-                  <option>22:00</option>
-                  <option>23:00</option>
+                  <option v-for="n in Array.from(Array(24).keys())" :key="n">
+                    {{ n }}:00
+                  </option>
                 </select>
                 <SelectBoxIcon />
               </div>
