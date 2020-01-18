@@ -276,7 +276,7 @@
               name="鍵卓のキーワード"
             >
               <input
-                v-model="form.keyword"
+                v-model.trim="form.keyword"
                 :disabled="!form.private"
                 name="keyword"
                 type="text"
