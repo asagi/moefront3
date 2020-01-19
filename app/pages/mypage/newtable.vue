@@ -301,7 +301,7 @@
           <div class="items">
             <p class="label">希望国</p>
             <div class="select relative">
-              <select v-model="form.power">
+              <select v-model="form.desired_power">
                 <option value="">おまかせ</option>
                 <template v-for="power in powers">
                   <template v-if="power.symbol !== 'x'">
@@ -425,7 +425,7 @@ export default {
         keyword: '',
         due_date: '',
         start_time: '',
-        power: ''
+        desired_power: ''
       },
       lang: {
         days: ['日', '月', '火', '水', '木', '金', '土'],
