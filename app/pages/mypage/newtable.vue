@@ -397,7 +397,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import DatePicker from 'vue2-datepicker'
 import SelectBoxIcon from '@/components/-select-box-icon'
 
@@ -457,7 +457,8 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', ['isConfirmDialogActive'])
+    ...mapState('layout', ['isConfirmDialogActive']),
+    ...mapGetters('user', ['getAuthToken'])
   },
   methods: {
     confirm: async function() {
@@ -466,9 +467,19 @@ export default {
       await this.$store.dispatch('layout/showConfirmDialog')
       document.getElementById('__content').scroll(0, this.offsetY)
     },
-    submit: function() {
+    submit: async function() {
       console.log(JSON.stringify(this.form))
+
       this.closeConfirmDialog()
+      this.$axios.setToken(this.getAuthToken, 'Bearer')
+      await this.$axios
+        .post('/tables', this.form)
+        .then(res => {
+          this.$router.push({ path: '/tables/' + res.data.id })
+        })
+        .catch(error => {
+          console.log(error.message)
+        })
     },
     closeConfirmDialog: async function() {
       await this.$store.dispatch('layout/closeConfirmDialog')
