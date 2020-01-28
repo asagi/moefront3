@@ -475,7 +475,7 @@ export default {
       await this.$axios
         .post('/tables', this.form)
         .then(res => {
-          this.$router.push({ path: '/tables/' + res.data.id })
+          this.$router.push({ path: '/offers/' + res.data.id })
         })
         .catch(error => {
           console.log(error.message)
