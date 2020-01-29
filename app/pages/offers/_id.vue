@@ -6,7 +6,7 @@
 export default {
   async asyncData({ $axios, params }) {
     await $axios
-      .$get(`/tables/${params.id}`)
+      .$get(`/api/tables/${params.id}`)
       .then(res => {
         console.log(JSON.stringify(res))
         return { table: res }

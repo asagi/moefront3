@@ -18,7 +18,7 @@ export default {
       if (token) {
         this.$axios.setToken(token, 'Bearer')
         await this.$axios
-          .get('/refresh')
+          .put('/api/sessions/token')
           .then(res => {
             this.$store.dispatch('user/login', res.data.token)
           })
@@ -31,7 +31,7 @@ export default {
         const newToken = this.$store.getters['user/getAuthToken']
         this.$axios.setToken(newToken, 'Bearer')
         this.$axios
-          .get('/users/me')
+          .get('/api/users/me')
           .then(res => {
             this.$store.dispatch('user/load', res.data)
           })

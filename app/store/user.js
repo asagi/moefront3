@@ -18,7 +18,7 @@ export const actions = {
   },
   logout({ commit, state }) {
     this.$axios.setToken(state.authToken, 'Bearer')
-    this.$axios.get('/logout')
+    this.$axios.delete('/api/sessions/token')
     commit('setToken', null)
   },
   load({ commit }, info) {

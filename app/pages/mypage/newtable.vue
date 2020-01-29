@@ -473,7 +473,7 @@ export default {
       this.closeConfirmDialog()
       this.$axios.setToken(this.getAuthToken, 'Bearer')
       await this.$axios
-        .post('/tables', this.form)
+        .post('/api/tables', this.form)
         .then(res => {
           this.$router.push({ path: '/offers/' + res.data.id })
         })
