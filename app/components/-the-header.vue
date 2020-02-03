@@ -18,7 +18,7 @@
       <div @click="openMenu" class="cursor-pointer">
         <img
           id="header-user-image"
-          :src="image_url.replace('http:', 'https:')"
+          :src="image_url && image_url.replace('http:', 'https:')"
         />
         <span class="dropdown-caret"></span>
       </div>

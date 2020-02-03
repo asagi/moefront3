@@ -19,7 +19,7 @@
                 <label for="face-type-1">
                   <div class="outer-image">
                     <img
-                      v-if="form.face_type == 1"
+                      v-if="form.face_type == 'girl'"
                       :src="require('@/assets/img/power/girl/pla100.png')"
                     />
                     <img
@@ -34,7 +34,7 @@
                       class="radio"
                       type="radio"
                       name="face-type"
-                      value="1"
+                      value="girl"
                       checked
                     />
                     <span class="caption">娘</span>
@@ -45,7 +45,7 @@
                 <label for="face-type-2">
                   <div class="outer-image">
                     <img
-                      v-if="form.face_type == 2"
+                      v-if="form.face_type == 'flag'"
                       :src="require('@/assets/img/power/flag/pla100.png')"
                     />
                     <img
@@ -60,7 +60,7 @@
                       class="radio"
                       type="radio"
                       name="face-type"
-                      value="2"
+                      value="flag"
                     />
                     <span class="caption">旗</span>
                   </div>
@@ -79,7 +79,7 @@
               class="radio"
               type="radio"
               name="period-rule"
-              value="1"
+              value="fixed"
               checked
             />
             <label for="period-rule-1">固定</label>
@@ -89,18 +89,18 @@
               class="radio"
               type="radio"
               name="period-rule"
-              value="2"
+              value="flexible"
             />
             <label for="period-rule-2">変動</label>
             <div class="banner">
               <dl>
-                <div v-if="form.period_rule == 1">
+                <div v-if="form.period_rule == 'fixed'">
                   <dt>固定</dt>
                   <dd>
                     外交フェイズの終了時刻は、卓作成時に設定した開始時刻で固定されます。
                   </dd>
                 </div>
-                <div v-if="form.period_rule == 2">
+                <div v-if="form.period_rule == 'flexible'">
                   <dt>変動</dt>
                   <dd>
                     外交フェイズの終了時刻は、前回外交フェイズ終了時間から計算されます。
@@ -118,7 +118,7 @@
               class="radio"
               type="radio"
               name="duration"
-              value="2"
+              value="short"
               checked
             />
             <label for="duration-2">標準</label>
@@ -128,19 +128,19 @@
               class="radio"
               type="radio"
               name="duration"
-              value="1"
+              value="standard"
             />
             <label for="duration-1">短期</label>
             <div class="banner">
               <dl>
-                <div v-if="form.duration == 2">
+                <div v-if="form.duration == 'short'">
                   <dt>標準</dt>
                   <dd>
                     外交フェイズは 24 時間、撤退・調整フェイズはそれぞれ最長 30
                     分です。
                   </dd>
                 </div>
-                <div v-if="form.duration == 1">
+                <div v-if="form.duration == 'standard'">
                   <dt>短期</dt>
                   <dd>
                     外交フェイズは 1 時間、撤退・調整フェイズはそれぞれ最長 15
@@ -233,7 +233,7 @@
               class="radio"
               type="radio"
               name="juggling"
-              value="1"
+              value="allow"
               checked
             />
             <label for="juggling-1">可</label>
@@ -243,18 +243,18 @@
               class="radio"
               type="radio"
               name="juggling"
-              value="2"
+              value="disallow"
             />
             <label for="juggling-2">不可</label>
             <div class="banner">
               <dl>
-                <div v-if="form.juggling == 1">
+                <div v-if="form.juggling == 'allow'">
                   <dt>掛け持ち可</dt>
                   <dd>
                     卓主以外の参加者は、他の掛け持ち可の卓にも同時に参加できます。
                   </dd>
                 </div>
-                <div v-if="form.juggling == 2">
+                <div v-if="form.juggling == 'disallow'">
                   <dt>掛け持ち不可</dt>
                   <dd>
                     感想戦を迎えるか担当国が滅亡するまで、参加者は他の卓には参加できません。
@@ -417,10 +417,10 @@ export default {
       powers: Powers,
       agree: false,
       form: {
-        face_type: '1',
-        period_rule: '1',
-        duration: '2',
-        juggling: '1',
+        face_type: 'girl',
+        period_rule: 'fixed',
+        duration: 'short',
+        juggling: 'allow',
         private: false,
         keyword: '',
         due_date: '',
