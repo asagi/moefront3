@@ -51,7 +51,7 @@
                     </span>
                   </th>
                   <td data-label="開始日時" class="with-label">
-                    {{ table.next_period }}
+                    {{ $formatPeriod(table.period) }}
                   </td>
                   <td data-label="フェイス" class="with-label">
                     {{ getFaceType(table.regulation.face_type) }}
@@ -73,8 +73,8 @@
                 <template v-if="mode == Const.MODE_LIVE">
                   <th
                     :class="{
-                      girl: table.regulation.face_type == 1,
-                      flag: table.regulation.face_type == 2
+                      girl: table.regulation.face_type == 'girl',
+                      flag: table.regulation.face_type == 'flag'
                     }"
                   >
                     <span class="turn-number">
@@ -85,8 +85,16 @@
                     {{ getTurn(table.turn, table.phase) }}
                   </th>
 
+                  <td data-label="卓主" class="with-label">
+                    {{ table.owner.name }}
+                    <span class="twttier-account">
+                      <a :href="table.owner.url" target="_blank">
+                        {{ '@' + table.owner.nickname }}
+                      </a>
+                    </span>
+                  </td>
                   <td data-label="次回更新" class="with-label">
-                    {{ table.next_period }}
+                    {{ $formatPeriod(table.period) }}
                   </td>
                   <td data-label="外交期間" class="with-label half">
                     {{ getDuration(table.regulation.duration) }}
@@ -102,8 +110,8 @@
                 <template v-if="mode == Const.MODE_CLOSED">
                   <th
                     :class="{
-                      girl: table.regulation.face_type == 0,
-                      flag: table.regulation.face_type == 1
+                      girl: table.regulation.face_type == 'girl',
+                      flag: table.regulation.face_type == 'flag'
                     }"
                   >
                     <span class="turn-number">
@@ -111,9 +119,20 @@
                       {{ getFaceType(table.regulation.face_type) }}
                       :
                     </span>
-                    {{ getTurn(table.turn, table.phase) }}
+                    {{ getFinishTurn(table.turn, table.phase) }}
                   </th>
 
+                  <td data-label="卓主" class="with-label">
+                    {{ table.owner.name }}
+                    <span class="twttier-account">
+                      <a :href="table.owner.url" target="_blank">
+                        {{ '@' + table.owner.nickname }}
+                      </a>
+                    </span>
+                  </td>
+                  <td data-label="終了日時" class="with-label">
+                    {{ $formatPeriod(table.period) }}
+                  </td>
                   <td data-label="外交期間" class="with-label half">
                     {{ getDuration(table.regulation.duration) }}
                   </td>
@@ -123,7 +142,18 @@
                 </template>
 
                 <td class="button">
-                  <nuxt-link :to="'/tables/' + table.id" class="btn btn-blue">
+                  <nuxt-link
+                    v-if="table.status == 'created' || table.status == 'ready'"
+                    :to="'/entries/' + table.id"
+                    class="btn btn-blue"
+                  >
+                    表示する
+                  </nuxt-link>
+                  <nuxt-link
+                    v-else
+                    :to="'/tables/' + table.number"
+                    class="btn btn-blue"
+                  >
                     表示する
                   </nuxt-link>
                 </td>
@@ -179,22 +209,23 @@ export default {
     switch (this.mode) {
       case this.Const.MODE_NEW:
         this.tables = this.list.filter((value, index, array) => {
-          if (value.status !== 0) return false
           if (value.turn !== 0) return false
-          return true
+          if (value.status === 'created') return true
+          if (value.status === 'ready') return true
+          return false
         })
         break
       case this.Const.MODE_LIVE:
         this.tables = this.list.filter((value, index, array) => {
-          if (value.status === 2) return true
-          if (value.status === 3) return true
-          if (value.status === 4) return true
+          if (value.status === 'started') return true
+          if (value.status === 'draw') return true
+          if (value.status === 'solo') return true
           return false
         })
         break
       case this.Const.MODE_CLOSED:
         this.tables = this.list.filter((value, index, array) => {
-          if (value.status === 5) return true
+          if (value.status === 'closed') return true
           return false
         })
         break
@@ -208,60 +239,76 @@ export default {
   methods: {
     getDuration: value => {
       switch (value) {
-        case 1:
+        case 'short':
           return '短期'
-        case 2:
+        case 'standard':
           return '標準'
         default:
-          return 'unknown'
+          return '不明'
       }
     },
     getFaceType: value => {
       switch (value) {
-        case 1:
+        case 'girl':
           return '娘'
-        case 2:
+        case 'flag':
           return '旗'
         default:
-          return 'unknown'
+          return '不明'
       }
     },
     getPeriodRule: value => {
       switch (value) {
-        case 1:
+        case 'fixed':
           return '固定'
-        case 2:
+        case 'flexible':
           return '変動'
         default:
           return 'unknown'
       }
     },
     getPrivateState: value => {
-      return value === 1 ? 'あり' : 'なし'
+      return value ? 'あり' : 'なし'
     },
     getJugglingState: value => {
-      return value === 1 ? '可' : '不可'
+      return value === 'allow' ? '可' : '不可'
     },
     getTableNumber: number => {
       return '#' + ('000' + number).slice(-3)
+    },
+    getFinishTurn: (turn, phase) => {
+      const year = 1900 + turn
+      let season = ''
+      switch (phase) {
+        case 'spr_1st':
+        case 'spr_2nd':
+          season = '春 終結'
+          break
+        case 'fal_1st':
+        case 'fal_2nd':
+        case 'fal_3rd':
+          season = '秋 終結'
+          break
+      }
+      return year + '年' + season
     },
     getTurn: (turn, phase) => {
       const year = 1900 + turn
       let season = ''
       switch (phase) {
-        case 0:
+        case 'spr_1st':
           season = '春 外交'
           break
-        case 1:
+        case 'spr_2nd':
           season = '春 撤退'
           break
-        case 2:
+        case 'fal_1st':
           season = '秋 外交'
           break
-        case 3:
+        case 'fal_2nd':
           season = '秋 撤退'
           break
-        case 4:
+        case 'fal_3rd':
           season = '秋 調整'
           break
       }

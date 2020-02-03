@@ -1,90 +1,110 @@
 [
   {
     "id": 1,
+    "number": null,
+    "status": "created",
+    "turn": 0,
+    "phase": null,
+    "period": "2020-01-09T01:00:00.000+09:00",
     "owner": {
-      "uid": "00000",
+      "id": 215,
+      "uid": "543329",
       "nickname": "hogehoge",
       "name": "ほげほげ",
-      "image_url": "",
-      "url": "https://example.com/"
+      "url": "https://example.com/",
+      "image_url": null
     },
-    "number": 1,
-    "status": 2,
-    "turn": 1,
-    "phase": 1,
     "regulation": {
-      "face_type": 1,
-      "duration": 2,
-      "period_rule": 2,
-      "juggling": 1
-    },
-    "has_key": false,
-    "next_period": "2020-02-03 12:00"
+      "id": 95,
+      "face_type": "girl",
+      "period_rule": "fixed",
+      "duration": "standard",
+      "private": false,
+      "keyword": "",
+      "due_date": "2020-01-09",
+      "start_time": "1:00",
+      "juggling": "allow"
+    }
   },
   {
     "id": 2,
+    "number": 1,
+    "status": "started",
+    "turn": 1,
+    "phase": "spr_1st",
+    "period": "2020-01-09T01:00:00.000+09:00",
     "owner": {
-      "uid": "00000",
+      "id": 215,
+      "uid": "543329",
       "nickname": "fugafuga",
       "name": "ふがふが",
-      "image_url": "",
-      "url": "https://example.com/"
+      "url": "https://example.com/",
+      "image_url": null
     },
-    "number": 3,
-    "status": 0,
-    "turn": 0,
-    "phase": 4,
     "regulation": {
-      "face_type": 2,
-      "duration": 1,
-      "period_rule": 1,
-      "juggling": 2
+      "id": 95,
+      "face_type": "girl",
+      "period_rule": "fixed",
+      "duration": "standard",
+      "private": false,
+      "keyword": "",
+      "due_date": "2020-01-09",
+      "start_time": "1:00",
+      "juggling": "allow"
+    }
+  },
+  {
+    "id": 3,
+    "number": 2,
+    "status": "started",
+    "turn": 2,
+    "phase": "spr_2nd",
+    "period": "2020-01-09T01:00:00.000+09:00",
+    "owner": {
+      "id": 215,
+      "uid": "543329",
+      "nickname": "pocopoco",
+      "name": "ぽこぽこ",
+      "url": "https://example.com/",
+      "image_url": null
     },
-    "has_key": false,
-    "next_period": "2020-02-06 12:00"
+    "regulation": {
+      "id": 95,
+      "face_type": "flag",
+      "period_rule": "flexible",
+      "duration": "short",
+      "private": true,
+      "keyword": "aaaa",
+      "due_date": "2020-01-09",
+      "start_time": "1:00",
+      "juggling": "disallow"
+    }
   },
   {
     "id": 4,
+    "number": 3,
+    "status": "closed",
+    "turn": 1,
+    "phase": "spr_2nd",
+    "period": "2020-01-09T01:00:00.000+09:00",
     "owner": {
-      "uid": "00000",
-      "nickname": "pekopeko",
-      "name": "ぺこぺこ",
-      "image_url": "",
-      "url": "https://example.com/"
+      "id": 215,
+      "uid": "543329",
+      "nickname": "makamaka",
+      "name": "まかまか",
+      "url": "https://example.com/",
+      "image_url": null
     },
-    "number": 5,
-    "status": 1,
-    "turn": 0,
-    "phase": 4,
     "regulation": {
-      "face_type": 1,
-      "duration": 2,
-      "period_rule": 1,
-      "juggling": 2
-    },
-    "has_key": false,
-    "next_period": "2020-02-04 12:00"
-  },
-  {
-    "id": 5,
-    "owner": {
-      "uid": "00000",
-      "nickname": "somsom",
-      "name": "そむそむ",
-      "image_url": "",
-      "url": "https://example.com/"
-    },
-    "number": 2,
-    "status": 2,
-    "turn": 2,
-    "phase": 0,
-    "regulation": {
-      "face_type": 2,
-      "duration": 1,
-      "period_rule": 2,
-      "juggling": 2
-    },
-    "has_key": true,
-    "next_period": "2020-02-03 14:00"
+      "id": 95,
+      "face_type": "flag",
+      "period_rule": "flexible",
+      "duration": "short",
+      "private": true,
+      "keyword": "aaaa",
+      "due_date": "2020-01-09",
+      "start_time": "1:00",
+      "juggling": "disallow"
+    }
   }
 ]

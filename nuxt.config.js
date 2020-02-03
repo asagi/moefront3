@@ -48,7 +48,8 @@ export default {
   plugins: [
     { src: '@/plugins/persistedstate.js', mode: 'client' },
     { src: '@/plugins/vee-validate', mode: 'client' },
-    { src: '@/plugins/remove-ads-style', mode: 'client' }
+    { src: '@/plugins/remove-ads-style', mode: 'client' },
+    { src: '@/plugins/period-formatter' }
   ],
 
   /*

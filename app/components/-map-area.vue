@@ -104,10 +104,15 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Powers from '~/assets/json/powers.json'
 
 export default {
   props: {
+    powers: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    },
     territories: {
       type: Array,
       default: () => {
@@ -177,7 +182,7 @@ export default {
       return prov.power
     },
     getPowerInfo(symbol) {
-      return Powers.find(power => {
+      return this.powers.find(power => {
         return power.symbol === symbol
       })
     },

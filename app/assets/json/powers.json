@@ -1,50 +1,65 @@
 [
   {
+    "id": 1,
+    "table_id": null,
+    "player_id": null,
     "symbol": "a",
     "name": "Austria",
     "genitive": "Austrian",
     "jname": "オーストリア"
   },
   {
+    "id": 2,
+    "table_id": null,
+    "player_id": null,
     "symbol": "e",
     "name": "England",
     "genitive": "English",
     "jname": "イギリス"
   },
   {
+    "id": 3,
+    "table_id": null,
+    "player_id": null,
     "symbol": "f",
     "name": "France",
     "genitive": "French",
     "jname": "フランス"
   },
   {
+    "id": 4,
+    "table_id": null,
+    "player_id": null,
     "symbol": "g",
     "name": "Germany",
     "genitive": "German",
     "jname": "ドイツ"
   },
   {
+    "id": 5,
+    "table_id": null,
+    "player_id": null,
     "symbol": "i",
     "name": "Italy",
     "genitive": "Italian",
     "jname": "イタリア"
   },
   {
+    "id": 6,
+    "table_id": null,
+    "player_id": null,
     "symbol": "r",
     "name": "Russia",
     "genitive": "Russian",
     "jname": "ロシア"
   },
   {
+    "id": 7,
+    "table_id": null,
+    "player_id": null,
     "symbol": "t",
     "name": "Turky",
     "genitive": "Turkish",
     "jname": "トルコ"
-  },
-  {
-    "symbol": "x",
-    "name": "Master",
-    "genitive": null,
-    "jname": "管理人"
   }
 ]
