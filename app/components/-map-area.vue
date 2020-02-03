@@ -55,18 +55,18 @@
       <div class="units">
         <img
           v-for="unit in units"
-          :key="unit.province.slice(0, 3)"
-          :class="unit.province.slice(0, 3)"
+          :key="unit.prov_code.slice(0, 3)"
+          :class="unit.prov_code.slice(0, 3)"
           :src="require('@/assets/img/unit/' + unit.kind + unit.owner + '.png')"
-          @click="showDetail(unit.province.slice(0, 3))"
+          @click="showDetail(unit.prov_code.slice(0, 3))"
           class="unit"
         />
       </div>
       <div class="anchors">
         <img
           v-for="anchor in filteredAnchors"
-          :key="anchor.province"
-          :class="anchor.province"
+          :key="anchor.prov_code"
+          :class="anchor.prov_code"
           :src="require('@/assets/img/unit/anchor.png')"
           class="port"
         />
@@ -90,7 +90,7 @@
             </dd>
             <dd v-if="unit" class="unit-info">
               <span class="text-sm">駐留ユニット：</span>
-              {{ getPowerInfo(unit.power.symbol).genitive }}
+              {{ getPowerInfo(unit.owner).genitive }}
               {{ unit.kind.toUpperCase() }}
               {{ prov.code }}
               <span v-if="port"> ({{ port }})</span>
@@ -104,11 +104,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Powers from '~/assets/json/power.json'
+import Powers from '~/assets/json/powers.json'
 
 export default {
   props: {
-    occupieds: {
+    territories: {
       type: Array,
       default: () => {
         return []
@@ -132,33 +132,33 @@ export default {
   computed: {
     filteredProvinces: function() {
       return this.getProvinces.filter((element, index, array) => {
-        const result = this.occupieds.find(occupied => {
-          return occupied.code === element
+        const result = this.territories.find(territories => {
+          return territories.code === element
         })
         return result === undefined
       })
     },
     filteredSupplyCenters: function() {
       return this.getSupplyCenters.filter((element, index, array) => {
-        const result = this.occupieds.find(occupied => {
-          return occupied.code === element
+        const result = this.territories.find(territories => {
+          return territories.code === element
         })
         return result === undefined
       })
     },
     occupiedProvinces: function() {
-      return this.occupieds.filter((element, index, array) => {
+      return this.territories.filter((element, index, array) => {
         return element.supplycenter !== true
       })
     },
     occupiedSupplyCenters: function() {
-      return this.occupieds.filter((element, index, array) => {
+      return this.territories.filter((element, index, array) => {
         return element.supplycenter
       })
     },
     filteredAnchors: function() {
       return this.units.filter((element, index, array) => {
-        return element.province.length > 3
+        return element.prov_code.length > 3
       })
     },
     ...mapGetters('map', [
@@ -170,8 +170,8 @@ export default {
   },
   methods: {
     getOwner: function(name) {
-      const prov = this.occupieds.find(occupied => {
-        return occupied.code === name
+      const prov = this.territories.find(territories => {
+        return territories.code === name
       })
       if (!prov) return null
       return prov.power
@@ -195,11 +195,11 @@ export default {
           this.prov = this.getProvinceInfo(name)
           this.isSelected = true
           this.unit = this.units.find(unit => {
-            return unit.province.slice(0, 3) === name
+            return unit.prov_code.slice(0, 3) === name
           })
           if (!this.unit) return
-          if (this.unit && this.unit.province.length > 3) {
-            this.port = this.unit.province.slice(-2)
+          if (this.unit && this.unit.prov_code.length > 3) {
+            this.port = this.unit.prov_code.slice(-2)
           }
         })
       }

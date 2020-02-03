@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <div class="top-area">
-      <map-area :occupieds="occupieds" :units="units" />
+      <map-area :territories="territories" :units="units" />
       <greeting />
     </div>
     <amazon-link />
@@ -40,7 +40,7 @@ import Thanks from '@/components/-thanks-block'
 import AmazonLink from '@/components/-amazon-link'
 
 import Units from '~/assets/json/units.json'
-import Occupides from '~/assets/json/occupieds.json'
+import Territories from '~/assets/json/territories.json'
 import DummyTables from '~/assets/json/tables.json'
 
 export default {
@@ -56,7 +56,7 @@ export default {
   data: () => {
     return {
       TableList: TablesList.data().Const,
-      occupieds: Occupides,
+      territories: Territories,
       tableList: DummyTables,
       units: Units
     }

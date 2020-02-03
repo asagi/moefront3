@@ -401,7 +401,7 @@ import { mapState, mapGetters } from 'vuex'
 import DatePicker from 'vue2-datepicker'
 import SelectBoxIcon from '@/components/-select-box-icon'
 
-import Powers from '~/assets/json/power.json'
+import Powers from '~/assets/json/powers.json'
 
 export default {
   components: { DatePicker, SelectBoxIcon },

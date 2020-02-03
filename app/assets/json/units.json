@@ -1,178 +1,156 @@
 [
   {
-    "id": 67,
-    "province": "vie",
-    "keepout": null,
+    "id": 1,
     "kind": "a",
-    "owner": "a",
-    "power": { "symbol": "a" }
+    "prov_code": "vie",
+    "keepout": null,
+    "owner": "a"
   },
   {
-    "id": 68,
-    "province": "bud",
-    "keepout": null,
+    "id": 2,
     "kind": "a",
-    "owner": "a",
-    "power": { "symbol": "a" }
+    "prov_code": "bud",
+    "keepout": null,
+    "owner": "a"
   },
   {
-    "id": 69,
-    "province": "tri",
-    "keepout": null,
+    "id": 3,
     "kind": "f",
-    "owner": "a",
-    "power": { "symbol": "a" }
+    "prov_code": "tri",
+    "keepout": null,
+    "owner": "a"
   },
   {
-    "id": 70,
-    "province": "lvp",
-    "keepout": null,
+    "id": 4,
     "kind": "a",
-    "owner": "e",
-    "power": { "symbol": "e" }
+    "prov_code": "lvp",
+    "keepout": null,
+    "owner": "e"
   },
   {
-    "id": 71,
-    "province": "lon",
-    "keepout": null,
+    "id": 5,
     "kind": "f",
-    "owner": "e",
-    "power": { "symbol": "e" }
+    "prov_code": "lon",
+    "keepout": null,
+    "owner": "e"
   },
   {
-    "id": 72,
-    "province": "edi",
-    "keepout": null,
+    "id": 6,
     "kind": "f",
-    "owner": "e",
-    "power": { "symbol": "e" }
+    "prov_code": "edi",
+    "keepout": null,
+    "owner": "e"
   },
   {
-    "id": 73,
-    "province": "par",
-    "keepout": null,
+    "id": 7,
     "kind": "a",
-    "owner": "f",
-    "power": { "symbol": "f" }
+    "prov_code": "par",
+    "keepout": null,
+    "owner": "f"
   },
   {
-    "id": 74,
-    "province": "mar",
-    "keepout": null,
+    "id": 8,
     "kind": "a",
-    "owner": "f",
-    "power": { "symbol": "f" }
+    "prov_code": "mar",
+    "keepout": null,
+    "owner": "f"
   },
   {
-    "id": 75,
-    "province": "bre",
-    "keepout": null,
+    "id": 9,
     "kind": "f",
-    "owner": "f",
-    "power": { "symbol": "f" }
+    "prov_code": "bre",
+    "keepout": null,
+    "owner": "f"
   },
   {
-    "id": 76,
-    "province": "ber",
-    "keepout": null,
+    "id": 10,
     "kind": "a",
-    "owner": "g",
-    "power": { "symbol": "g" }
+    "prov_code": "ber",
+    "keepout": null,
+    "owner": "g"
   },
   {
-    "id": 77,
-    "province": "mun",
-    "keepout": null,
+    "id": 11,
     "kind": "a",
-    "owner": "g",
-    "power": { "symbol": "g" }
+    "prov_code": "mun",
+    "keepout": null,
+    "owner": "g"
   },
   {
-    "id": 78,
-    "province": "kie",
-    "keepout": null,
+    "id": 12,
     "kind": "f",
-    "owner": "g",
-    "power": { "symbol": "g" }
+    "prov_code": "kie",
+    "keepout": null,
+    "owner": "g"
   },
   {
-    "id": 79,
-    "province": "rom",
-    "keepout": null,
+    "id": 13,
     "kind": "a",
-    "owner": "i",
-    "power": { "symbol": "i" }
+    "prov_code": "rom",
+    "keepout": null,
+    "owner": "i"
   },
   {
-    "id": 80,
-    "province": "ven",
-    "keepout": null,
+    "id": 14,
     "kind": "a",
-    "owner": "i",
-    "power": { "symbol": "i" }
+    "prov_code": "ven",
+    "keepout": null,
+    "owner": "i"
   },
   {
-    "id": 81,
-    "province": "nap",
-    "keepout": null,
+    "id": 15,
     "kind": "f",
-    "owner": "i",
-    "power": { "symbol": "i" }
+    "prov_code": "nap",
+    "keepout": null,
+    "owner": "i"
   },
   {
-    "id": 82,
-    "province": "mos",
-    "keepout": null,
+    "id": 16,
     "kind": "a",
-    "owner": "r",
-    "power": { "symbol": "r" }
+    "prov_code": "mos",
+    "keepout": null,
+    "owner": "r"
   },
   {
-    "id": 83,
-    "province": "war",
-    "keepout": null,
+    "id": 17,
     "kind": "a",
-    "owner": "r",
-    "power": { "symbol": "r" }
+    "prov_code": "war",
+    "keepout": null,
+    "owner": "r"
   },
   {
-    "id": 84,
-    "province": "stp_sc",
-    "keepout": null,
+    "id": 18,
     "kind": "f",
-    "owner": "r",
-    "power": { "symbol": "r" }
+    "prov_code": "stp_sc",
+    "keepout": null,
+    "owner": "r"
   },
   {
-    "id": 85,
-    "province": "sev",
-    "keepout": null,
+    "id": 19,
     "kind": "f",
-    "owner": "r",
-    "power": { "symbol": "r" }
+    "prov_code": "sev",
+    "keepout": null,
+    "owner": "r"
   },
   {
-    "id": 86,
-    "province": "con",
-    "keepout": null,
+    "id": 20,
     "kind": "a",
-    "owner": "t",
-    "power": { "symbol": "t" }
+    "prov_code": "con",
+    "keepout": null,
+    "owner": "t"
   },
   {
-    "id": 87,
-    "province": "smy",
-    "keepout": null,
+    "id": 21,
     "kind": "a",
-    "owner": "t",
-    "power": { "symbol": "t" }
+    "prov_code": "smy",
+    "keepout": null,
+    "owner": "t"
   },
   {
-    "id": 88,
-    "province": "ank",
-    "keepout": null,
+    "id": 22,
     "kind": "f",
-    "owner": "t",
-    "power": { "symbol": "t" }
+    "prov_code": "ank",
+    "keepout": null,
+    "owner": "t"
   }
 ]
