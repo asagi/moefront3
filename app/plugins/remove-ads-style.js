@@ -7,6 +7,6 @@ export default ({ app }) => {
         document.getElementById('__layout').removeAttribute('style')
       document.getElementById('__content') &&
         document.getElementById('__content').removeAttribute('style')
-    }, 1)
+    }, 1000)
   })
 }
