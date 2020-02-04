@@ -54,19 +54,19 @@
                     {{ $formatPeriod(table.period) }}
                   </td>
                   <td data-label="フェイス" class="with-label">
-                    {{ getFaceType(table.regulation.face_type) }}
+                    {{ $getFaceType(table.regulation.face_type) }}
                   </td>
                   <td data-label="外交期間" class="with-label half">
-                    {{ getDuration(table.regulation.duration) }}
+                    {{ $getDuration(table.regulation.duration) }}
                   </td>
                   <td data-label="更新種別" class="with-label half">
-                    {{ getPeriodRule(table.regulation.period_rule) }}
+                    {{ $getPeriodRule(table.regulation.period_rule) }}
                   </td>
                   <td data-label="掛け持ち" class="with-label half">
-                    {{ getJugglingState(table.regulation.juggling) }}
+                    {{ $getJugglingState(table.regulation.juggling) }}
                   </td>
                   <td data-label="鍵" class="with-label half">
-                    {{ getPrivateState(table.has_key) }}
+                    {{ $getPrivateState(table.private) }}
                   </td>
                 </template>
 
@@ -78,11 +78,11 @@
                     }"
                   >
                     <span class="turn-number">
-                      {{ getTableNumber(table.number) }}
-                      {{ getFaceType(table.regulation.face_type) }}
+                      {{ $getTableNumber(table.number) }}
+                      {{ $getFaceType(table.regulation.face_type) }}
                       :
                     </span>
-                    {{ getTurn(table.turn, table.phase) }}
+                    {{ $getTurn(table.turn, table.phase) }}
                   </th>
 
                   <td data-label="卓主" class="with-label">
@@ -97,13 +97,13 @@
                     {{ $formatPeriod(table.period) }}
                   </td>
                   <td data-label="外交期間" class="with-label half">
-                    {{ getDuration(table.regulation.duration) }}
+                    {{ $getDuration(table.regulation.duration) }}
                   </td>
                   <td data-label="更新種別" class="with-label half">
-                    {{ getPeriodRule(table.regulation.period_rule) }}
+                    {{ $getPeriodRule(table.regulation.period_rule) }}
                   </td>
                   <td data-label="掛け持ち" class="with-label">
-                    {{ getJugglingState(table.regulation.juggling) }}
+                    {{ $getJugglingState(table.regulation.juggling) }}
                   </td>
                 </template>
 
@@ -115,11 +115,11 @@
                     }"
                   >
                     <span class="turn-number">
-                      {{ getTableNumber(table.number) }}
-                      {{ getFaceType(table.regulation.face_type) }}
+                      {{ $getTableNumber(table.number) }}
+                      {{ $getFaceType(table.regulation.face_type) }}
                       :
                     </span>
-                    {{ getFinishTurn(table.turn, table.phase) }}
+                    {{ $getFinishTurn(table.turn, table.phase) }}
                   </th>
 
                   <td data-label="卓主" class="with-label">
@@ -134,10 +134,10 @@
                     {{ $formatPeriod(table.period) }}
                   </td>
                   <td data-label="外交期間" class="with-label half">
-                    {{ getDuration(table.regulation.duration) }}
+                    {{ $getDuration(table.regulation.duration) }}
                   </td>
                   <td data-label="更新種別" class="with-label half">
-                    {{ getPeriodRule(table.regulation.period_rule) }}
+                    {{ $getPeriodRule(table.regulation.period_rule) }}
                   </td>
                 </template>
 
@@ -237,83 +237,6 @@ export default {
     window.removeEventListener('resize', this.handleResize)
   },
   methods: {
-    getDuration: value => {
-      switch (value) {
-        case 'short':
-          return '短期'
-        case 'standard':
-          return '標準'
-        default:
-          return '不明'
-      }
-    },
-    getFaceType: value => {
-      switch (value) {
-        case 'girl':
-          return '娘'
-        case 'flag':
-          return '旗'
-        default:
-          return '不明'
-      }
-    },
-    getPeriodRule: value => {
-      switch (value) {
-        case 'fixed':
-          return '固定'
-        case 'flexible':
-          return '変動'
-        default:
-          return 'unknown'
-      }
-    },
-    getPrivateState: value => {
-      return value ? 'あり' : 'なし'
-    },
-    getJugglingState: value => {
-      return value === 'allow' ? '可' : '不可'
-    },
-    getTableNumber: number => {
-      return '#' + ('000' + number).slice(-3)
-    },
-    getFinishTurn: (turn, phase) => {
-      const year = 1900 + turn
-      let season = ''
-      switch (phase) {
-        case 'spr_1st':
-        case 'spr_2nd':
-          season = '春 終結'
-          break
-        case 'fal_1st':
-        case 'fal_2nd':
-        case 'fal_3rd':
-          season = '秋 終結'
-          break
-      }
-      return year + '年' + season
-    },
-    getTurn: (turn, phase) => {
-      const year = 1900 + turn
-      let season = ''
-      switch (phase) {
-        case 'spr_1st':
-          season = '春 外交'
-          break
-        case 'spr_2nd':
-          season = '春 撤退'
-          break
-        case 'fal_1st':
-          season = '秋 外交'
-          break
-        case 'fal_2nd':
-          season = '秋 撤退'
-          break
-        case 'fal_3rd':
-          season = '秋 調整'
-          break
-      }
-      return year + '年' + season
-    },
     resize: function() {
       this.width = window.innerWidth
     },

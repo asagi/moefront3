@@ -1,9 +1,10 @@
 <template>
   <section class="container">
-    <h1>参加登録 : {{ getTableId() }}</h1>
+    <h1>新卓 : {{ getTableId() }}</h1>
     <template v-if="false">
       <map-area :powers="powers" :territories="territories" :units="units" />
     </template>
+
     <div class="outer-map">
       <div class="map-area">
         <div :class="faceType" class="faces">
@@ -16,6 +17,62 @@
         </div>
       </div>
     </div>
+
+    <div class="owner">
+      <h2>卓主</h2>
+      <div><img :src="table.owner.image_url" /></div>
+      <div class="name">{{ table.owner.name }}</div>
+      <div class="name">@{{ table.owner.nickname }}</div>
+    </div>
+
+    <div class="regulation">
+      <h2>レギュレーション</h2>
+      <table>
+        <tbody>
+          <tr>
+            <td data-label="開始日時" class="with-label">
+              {{ $formatPeriod(table.period) }}
+            </td>
+            <td data-label="フェイス" class="with-label">
+              {{ $getFaceType(table.regulation.face_type) }}
+            </td>
+            <td data-label="外交期間" class="with-label half">
+              {{ $getDuration(table.regulation.duration) }}
+            </td>
+            <td data-label="更新種別" class="with-label half">
+              {{ $getPeriodRule(table.regulation.period_rule) }}
+            </td>
+            <td data-label="掛け持ち" class="with-label half">
+              {{ $getJugglingState(table.regulation.juggling) }}
+            </td>
+            <td data-label="鍵" class="with-label half">
+              {{ $getPrivateState(table.private) }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="players">
+      <h2>参加者（あと {{ slot }} 名）</h2>
+      <table>
+        <tbody>
+          <tr v-for="player in table.players" :key="player.id">
+            <td class="image"><img :src="player.user.image_url" /></td>
+            <td class="name">
+              {{ player.user.name }} <span>@{{ player.user.nickname }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="entryform">
+      <h2>参加登録フォーム</h2>
+      <div class="caution">
+        現在参加登録は受け付けておりません。
+      </div>
+    </div>
   </section>
 </template>
 
@@ -23,6 +80,11 @@
 import MapArea from '@/components/-map-area'
 
 export default {
+  head() {
+    return {
+      title: '新卓'
+    }
+  },
   components: {
     MapArea
   },
@@ -37,6 +99,9 @@ export default {
   computed: {
     faceType() {
       return this.table.regulation.face_type
+    },
+    slot() {
+      return 7 - this.table.players.length
     }
   },
   async asyncData({ $axios, params }) {
@@ -66,6 +131,7 @@ export default {
 .container {
   @apply flex flex-row flex-wrap justify-center max-w-sm;
   @apply text-left;
+  margin-bottom: calc(500 / 650 * 100% * -1);
 }
 
 h1 {
@@ -165,5 +231,165 @@ h1 {
       }
     }
   }
+}
+
+.owner {
+  min-width: 200px;
+
+  @apply mt-5;
+  @apply flex flex-col justify-center max-w-sm;
+  @apply text-center;
+  & h2 {
+    @apply text-center mb-1 px-0;
+  }
+  & img {
+    @apply border-4 border-white;
+    @apply rounded-full;
+    @apply mx-auto;
+  }
+}
+
+.regulation {
+  min-width: 300px;
+
+  @apply mt-5;
+  & h2 {
+    @apply text-center mb-1 px-0;
+  }
+
+  & table {
+    @apply w-full mx-0 my-auto;
+    @apply border-separate border-0;
+    @apply leading-normal;
+
+    & tbody {
+      & tr {
+        @apply block mx-2 mb-2 p-2;
+        @apply rounded shadow;
+        @apply border-solid border border-gray-400;
+        @apply bg-white;
+
+        & th {
+          @apply block overflow-hidden;
+          @apply rounded;
+
+          &.new {
+            /* mode == 0 */
+            @apply text-left px-2 py-2;
+            @apply relative pl-16;
+            @apply font-normal;
+            @apply bg-indigo-200;
+          }
+
+          &.girl {
+            /* mode == 1 or 2*/
+            @apply text-left px-4 py-2;
+            @apply bg-pink-200;
+          }
+          &.flag {
+            /* mode == 1 or 2*/
+            @apply text-left px-4 py-2;
+            @apply bg-orange-200;
+          }
+
+          & span.table-number {
+            /* mode == 1 or 2*/
+            @apply font-bold;
+          }
+        }
+
+        & td {
+          @apply block;
+          @apply text-left px-2 py-2;
+          @apply relative pl-24;
+          @apply font-normal text-sm;
+          @apply border-b;
+
+          &.half {
+            @apply w-1/2 -mx-1;
+            @apply inline-block;
+          }
+
+          &.button {
+            @apply px-0 pt-4;
+            @apply text-center;
+          }
+
+          & .twttier-account {
+            @apply text-xs;
+          }
+        }
+
+        & th.with-label::before {
+          @apply font-bold;
+          @apply absolute;
+          content: attr(data-label) ' : ';
+          left: 10px;
+        }
+
+        & td.with-label::before {
+          @apply font-bold;
+          @apply absolute inline-block w-20 text-right;
+          content: attr(data-label) ' : ';
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+.players {
+  min-width: 300px;
+
+  @apply mt-5;
+  & h2 {
+    @apply text-center mb-1 px-0;
+  }
+}
+
+.players {
+  & table {
+    @apply w-full mx-0 my-auto;
+    @apply border-separate border-0;
+    @apply text-sm;
+
+    & tr {
+      @apply block mx-2 mb-2 px-2 py-0;
+      @apply rounded shadow;
+      @apply border-solid border border-gray-400;
+      @apply bg-white;
+
+      & td {
+        @apply p-2;
+
+        &.image {
+          @apply rounded-lg;
+          @apply m-0;
+
+          & img {
+            width: 24px;
+            @apply rounded-full;
+            @apply m-0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.entryform {
+  min-width: 300px;
+
+  @apply mt-5;
+  & h2 {
+    @apply text-center mb-1 px-0;
+  }
+}
+
+.caution {
+  @apply border border-red-400;
+  @apply text-red-600;
+  @apply bg-red-100;
+  @apply mx-2 p-4;
 }
 </style>
