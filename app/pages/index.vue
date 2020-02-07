@@ -72,6 +72,9 @@ html {
   & .container {
     @apply my-0 items-start justify-center text-center;
 
+    /* MapArea 表示調整 */
+    margin-bottom: calc(500 / 650 * 100% * -1);
+
     & .top-area {
       @apply flex flex-row flex-wrap justify-center;
 
