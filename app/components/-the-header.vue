@@ -16,10 +16,7 @@
     </div>
     <div v-if="authToken" class="pt-2">
       <div @click="openMenu" class="cursor-pointer">
-        <img
-          id="header-user-image"
-          :src="image_url && image_url.replace('http:', 'https:')"
-        />
+        <img id="header-user-image" :src="image_url" />
         <span class="dropdown-caret"></span>
       </div>
       <div v-if="isMenuActive" class="menu">
