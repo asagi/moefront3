@@ -69,6 +69,11 @@ export default {
 <style lang="postcss">
 html {
   @apply overflow-y-scroll;
+
+  & body {
+    min-width: 320px;
+  }
+
   & .container {
     @apply my-0 items-start justify-center text-center;
 
@@ -143,7 +148,8 @@ html {
     }
 
     & .tables {
-      @apply w-full mt-1 mb-10;
+      @apply w-full mt-1 mb-10 mx-auto;
+      max-width: 500px;
     }
 
     & .links {
@@ -191,7 +197,8 @@ html {
       }
 
       & .amaquick-box {
-        max-width: 991px;
+        @apply mx-auto;
+        max-width: 638px;
       }
 
       & .flex-area {
@@ -201,9 +208,8 @@ html {
           width: 600px;
         }
       }
-
-      & .tables {
-        max-width: 724px;
+      & .links {
+        min-width: 300px;
       }
 
       .thanks-block {
@@ -227,14 +233,19 @@ html {
       }
 
       & .flex-area {
+        @apply mx-auto;
+        max-width: 920px;
+
         & .tables {
           @apply w-auto flex-grow;
         }
 
         & .links {
+          @apply ml-10;
+
           & hr {
             @apply inline-block;
-            @apply w-2/3;
+            @apply w-full;
 
             &.border-top {
               @apply mt-12 mb-10;
