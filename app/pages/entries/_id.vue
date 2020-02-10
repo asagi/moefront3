@@ -73,8 +73,10 @@
 
     <div class="entry-form">
       <h2>参加登録フォーム</h2>
-      <div class="caution">
-        現在参加登録は受け付けておりません。
+      <div class="caution-wrap">
+        <div class="caution">
+          現在参加登録は受け付けておりません。
+        </div>
       </div>
     </div>
   </section>
