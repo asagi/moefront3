@@ -1,4 +1,6 @@
 export const state = () => ({
+  id: null,
+  uid: null,
   authToken: null,
   image_url: null
 })
@@ -8,6 +10,8 @@ export const mutations = {
     state.authToken = token
   },
   setInfo(state, payload) {
+    state.id = payload.id
+    state.uid = payload.uid
     state.image_url = payload.image_url
   }
 }

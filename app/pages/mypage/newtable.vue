@@ -2,13 +2,21 @@
   <section class="container">
     <h1>新規卓作成</h1>
 
+    <template v-if="!permitted">
+      <div class="caution-wrap">
+        <div class="caution">
+          あなたは現在、新規に卓を作成することはできません。
+        </div>
+      </div>
+    </template>
+
     <div class="btn-area top">
       <nuxt-link class="btn btn-gray" to="/mypage">
         戻る
       </nuxt-link>
     </div>
 
-    <validation-observer v-slot="{ invalid, passes }">
+    <validation-observer v-if="permitted" v-slot="{ invalid, passes }">
       <form @submit.prevent="passes(confirm)">
         <div class="row">
           <!-- face-type -->
@@ -458,7 +466,26 @@ export default {
   },
   computed: {
     ...mapState('layout', ['isConfirmDialogActive']),
-    ...mapGetters('user', ['getAuthToken'])
+    ...mapGetters('user', ['getAuthToken']),
+    permitted() {
+      const filteredTables = this.myTables.filter((value, index, array) => {
+        if (value.status === 'closed') return false
+        if (value.status === 'solo') return false
+        if (value.status === 'draw') return false
+        if (value.status === 'discarded') return false
+        return true
+      })
+      return filteredTables.length === 0
+    }
+  },
+  async asyncData({ store, $axios }) {
+    const userId = await store.state.user.id
+    const res = await $axios
+      .$get(`/api/users/${userId}/tables`)
+      .catch(error => {
+        console.log(error.message)
+      })
+    return { userId: userId, myTables: res }
   },
   methods: {
     confirm: async function() {
