@@ -302,7 +302,7 @@ export default {
         @apply border-separate border-0;
         @apply leading-normal;
 
-        & theader {
+        & thead {
           display: none;
         }
 
@@ -389,11 +389,6 @@ export default {
 
 @screen sm {
   .tables-block {
-    & .tables.new {
-      & h2 {
-      }
-    }
-
     & .tables.live {
       & h2 {
         @apply mt-10;
