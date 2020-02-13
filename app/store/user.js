@@ -2,7 +2,8 @@ export const state = () => ({
   id: null,
   uid: null,
   authToken: null,
-  image_url: null
+  image_url: null,
+  admin: false
 })
 
 export const mutations = {
@@ -13,6 +14,7 @@ export const mutations = {
     state.id = payload.id
     state.uid = payload.uid
     state.image_url = payload.image_url
+    state.admin = payload.admin
   }
 }
 
@@ -33,5 +35,8 @@ export const actions = {
 export const getters = {
   getAuthToken: state => {
     return state.authToken
+  },
+  isAdmin: state => {
+    return state.admin
   }
 }

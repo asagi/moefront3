@@ -30,16 +30,13 @@ export default {
 
         const newToken = this.$store.getters['user/getAuthToken']
         this.$axios.setToken(newToken, 'Bearer')
-        this.$axios
-          .get('/api/users/me')
-          .then(res => {
-            this.$store.dispatch('user/load', res.data)
-          })
-          .catch(error => {
-            console.log(error.message)
-            this.$store.dispatch('user/logout', newToken)
-            this.$router.replace({ path: '/' })
-          })
+        const res = await this.$axios.get('/api/users/me').catch(error => {
+          console.log(error.message)
+          this.$store.dispatch('user/logout', newToken)
+          this.$router.replace({ path: '/' })
+        })
+        console.log(res)
+        this.$store.dispatch('user/load', res.data)
       }
       this.$router.replace({ path: '/mypage' })
     }, 0)
