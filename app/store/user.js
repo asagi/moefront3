@@ -2,8 +2,8 @@ export const state = () => ({
   id: null,
   uid: null,
   authToken: null,
-  image_url: null,
-  admin: false
+  imageUrl: null,
+  isAdmin: false
 })
 
 export const mutations = {
@@ -13,8 +13,8 @@ export const mutations = {
   setInfo(state, payload) {
     state.id = payload.id
     state.uid = payload.uid
-    state.image_url = payload.image_url
-    state.admin = payload.admin
+    state.imageUrl = payload.image_url
+    state.isAdmin = payload.admin
   }
 }
 
@@ -37,6 +37,6 @@ export const getters = {
     return state.authToken
   },
   isAdmin: state => {
-    return state.admin
+    return state.isAdmin
   }
 }

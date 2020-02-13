@@ -16,7 +16,7 @@
     </div>
     <div v-if="authToken" class="pt-2">
       <div @click="openMenu" class="cursor-pointer">
-        <img id="header-user-image" :src="image_url" />
+        <img id="header-user-image" :src="imageUrl" />
         <span class="dropdown-caret"></span>
       </div>
       <div v-if="isMenuActive" class="menu">
@@ -29,6 +29,7 @@
           <li @click="clickLogout" class="link">ログアウト</li>
           <li
             @click="toggleFakePowerSelector"
+            v-if="isAdmin"
             :class="{ checked: isFakePowerSelectorActive }"
             class="link"
           >
@@ -54,7 +55,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('user', ['authToken', 'image_url', 'isAdmin']),
+    ...mapState('user', ['authToken', 'imageUrl', 'isAdmin']),
     ...mapState('header', ['allowLogin']),
     ...mapState('layout', ['isMenuActive', 'isFakePowerSelectorActive'])
   },

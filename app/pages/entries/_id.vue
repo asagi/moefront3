@@ -23,7 +23,7 @@
     <div class="middle-area">
       <div class="owner">
         <h2>卓主</h2>
-        <div><img :src="table.owner.image_url" /></div>
+        <div><img :src="table.owner.imageUrl" /></div>
         <div class="name">{{ table.owner.name }}</div>
         <div class="name">@{{ table.owner.nickname }}</div>
       </div>
@@ -62,7 +62,7 @@
       <table>
         <tbody>
           <tr v-for="player in table.players" :key="player.id">
-            <td class="image"><img :src="player.user.image_url" /></td>
+            <td class="image"><img :src="player.user.imageUrl" /></td>
             <td class="name">
               {{ player.user.name }} <span>@{{ player.user.nickname }}</span>
             </td>
