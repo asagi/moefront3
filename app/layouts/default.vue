@@ -1,7 +1,7 @@
 <template>
   <div id="__content" :class="[scrollLock]">
     <the-header />
-    <div class="outer-frame">
+    <div :class="{ isFakePowerSelectorActive }" class="outer-frame">
       <nuxt />
     </div>
     <the-footer />
@@ -21,7 +21,11 @@ export default {
     TheFooter
   },
   computed: {
-    ...mapState('layout', ['isMenuActive', 'isConfirmDialogActive']),
+    ...mapState('layout', [
+      'isMenuActive',
+      'isConfirmDialogActive',
+      'isFakePowerSelectorActive'
+    ]),
     scrollLock: function() {
       return {
         'overflow-hidden': this.isMenuActive || this.isConfirmDialogActive,

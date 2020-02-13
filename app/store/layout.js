@@ -1,6 +1,7 @@
 export const state = () => ({
   isMenuActive: false,
-  isConfirmDialogActive: false
+  isConfirmDialogActive: false,
+  isFakePowerSelectorActive: false
 })
 
 export const mutations = {
@@ -15,6 +16,15 @@ export const mutations = {
   },
   unsetConfirmDialogActive(state) {
     state.isConfirmDialogActive = false
+  },
+  setFakePowerSelectorActive(state) {
+    state.isFakePowerSelectorActive = true
+  },
+  toggleFakePowerSelectorActive(state) {
+    state.isFakePowerSelectorActive = !state.isFakePowerSelectorActive
+  },
+  unsetFakePowerSelectorActive(state) {
+    state.isFakePowerSelectorActive = false
   }
 }
 
@@ -30,5 +40,14 @@ export const actions = {
   },
   closeConfirmDialog({ commit }) {
     commit('unsetConfirmDialogActive')
+  },
+  showFakePowerSelector({ commit }) {
+    commit('setFakePowerSelectorActive')
+  },
+  toggleFakePowerSelector({ commit }) {
+    commit('toggleFakePowerSelectorActive')
+  },
+  closeFakePowerSelector({ commit }) {
+    commit('unsetFakePowerSelectorActive')
   }
 }

@@ -27,8 +27,18 @@
         <ul>
           <li @click="showMypage" class="link">マイページ</li>
           <li @click="clickLogout" class="link">ログアウト</li>
+          <li
+            @click="toggleFakePowerSelector"
+            :class="{ checked: isFakePowerSelectorActive }"
+            class="link"
+          >
+            国選択メニュー表示
+          </li>
         </ul>
       </div>
+    </div>
+    <div v-if="isFakePowerSelectorActive" class="fake-power-selector">
+      TODO
     </div>
     <div v-if="isMenuActive" @click="closeMenu" class="dropdown-bg"></div>
   </nav>
@@ -44,9 +54,9 @@ export default {
     }
   },
   computed: {
-    ...mapState('user', ['authToken', 'image_url']),
+    ...mapState('user', ['authToken', 'image_url', 'isAdmin']),
     ...mapState('header', ['allowLogin']),
-    ...mapState('layout', ['isMenuActive'])
+    ...mapState('layout', ['isMenuActive', 'isFakePowerSelectorActive'])
   },
   methods: {
     ...mapActions('user', ['logout']),
@@ -68,6 +78,10 @@ export default {
     showMypage: function() {
       this.closeMenu()
       this.$router.push('/mypage')
+    },
+    toggleFakePowerSelector: function() {
+      this.closeMenu()
+      this.$store.dispatch('layout/toggleFakePowerSelector')
     }
   }
 }
@@ -140,7 +154,7 @@ nav {
   transform: rotate(180deg);
 }
 .menu {
-  @apply w-56;
+  @apply w-64;
   @apply border border-solid rounded bg-white shadow-md;
   @apply py-2 m-3;
   @apply absolute left-auto right-0 z-20;
@@ -152,13 +166,36 @@ nav {
 }
 .menu ul li {
   @apply w-full py-1 bg-transparent;
-  @apply px-5 text-xl;
+  @apply pl-10 pr-5 text-xl;
 }
 .menu ul li a {
   @apply text-gray-700;
 }
 .menu ul li:hover {
   @apply bg-blue-700 text-gray-200;
+}
+ul li.checked {
+  position: relative;
+}
+ul li.checked::after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0.8em;
+  left: 0.8em;
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid #3498db;
+  border-bottom: 2px solid #3498db;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.fake-power-selector {
+  @apply fixed w-full inset-x-0 block;
+  @apply bg-black text-white;
+  @apply h-8;
+  @apply text-center leading-loose;
+  top: 39.5px;
 }
 .dropdown-bg {
   @apply w-full h-screen fixed inset-0 z-10;

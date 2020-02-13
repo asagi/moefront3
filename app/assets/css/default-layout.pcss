@@ -27,11 +27,15 @@ html {
 
     & .outer-frame {
       @apply flex flex-col items-center;
-      padding-top: 39px;
+      padding-top: 39.5px;
 
       & .container {
         @apply pb-10 mx-0;
         max-width: 1280px;
+      }
+
+      &.isFakePowerSelectorActive {
+        padding-top: calc(39.5px + 32px);
       }
     }
   }
@@ -64,7 +68,11 @@ html {
   html {
     & body {
       & .outer-frame {
-        @apply pt-16;
+        padding-top: 4rem;
+
+        &.isFakePowerSelectorActive {
+          padding-top: calc(4rem + 32px);
+        }
       }
     }
   }
