@@ -60,6 +60,7 @@ export default {
   },
   methods: {
     ...mapActions('user', ['logout']),
+    ...mapActions('layout', ['closeFakePowerSelector']),
     openMenu: async function() {
       this.offsetY =
         document.documentElement.scrollTop || document.body.scrollTop
@@ -72,6 +73,7 @@ export default {
     },
     clickLogout: function() {
       this.closeMenu()
+      this.closeFakePowerSelector()
       this.logout()
       this.$router.push('/logout')
     },
